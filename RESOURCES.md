@@ -22,11 +22,29 @@
 
 ## Process Diagrams
 
+### Purchasing (`EBike-Jan2026/Purchase Order/Process-Diagrams/`)
+- **View Model Workflow (instructor)** — `purchasing-viewmodel-workflow.png`
+- **View Model Workflow (student)** — `purchasing-viewmodel-workflow-student.png`
+- **Data Flow (instructor)** — `purchasing-dataflow.png`
+- **Data Flow (student)** — `purchasing-dataflow-student.png`
+
 ### Receiving (`EBike-Jan2026/Receiving/Process-Diagrams/`)
 - **View Model Workflow (instructor)** — `receiving-viewmodel-workflow.png`
 - **View Model Workflow (student)** — `receiving-viewmodel-workflow-student.png`
 - **Data Flow (instructor)** — `receiving-dataflow.png`
 - **Data Flow (student)** — `receiving-dataflow-student.png`
+
+### Sales & Returns (`EBike-Jan2026/SalesReturn/Process-Diagrams/`)
+- **View Model Workflow (instructor)** — `sales-returns-viewmodel-workflow.png`
+- **View Model Workflow (student)** — `sales-returns-viewmodel-workflow-student.png`
+- **Data Flow (instructor)** — `sales-returns-dataflow.png`
+- **Data Flow (student)** — `sales-returns-dataflow-student.png`
+
+### Servicing (`EBike-Jan2026/Servicing/Process-Diagrams/`)
+- **View Model Workflow (instructor)** — `servicing-viewmodel-workflow.png`
+- **View Model Workflow (student)** — `servicing-viewmodel-workflow-student.png`
+- **Data Flow (instructor)** — `servicing-dataflow.png`
+- **Data Flow (student)** — `servicing-dataflow-student.png`
 
 ## Marking
 

@@ -2,7 +2,7 @@
 
 **Purpose:** Quick reference index to minimize token usage when accessing documentation
 
-**Last Updated:** March 14, 2026 (v1.1)
+**Last Updated:** March 14, 2026 (v1.2)
 
 ---
 
@@ -37,6 +37,15 @@
 | **Whats-a-Purchase-Order.pdf/.pptx** | PDF/PPTX | Student presentation — purchase order concepts |
 | **purchasing_erd.png** | Image | Entity-relationship diagram for purchasing tables |
 
+### Purchasing Process Diagrams (`EBike-Jan2026/Purchase Order/Process-Diagrams/`)
+
+| Document | Format | Purpose |
+|----------|--------|---------|
+| **purchasing-viewmodel-workflow.png** | PNG | Instructor ref — view model structure with vendor selection + PO workspace |
+| **purchasing-viewmodel-workflow-student.png** | PNG | Student version — conceptual layout with guiding questions |
+| **purchasing-dataflow.png** | PNG | Instructor ref — 5-phase data flow (vendors, select, save, place, delete) |
+| **purchasing-dataflow-student.png** | PNG | Student version — data flow with questions |
+
 ### Receiving (`EBike-Jan2026/Receiving/`)
 
 | Document | Format | Purpose |
@@ -67,6 +76,15 @@
 | **How-Do-We-Do-a-Sales-Return.pdf/.pptx** | PDF/PPTX | Student presentation — returns process |
 | **salesreturns_erd.png** | Image | ERD for sales and returns tables |
 
+### Sales & Returns Process Diagrams (`EBike-Jan2026/SalesReturn/Process-Diagrams/`)
+
+| Document | Format | Purpose |
+|----------|--------|---------|
+| **sales-returns-viewmodel-workflow.png** | PNG | Instructor ref — view models for both sales and returns workflows |
+| **sales-returns-viewmodel-workflow-student.png** | PNG | Student version — conceptual layout with guiding questions |
+| **sales-returns-dataflow.png** | PNG | Instructor ref — data flow for sales (search → cart → checkout) and returns |
+| **sales-returns-dataflow-student.png** | PNG | Student version — data flow with questions |
+
 ### Servicing (`EBike-Jan2026/Servicing/`)
 
 | Document | Format | Purpose |
@@ -75,6 +93,15 @@
 | **Servicing Module - Functional Mockup.html** | HTML | UI mockup screens and workflows |
 | **How-Do-We-Record-a-Service.pdf/.pptx** | PDF/PPTX | Student presentation — servicing concepts |
 | **Servicing_ERD.png** | Image | ERD for servicing tables |
+
+### Servicing Process Diagrams (`EBike-Jan2026/Servicing/Process-Diagrams/`)
+
+| Document | Format | Purpose |
+|----------|--------|---------|
+| **servicing-viewmodel-workflow.png** | PNG | Instructor ref — view models for customer/vehicle + service job registration |
+| **servicing-viewmodel-workflow-student.png** | PNG | Student version — conceptual layout with guiding questions |
+| **servicing-dataflow.png** | PNG | Instructor ref — 4-phase data flow (search, vehicles, lookups, register transaction) |
+| **servicing-dataflow-student.png** | PNG | Student version — data flow with questions |
 
 ---
 
