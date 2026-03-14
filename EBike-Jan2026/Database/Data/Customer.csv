@@ -1,0 +1,11 @@
+CustomerID,LastName,FirstName,Address,City,Province,PostalCode,ContactPhone,Textable,EmailAddress,RemoveFromViewFlag
+1,Smith,Sam,12345 - 67 St,Edmonton,AB,T5J1X1,780-444-4444,False,ssmith@hotmail.com,False
+2,Jones,John,23456 - 78 St,Edmonton,AB,T5J1X2,780-432-2222,False,jjones@hotmail.com,False
+3,Green,Vern,11111 - 33 St,Edmonton,AB,T5J1X3,780-433-3333,True,vgreen@hotmail.com,False
+4,Davids,Dave,22222 - 22 St,Edmonton,AB,T5J1X4,780-433-4344,False,ddavids@hotmail.com,False
+5,Appleby,Abe,33333 - 33 St,Edmonton,AB,T5J1X5,780-432-4545,True,aappleby@hotmail.com,False
+6,Foster,Fred,44444 - 44 St,Edmonton,AB,T5J2X5,780-432-6565,True,ffoster@hotmail.com,False
+7,Forest,Fern,55555 - 55 St,Edmonton,AB,T5J3X2,780-432-7676,False,fforest@hotmail.com,False
+8,Doger,Roger,66666 - 66 St,Edmonton,AB,T5J4X5,780-432-3547,True,rdoger@hotmail.com,False
+9,Ford,Filly,77777 - 77 St,Edmonton,AB,T5J5X4,780-432-4756,True,fford@hotmail.com,False
+10,Decker,Dan,88888 - 88 St,Edmonton,AB,T5J6X3,780-432-6768,True,ddecker@hotmail.com,False

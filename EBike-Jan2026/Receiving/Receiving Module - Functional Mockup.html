@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receiving Module - Functional Mockup</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+<link rel="stylesheet" href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"><link rel="stylesheet" href="/d2l/le/contentstyler/6606/files/View" data-override="override"></head><body><h1 id="receiving-module-annotated-screen-mockup">Receiving Module — Annotated Screen Mockup</h1>
+<blockquote>
+<p><strong>Reference wireframe — not a design to copy.</strong> This shows the required data elements, actions, and behaviors. You choose the layout, components, and styling. Your screen will look different from this — that’s expected.</p>
+</blockquote>
+<hr>
+<h2 id="screen-1-po-selection-search-screen">Screen 1: PO Selection (Search Screen)</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                     │
+│  ← Placed + not closed POs only (OrderDate IS set AND Closed = false)               │
+│  ← One open PO per vendor — if vendor has no open PO, they don't appear             │
+│                                                                                     │
+│  OUTSTANDING PURCHASE ORDERS                                                        │
+│  ┌──────────┬──────────────┬───────────────────────┬────────────────┬──────────────┐ │
+│  │ PO #     │ Order Date   │ Vendor                │ Contact #      │ Action       │ │
+│  ├──────────┼──────────────┼───────────────────────┼────────────────┼──────────────┤ │
+│  │ 130      │ June 10      │ MotorParts Ltd.       │ 780.473.5664   │ [View Order] │ │
+│  │ 131      │ July 8       │ Williams Tires        │ 780.696.2356   │ [View Order] │ │
+│  └──────────┴──────────────┴───────────────────────┴────────────────┴──────────────┘ │
+│                                                                                     │
+│  No drafts. No closed orders. Only POs ready to receive.                            │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="po-selection-filter-logic">PO Selection Filter Logic</h3>
+<pre><code>  PO appears in list when ALL of these are true:
+       │
+       ├── OrderDate is NOT null (placed)
+       ├── Closed = false (not yet closed)
+       └── RemoveFromViewFlag = false (not soft-deleted)
+
+  One open PO per vendor → vendor appears at most once in this list</code></pre>
+<hr>
+<h2 id="screen-2-receiving-workspace">Screen 2: Receiving Workspace</h2>
+<p>This is the main working screen. When the user clicks <strong>View Order</strong> on Screen 1, this screen loads with the selected PO’s data. The wireframe below shows one possible arrangement — yours will differ.</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                     │
+│  PO HEADER (read-only)                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │ Vendor:   HighRoad Cycle Clothing                                               │ │
+│  │ PO #:     130                                                                   │ │
+│  │ Date:     June 10, 2026                                                         │ │
+│  │ Phone:    780.450.1345        ◄── vendor contact number                         │ │
+│  │                                                                                 │ │
+│  │ Employee: Emily Chen          ◄── D2: logged-in user (auto-recorded)            │ │
+│  │ Receive Date: today           ◄── auto-set, not editable                        │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│
+│                                                                                     │
+│  ORDER DETAILS (7 columns — 4 display, 3 editable)                                 │
+│  ┌───────┬────────────────┬─────────┬─────────────┬──────────┬──────────┬─────────┐ │
+│  │PartID │ Description    │ Ordered │ Outstanding │ Received │ Returned │ Reason  │ │
+│  │       │                │         │             │    ✎     │    ✎     │   ✎     │ │
+│  ├───────┼────────────────┼─────────┼─────────────┼──────────┼──────────┼─────────┤ │
+│  │ 109   │ Air Filter     │   55    │     50      │ [  0  ]  │ [  0  ]  │ [     ] │ │
+│  │ 107   │ Plugs          │   30    │     14      │ [  8  ]  │ [  3  ]  │ [Over⌄] │ │
+│  │ 105   │ Front Brakes   │    5    │      5      │ [  5  ]  │ [  0  ]  │ [     ] │ │
+│  └───────┴────────────────┴─────────┴─────────────┴──────────┴──────────┴─────────┘ │
+│                                                                                     │
+│  ✎ = editable field         ↑ Calculated       ↑ 0 to         ↑ If &gt; 0,            │
+│                              Outstanding =       Outstanding    reason              │
+│                              Ordered - Total     (see rules)    REQUIRED            │
+│                              Previously Received                                    │
+│                                                                                     │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│
+│                                                                                     │
+│  UNORDERED ITEMS TO RETURN                                                          │
+│  ┌───────────────────────┬────────────────────┬──────────┬─────────────────────────┐ │
+│  │ Description           │ Vendor Part #      │ Qty      │ Action                  │ │
+│  ├───────────────────────┼────────────────────┼──────────┼─────────────────────────┤ │
+│  │ Random Thing          │ 12345              │ 1        │ [Delete]                │ │
+│  │ Another Thing         │ 45678              │ 8        │ [Delete]                │ │
+│  └───────────────────────┴────────────────────┴──────────┴─────────────────────────┘ │
+│                                                                                     │
+│  ← Reason auto-set to "Incorrect item" for all unordered items                      │
+│  ← Items are LOCAL ONLY until Receive or Force Close is pressed                     │
+│                                                                                     │
+│  INPUT FORM                                                                         │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │ Item Description: [________________________]                                    │ │
+│  │ Vendor Part #:    [________________________]                                    │ │
+│  │ Quantity:         [_____]                                                       │ │
+│  │                                                                                 │ │
+│  │ [ Insert ]   [ Clear ]          ◄── Insert adds to grid above                  │ │
+│  │                                     Clear resets input fields only              │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│
+│                                                                                     │
+│  ACTION BUTTONS                                                                     │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │ [ Receive ]   [ Force Close ]   Reason: [________________________]   [ Reset ] │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│      ↑ See Button State Matrix below         ↑ Required for Force Close only        │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="how-unordered-items-work">How Unordered Items Work</h3>
+<p>Items that arrive but are NOT on the PO get documented for return to the vendor.</p>
+<ul>
+<li>User fills in Description, Vendor Part #, and Quantity, then presses <strong>Insert</strong></li>
+<li>Item appears in the unordered items grid; input fields clear for next entry</li>
+<li>All three fields are required before Insert is enabled</li>
+<li>Reason is auto-set to <strong>“Incorrect item”</strong> — not a user choice</li>
+<li><strong>Delete</strong> removes a row from the grid (local only, no confirmation needed)</li>
+<li><strong>Clear</strong> resets the input fields without affecting the grid</li>
+<li>Unordered items are NOT saved until <strong>Receive</strong> or <strong>Force Close</strong> is pressed</li>
+</ul>
+<hr>
+<h2 id="button-state-matrix">Button State Matrix</h2>
+<p>What each button does depends on the current state of the receiving session:</p>
+<table style="width: 100%;"><colgroup> <col style="width: 34%;"> <col style="width: 21%;"> <col style="width: 21%;"> <col style="width: 21%;"> </colgroup>
+<thead>
+<tr>
+<th>Button</th>
+<th style="text-align: center;">PO loaded, no changes</th>
+<th style="text-align: center;">Data entered</th>
+<th style="text-align: center;">Force Close reason filled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Receive</strong></td>
+<td style="text-align: center;">Disabled (nothing to process)</td>
+<td style="text-align: center;"><strong>Enabled</strong> — processes all data</td>
+<td style="text-align: center;"><strong>Enabled</strong> — processes all data</td>
+</tr>
+<tr>
+<td><strong>Force Close</strong></td>
+<td style="text-align: center;">Disabled (no reason)</td>
+<td style="text-align: center;">Disabled (no reason)</td>
+<td style="text-align: center;"><strong>Enabled</strong> — processes data THEN closes PO</td>
+</tr>
+<tr>
+<td><strong>Reset</strong></td>
+<td style="text-align: center;">Disabled (nothing to clear)</td>
+<td style="text-align: center;"><strong>Enabled</strong> — warns first, then clears</td>
+<td style="text-align: center;"><strong>Enabled</strong> — warns first, then clears</td>
+</tr>
+</tbody>
+</table>
+<h3 id="receive-requirements">Receive Requirements</h3>
+<p>Receive is enabled when ANY of these are true: - At least one line has <strong>Received &gt; 0</strong> - At least one line has <strong>Returned &gt; 0</strong> - At least one unordered item has been inserted</p>
+<p><strong>What Receive does:</strong> Validates all data, records quantities, updates inventory (QOH up, QOO down), auto-closes the PO if all outstanding quantities reach zero.</p>
+<h3 id="force-close-requirements">Force Close Requirements</h3>
+<p>Force Close is enabled when ALL of these are true: - The <strong>Reason for Closing</strong> text field is filled in - User has <strong>Shop Manager</strong> role (D2 security — Store Staff blocked)</p>
+<p><strong>What Force Close does:</strong> Processes current session data exactly like Receive, then removes remaining outstanding QOO for each part on this PO (this vendor only) and closes the PO.</p>
+<h3 id="reset-requirements">Reset Requirements</h3>
+<ul>
+<li>Must warn: “You have unsaved changes. Are you sure you want to reset?”</li>
+<li>Clears: all Received quantities, all Returned quantities, all Reasons, all unordered items</li>
+<li>Does NOT close or navigate away — stays on the same PO</li>
+</ul>
+<hr>
+<h2 id="valid-return-reasons">Valid Return Reasons</h2>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>When Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overship</strong></td>
+<td>Vendor sent more than what was outstanding</td>
+</tr>
+<tr>
+<td><strong>Damaged on arrival</strong></td>
+<td>Product is not in acceptable condition</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>“Incorrect item” is reserved for <strong>unordered items only</strong> (auto-set by system). “Refused by receiver” is <strong>NOT a valid reason</strong> — never use it.</p>
+</blockquote>
+<hr>
+<h2 id="force-close-qoo-cleanup">Force Close QOO Cleanup</h2>
+<pre><code>For EACH part on this PO:
+  QOO decrease = Ordered - TotalPreviouslyReceived - ReceivedToday
+
+  This removes only the unreceived remainder from QOO.</code></pre>
+<h3 id="force-close-example">Force Close Example</h3>
+<pre><code>Part 109 — "Air Filter"
+  Ordered from Vendor A:      75
+  Previously received:        42
+  Received today (this session): 0
+  ──────────────────────────────
+  QOO decrease for Part 109:  75 - 42 - 0 = 33
+
+  Same part also on order from Vendor B (182 units):
+  Vendor B's QOO stays at 182 — untouched.</code></pre>
+<blockquote>
+<p>Force Close requires user confirmation: “Are you sure you want to force close this PO? This action cannot be undone.”</p>
+</blockquote>
+<hr>
+<h2 id="what-the-system-must-never-do">What the System Must Never Do</h2>
+<ul>
+<li>Never auto-fill receiving quantities — user types what actually arrived</li>
+<li>Never allow Received &gt; Outstanding for any line</li>
+<li>Never add returned or damaged items into inventory (QOH)</li>
+<li>Never close a PO unless all quantities are received OR an explicit force close with reason</li>
+<li>Never adjust another vendor’s QOO when force closing this vendor’s PO</li>
+<li>Never overwrite previous receiving records — each session is its own entry</li>
+<li>Never allow a force close without a reason AND confirmation</li>
+<li>Never allow unordered items to enter inventory or modify the PO</li>
+<li>Never allow “Refused by receiver” as a return reason</li>
+<li>Never process an empty submission (no received, no returned, no unordered)</li>
+<li>Never hide real history using RemoveFromViewFlag</li>
+<li>Never assume the shipment matches the PO — the user decides what arrived</li>
+</ul></body></html>

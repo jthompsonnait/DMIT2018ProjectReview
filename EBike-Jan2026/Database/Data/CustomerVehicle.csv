@@ -1,0 +1,11 @@
+CustomerVehicleID,CustomerID,VehicleIdentification,Make,Model,RemoveFromViewFlag
+1,2,111GT678Y9991,Bmw                 ,BMW R 1200 RT                 ,False
+2,1,123FT678Y9801,Honda               ,RUCKUS                        ,False
+3,5,123MM445D4321,Kawasaki            ,KLX250                        ,False
+4,7,213KM222T8787,Can-am              ,Spyder RT                     ,False
+5,8,222FT445S9801,Yamaha              ,YZF-R1M                       ,False
+6,4,258KL678B6985,Honda               ,Gold Wing Tour                ,False
+7,5,321ZX147K4289,Honda               ,Rebel 1100                    ,False
+8,5,453SE878W1231,Kawasaki            ,KLX300                        ,False
+9,9,456UR111P6345,Vespa               ,SEI GIORNI                    ,False
+10,3,475FK999Y9811,Harley-davidson     ,FLHTCUTG-Tri Glide Ultra      ,False

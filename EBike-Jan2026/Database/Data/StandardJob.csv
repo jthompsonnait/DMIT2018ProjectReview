@@ -1,0 +1,9 @@
+StandardJobID,Description,StandardHours,RemoveFromViewFlag
+1,Oil Change,0.50,False
+2,Tune up,2.50,False
+3,Fluid Flush,1.00,False
+4,Brake Adjustment,0.75,False
+5,Chain Replacement,1.00,False
+6,Tire Replacement - Front,0.50,False
+7,Tire Replacement - Rear,0.75,False
+8,Complete Safety Inspection,1.50,False

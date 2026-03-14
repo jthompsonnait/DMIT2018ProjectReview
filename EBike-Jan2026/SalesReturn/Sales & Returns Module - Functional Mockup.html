@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales &amp; Returns Module - Functional Mockup</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+<link rel="stylesheet" href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"><link rel="stylesheet" href="/d2l/le/contentstyler/6606/files/View" data-override="override"></head><body><h1 id="sales-returns-module-annotated-screen-mockup">Sales &amp; Returns Module — Annotated Screen Mockup</h1>
+<blockquote>
+<p><strong>Reference wireframe — not a design to copy.</strong> This shows the required data elements, actions, and behaviors. You choose the layout, components, and styling. Your screen will look different from this — that’s expected.</p>
+</blockquote>
+<hr>
+<h2 id="sales-navigation">Sales Navigation</h2>
+<p>These buttons appear across the top of every sales screen. The user can move freely between screens without losing data — the system keeps everything in memory.</p>
+<pre><code>  [ Customer Search ]  [ Product Selector ]  [ View Cart ]  [ Checkout ]  [ Cancel ]
+    ↑ Always visible across all 4 sales screens
+    ↑ Cancel resets everything (customer, cart, coupon) — warns before clearing</code></pre>
+<blockquote>
+<p>The four sales screens share a single in-memory sale. Navigating between screens does not discard data. <strong>Cancel</strong> is destructive — it clears the customer, the cart, and any coupon. Always warn first.</p>
+</blockquote>
+<hr>
+<h2 id="screen-1-customer-search">Screen 1: Customer Search</h2>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────┐
+│                                                                               │
+│  CUSTOMER SEARCH                                                              │
+│                                                                               │
+│  Phone Number (Partial): [ 780.43       ] ✎   [ Search ]   [ Clear ]         │
+│                                          ↑                    ↑               │
+│                                     Partial match        Resets field,        │
+│                                                          shows all            │
+│                                                          customers            │
+│  ┌──────────────────┬───────────────┬─────────────────────────────────────┐   │
+│  │ Customer Name    │ Phone         │ Address                            │   │
+│  ├──────────────────┼───────────────┼─────────────────────────────────────┤   │
+│  │ John Jones       │ 780.432.2222  │ 23456 – 78 St, Edmonton, AB       │   │
+│  │ Dave Davids      │ 780.433.4344  │ 22222 – 22 St, Edmonton, AB       │   │
+│  │ Vern Green       │ 780.433.3333  │ 11111 – 33 St, Edmonton, AB       │   │
+│  │ Abe Appleby      │ 780.432.4545  │ 33333 – 33 St, Edmonton, AB       │   │
+│  └──────────────────┴───────────────┴─────────────────────────────────────┘   │
+│                                                                               │
+│  ← Customer MUST be selected before any other screen is usable               │
+│                                                                               │
+│  Employee: Sam Morrison  ◄── D2: logged-in employee name                     │
+│                                                                               │
+└───────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="customer-switching-mid-sale">Customer Switching Mid-Sale</h3>
+<pre><code>  User selects a different customer while sale is in progress
+       │
+       ├── Cart is empty (no sale data)?
+       │         │
+       │        YES ──→ Switch immediately, no warning
+       │
+       └── NO (cart has items or coupon applied)
+                 │
+                 └──→ Warn: "Switching customers will clear your
+                       cart and any applied coupon. Continue?"
+                       │
+                       ├── YES ──→ Clear cart + coupon, switch customer
+                       └── NO  ──→ Keep current customer, no change</code></pre>
+<hr>
+<h2 id="screen-2-product-selector">Screen 2: Product Selector</h2>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────┐
+│                                                                               │
+│  CATEGORY SELECTION                                                           │
+│  ┌─────────────────────────┐                                                  │
+│  │ All (69)            [→] │  ← "All" is always first                        │
+│  │ Hand Saw (4)        [→] │  ← Count = distinct parts in category           │
+│  │ Hand Tool (8)       [→] │                                                  │
+│  │ Brakes (12)         [→] │                                                  │
+│  │ Yard Equipment (3)  [→] │                                                  │
+│  └─────────────────────────┘                                                  │
+│                                                                               │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                               │
+│  PART SELECTION  ← Empty until a category is chosen                          │
+│  ┌──────────────────────────────────┬──────────────┐                          │
+│  │ Description                      │ Selling Price │                         │
+│  ├──────────────────────────────────┼──────────────┤                          │
+│  │ Dewalt Multi Speed Drill         │       $45.65 │  ← QOH NOT shown        │
+│  │ Dewalt Multi Speed Sander        │       $49.65 │    (enforced behind      │
+│  │ Dewalt Power Driver              │       $32.99 │     the scenes)          │
+│  └──────────────────────────────────┴──────────────┘                          │
+│                                                                               │
+│  Quantity: [ 2  ] ✎   [ Add ]   [ Clear ]                                    │
+│             ↑           ↑         ↑                                           │
+│        ≥ 1 and      Adds to    Resets category,                              │
+│        ≤ QOH        cart       part, and qty                                  │
+│                                                                               │
+│  ← Discontinued or zero-QOH items: not addable                              │
+│  ← Missing selling price: Add button disabled                                │
+│                                                                               │
+└───────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="adding-to-cart-duplicate-handling">Adding to Cart — Duplicate Handling</h3>
+<pre><code>  User clicks Add for a part
+       │
+       ├── Part already in cart?
+       │         │
+       │        YES ──→ Increase quantity on existing row
+       │                (combined qty must still ≤ QOH)
+       │
+       └── NO ──→ Add new row to cart with entered qty
+                  Recalculate totals immediately</code></pre>
+<hr>
+<h2 id="screen-3-cart">Screen 3: Cart</h2>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────┐
+│                                                                               │
+│  SHOPPING CART                                                                │
+│  ┌──────────────────────────┬────────┬─────┬───────────┬───────────┬────┐    │
+│  │ Part                     │ Price  │ QOH │ Qty    ✎  │ Ext Price │    │    │
+│  ├──────────────────────────┼────────┼─────┼───────────┼───────────┼────┤    │
+│  │ Dewalt Multi Speed Drill │ $45.65 │  65 │ [  2    ] │    $91.30 │ ❌ │    │
+│  │ Dewalt Multi Speed Sander│ $49.65 │  15 │ [  2    ] │    $99.30 │ ❌ │    │
+│  └──────────────────────────┴────────┴─────┴───────────┴───────────┴────┘    │
+│    ✎ = editable                 ↑          ↑ ≥ 1, ≤ QOH   ↑ Qty × Price     │
+│                            Read-only       ↑ Zero = remove                   │
+│                                            ↑ from cart                       │
+│                                                                               │
+│  TOTALS  ← Auto-update on every quantity change, add, or remove              │
+│  ┌──────────────────────────┐                                                │
+│  │ Subtotal:       $190.60  │                                                │
+│  │ Tax (5%):         $9.53  │  ← Tax on full subtotal (no coupon yet)        │
+│  │ Total:          $200.13  │                                                │
+│  └──────────────────────────┘                                                │
+│                                                                               │
+└───────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<blockquote>
+<p>The Cart shows QOH as a reference so the user knows available stock. Price is read-only (set at time of add). Quantity is the only editable field per row.</p>
+</blockquote>
+<hr>
+<h2 id="screen-4-checkout">Screen 4: Checkout</h2>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────┐
+│                                                                               │
+│  ORDER SUMMARY (read-only)                                                    │
+│  ┌──────────────────────────┬─────┬────────┬──────────┐                      │
+│  │ Part                     │ Qty │ Price  │ Total    │                      │
+│  ├──────────────────────────┼─────┼────────┼──────────┤                      │
+│  │ Dewalt Multi Speed Drill │   2 │ $45.65 │   $91.30 │                      │
+│  │ Dewalt Multi Speed Sander│   2 │ $49.65 │   $99.30 │                      │
+│  └──────────────────────────┴─────┴────────┴──────────┘                      │
+│                                                                               │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                               │
+│  COUPON                                                                       │
+│  Code: [ GSTFree   ] ✎   [ Verify ]   [ Clear Coupon ]   ✓ Verified         │
+│                            ↑             ↑                 ↑                  │
+│                       Checks date    Removes          Shows only              │
+│                       range +        discount          when coupon            │
+│                       RemoveFromView                   is valid               │
+│                                                                               │
+│  ← Warn if code is typed but NOT verified when completing the sale           │
+│  ← Only ONE coupon per sale                                                  │
+│                                                                               │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                               │
+│  PAYMENT TYPE (required)                                                      │
+│  ( ) Cash   ( ) Debit   (●) Credit                                           │
+│  ↑ One of these MUST be selected before completing the sale                  │
+│                                                                               │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                               │
+│  ORDER TOTALS  ← Auto-update when coupon verified/cleared                    │
+│  ┌──────────────────────────┐                                                │
+│  │ Subtotal:       $190.60  │                                                │
+│  │ Discount (5%):   −$9.53  │  ← Only shown when coupon verified            │
+│  │ Tax (5%):         $9.05  │  ← Tax on (Subtotal − Discount)               │
+│  │ Total:          $190.12  │                                                │
+│  └──────────────────────────┘                                                │
+│                                                                               │
+│  [ Complete Sale ]   [ Cancel ]                                               │
+│                                                                               │
+│  Sale ID: 12345  ← Shown ONLY after completion                              │
+│                                                                               │
+└───────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="sale-completion">Sale Completion</h3>
+<pre><code>  User clicks Complete Sale
+       │
+       ├── Customer selected?         ──→ NO: button stays disabled
+       ├── At least one item in cart?  ──→ NO: button stays disabled
+       ├── Payment type chosen?        ──→ NO: button stays disabled
+       │
+       └── ALL YES ──→ Complete the sale
+                       │
+                       ├── QOH decreases by qty sold (per item)
+                       ├── Sale ID generated and displayed
+                       ├── All buttons disabled (sale locked)
+                       └── Screen shows: "Sale Completed — Sale ID: 12345"</code></pre>
+<blockquote>
+<p>After completion, the user clicks OK and returns to Customer Search with a clean slate.</p>
+</blockquote>
+<hr>
+<h2 id="sales-button-state-matrix">Sales Button State Matrix</h2>
+<table><colgroup> <col style="width: 47%;"> <col style="width: 26%;"> <col style="width: 26%;"> </colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Element</th>
+<th style="text-align: center;">Building Sale</th>
+<th style="text-align: center;">Sale Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Navigation</strong> (Customer Search, Product Selector, View Cart, Checkout)</td>
+<td style="text-align: center;">Enabled — move freely</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cancel</strong></td>
+<td style="text-align: center;">Enabled — warns if data entered</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Complete Sale</strong></td>
+<td style="text-align: center;">Disabled until prerequisites met</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Coupon Verify / Clear</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cart quantity fields</strong></td>
+<td style="text-align: center;">Editable</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Add / Delete in cart</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="complete-sale-prerequisites-all-three-required">Complete Sale Prerequisites (all three required)</h3>
+<ul>
+<li>Customer selected</li>
+<li>At least one item in the cart</li>
+<li>Payment type chosen (Cash, Debit, or Credit)</li>
+</ul>
+<p><strong>D2 Security:</strong> Returns are restricted to <strong>Sales Manager</strong> role only.</p>
+<hr>
+<h2 id="sales-calculation-formulas">Sales Calculation Formulas</h2>
+<pre><code>Extended Price = Quantity × Selling Price    (per cart row)
+
+Subtotal = SUM(Extended Price)               (all cart rows)
+Discount = Subtotal × CouponPercent          (only if coupon verified)
+GST      = (Subtotal - Discount) × 0.05
+Total    = (Subtotal - Discount) + GST</code></pre>
+<blockquote>
+<p>Discount line only appears in totals when a coupon has been verified. Otherwise the display shows Subtotal, Tax, and Total only.</p>
+</blockquote>
+<hr><hr>
+<h2 id="screen-5-returns-workspace">Screen 5: Returns Workspace</h2>
+<p>The Returns screen is separate from the four Sales screens. It has its own navigation.</p>
+<pre><code>  Returns Navigation:  [ Search Invoice ]   [ Clear ]   [ Cancel ]</code></pre>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                   │
+│  INVOICE LOOKUP                                                                   │
+│  Sales Invoice #: [ 2000    ] ✎   [ Search ]   [ Clear ]                         │
+│                                                                                   │
+│  ← Searching for a new invoice clears all entered return data — warns first      │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  SALE INFORMATION (read-only — from original sale)                                │
+│  ┌───────────────┬────────────────────────────────┐                               │
+│  │ Sale Invoice # │ 2000                          │                               │
+│  │ Customer       │ John Jones                    │                               │
+│  │ Date           │ Sept 11, 2024                 │                               │
+│  │ Discount %     │ 10%                           │                               │
+│  │ Payment Method │ Cash                          │  ← Refund method matches this │
+│  └───────────────┴────────────────────────────────┘                               │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  RETURNABLE ITEMS                                                                 │
+│  ┌──────────────────┬──────┬──────────┬────────┬─────┬──────────────┬────────────┐│
+│  │ Part Name        │ Orig │ Returned │ Price  │ Ref │ Qty Return ✎ │ Reason   ✎ ││
+│  ├──────────────────┼──────┼──────────┼────────┼─────┼──────────────┼────────────┤│
+│  │ Helmet           │    5 │        3 │ $90.00 │  Y  │ [ 1        ] │ [Does not  ││
+│  │                  │      │          │        │     │   ↑ max: 2   │  fit     ] ││
+│  │ Aviator goggle   │    1 │        0 │ $75.00 │  Y  │ [ 0        ] │ [        ] ││
+│  │ O-ring gasket    │    2 │        2 │ $20.00 │  Y  │  ░░░░ 0 ░░░░ │ ░░░░░░░░░░ ││
+│  │                  │      │          │        │     │   ↑ DISABLED: all returned ││
+│  │ Brake Oil, pint  │    3 │        0 │  $4.90 │  N  │  ░░░░ 0 ░░░░ │ ░░░░░░░░░░ ││
+│  │                  │      │          │        │     │   ↑ DISABLED: non-refundable│
+│  │ Fuel Filter      │    1 │        0 │ $23.95 │  Y  │ [ 1        ] │ [Wrong     ││
+│  │                  │      │          │        │     │   ↑ max: 1   │  Color   ] ││
+│  │ Air filter       │    1 │        0 │ $25.00 │  Y  │ [ 0        ] │ [        ] ││
+│  └──────────────────┴──────┴──────────┴────────┴─────┴──────────────┴────────────┘│
+│    ✎ = editable         ↑             ↑ Ref = Refundable                          │
+│    ░░ = disabled    Total across      (Y/N)                                       │
+│                     ALL prior                                                     │
+│                     returns for                                                   │
+│                     this invoice                                                  │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  RETURN TOTALS  ← Auto-update as Qty to Return changes                           │
+│  ┌──────────────────────────┐                                                    │
+│  │ Subtotal:       $113.95  │  ← (1 × $90) + (1 × $23.95)                       │
+│  │ Discount (10%):  −$11.40 │  ← Original sale's discount honored               │
+│  │ Tax (5%):          $5.13 │  ← 5% of ($113.95 − $11.40)                       │
+│  │ Total Refund:   $107.68  │                                                    │
+│  └──────────────────────────┘                                                    │
+│                                                                                   │
+│  [ Process Return ]   [ Cancel ]                                                  │
+│    ↑ Confirmation prompt before processing                                        │
+│    ↑ Disabled until valid return lines + all reasons entered                      │
+│                                                                                   │
+│  Return ID: 5001  ← Shown ONLY after processing                                 │
+│                                                                                   │
+│  Employee: Sam Morrison  ◄── D2: logged-in employee name                         │
+│                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+<h2 id="disabled-return-fields">Disabled Return Fields</h2>
+<p>A return quantity field is disabled (grayed out, no input allowed) when either condition is true:</p>
+<table><colgroup> <col style="width: 45%;"> <col style="width: 20%;"> <col style="width: 33%;"> </colgroup>
+<thead>
+<tr>
+<th>Condition</th>
+<th style="text-align: center;">Example Above</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Part is <strong>non-refundable</strong> (Refundable = N)</td>
+<td style="text-align: center;">Brake Oil, pint</td>
+<td>Store policy — these items cannot be returned</td>
+</tr>
+<tr>
+<td><strong>All purchased units already returned</strong> (Orig Qty − Returned = 0)</td>
+<td style="text-align: center;">O-ring gasket (2 − 2 = 0)</td>
+<td>Nothing left to return</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>When disabled, both the Qty to Return field AND the Reason field are locked.</p>
+</blockquote>
+<hr>
+<h2 id="returns-button-state-matrix">Returns Button State Matrix</h2>
+<table><colgroup> <col style="width: 37%;"> <col style="width: 20%;"> <col style="width: 20%;"> <col style="width: 20%;"> </colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Element</th>
+<th style="text-align: center;">No Invoice Loaded</th>
+<th style="text-align: center;">Invoice Loaded (editing)</th>
+<th style="text-align: center;">Return Processed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Search</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled — warns if data entered</td>
+<td style="text-align: center;">Enabled (new search)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clear</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled — warns if data entered</td>
+<td style="text-align: center;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Process Return</strong></td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Enabled when prerequisites met</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cancel</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled — warns if data entered</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Qty to Return fields</strong></td>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;">Editable (where not disabled)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reason fields</strong></td>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;">Editable (where Qty &gt; 0)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="process-return-prerequisites-all-required">Process Return Prerequisites (all required)</h3>
+<ul>
+<li>A valid invoice is loaded</li>
+<li>At least one refundable item has Qty to Return &gt; 0</li>
+<li>Every item with Qty to Return &gt; 0 has a Reason entered</li>
+<li>No Qty to Return exceeds (Original Qty − Previously Returned)</li>
+</ul>
+<p><strong>After processing:</strong> Confirmation shown, QOH updated, all fields locked, Return ID displayed.</p>
+<hr>
+<h2 id="return-calculation-formulas">Return Calculation Formulas</h2>
+<pre><code>Return Subtotal = SUM(Qty to Return × Original Price)    (per returned item)
+
+Discount        = Return Subtotal × Original Discount %   (from the original sale —
+                                                           honored even if coupon expired)
+
+Tax             = (Return Subtotal - Discount) × 0.05
+
+Total Refund    = (Return Subtotal - Discount) + Tax</code></pre>
+<h3 id="worked-example-from-wireframe-above">Worked Example (from wireframe above)</h3>
+<pre><code>Returning: 1 Helmet ($90.00) + 1 Fuel Filter ($23.95)
+Original sale discount: 10%
+
+Return Subtotal = (1 × $90.00) + (1 × $23.95) = $113.95
+Discount        = $113.95 × 0.10              = $11.40
+Tax             = ($113.95 - $11.40) × 0.05   = $102.55 × 0.05 = $5.13
+Total Refund    = $102.55 + $5.13             = $107.68
+
+Refund method: Cash (matches original payment method)</code></pre>
+<hr>
+<h2 id="previously-returned-how-it-works">Previously Returned — How It Works</h2>
+<p>The “Returned” column is not just from one prior return. It is the <strong>total across every return</strong> ever processed against this invoice.</p>
+<pre><code>  Invoice #2000 — Helmet (originally purchased: 5)
+
+  Return #1 (last month):  returned 2 helmets
+  Return #2 (last week):   returned 1 helmet
+                           ─────────────────
+  "Returned" column shows: 3
+
+  Max returnable now: 5 − 3 = 2</code></pre>
+<hr>
+<h2 id="what-the-system-must-never-do">What the System Must Never Do</h2>
+<ul>
+<li>Never let a sale proceed without a selected customer</li>
+<li>Never let a sale complete without at least one cart item and a payment type</li>
+<li>Never allow cart quantity to exceed QOH</li>
+<li>Never allow QOH to go negative (sales or returns)</li>
+<li>Never apply more than one coupon per sale</li>
+<li>Never apply an unverified coupon</li>
+<li>Never allow duplicate rows in the cart (duplicates increase existing qty)</li>
+<li>Never allow returning non-refundable items</li>
+<li>Never allow return quantity to exceed (Original Qty − Previously Returned)</li>
+<li>Never switch customers or search new invoices without warning about data loss</li>
+<li>Never allow edits after a sale or return is finalized</li>
+<li>Never process a return without a reason for every returned item</li>
+</ul></body></html>

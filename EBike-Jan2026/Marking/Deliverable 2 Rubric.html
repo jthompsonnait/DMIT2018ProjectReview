@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deliverable 2 Rubric</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head><body><h1 id="deliverable-2-project-evaluation-criteria">Deliverable 2 — Project Evaluation Criteria</h1>
+<p><strong>Total: 12 marks (Security 5 + Save Function 7)</strong></p>
+<hr>
+<h2 id="rubric-summary">Rubric Summary</h2>
+<table><colgroup> <col style="width: 37%;"> <col style="width: 37%;"> <col style="width: 25%;"> </colgroup>
+<thead>
+<tr>
+<th>Category</th>
+<th>Criteria</th>
+<th style="text-align: center;">Marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Security</strong></td>
+<td>Authentication Redirect</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td></td>
+<td>Unauthorized Role Warning</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td></td>
+<td>Employee Identity Display</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td></td>
+<td>Role-Based Feature Restriction</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td></td>
+<td>Manager Full Access</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td><strong>Save Function</strong></td>
+<td>Business Rule Validations</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td></td>
+<td>Entity Updates (Parent-Child)</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td></td>
+<td>Error Handling</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td></td>
+<td>Data Persistence</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td><strong>Penalties</strong></td>
+<td>Up to -5 marks for missing validation, incorrect standards, or bad practices</td>
+<td style="text-align: center;">-5 max</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="security-5-marks">Security (5 marks)</h2>
+<h3 id="authentication-redirect-1-mark">1. Authentication Redirect (1 mark)</h3>
+<p>Users who are <strong>not logged in</strong> are redirected to the login page. No module page should be accessible without authentication.</p>
+<h3 id="unauthorized-role-warning-1-mark">2. Unauthorized Role Warning (1 mark)</h3>
+<p>Users who are logged in but do not have the appropriate role for a page will see a <strong>warning message</strong> indicating they do not have permission to access that page.</p>
+<h3 id="employee-identity-display-1-mark">3. Employee Identity Display (1 mark)</h3>
+<p>Users with valid roles will have their <strong>full name</strong>, <strong>role</strong>, and <strong>EmployeeID</strong> displayed on the page. This confirms to the user which account is active and what permissions they have.</p>
+<h3 id="role-based-feature-restriction-1-mark">4. Role-Based Feature Restriction (1 mark)</h3>
+<p>Specific features are <strong>disabled or hidden</strong> based on the user’s role. Each module has one restricted feature:</p>
+<table><colgroup> <col style="width: 18%;"> <col style="width: 46%;"> <col style="width: 34%;"> </colgroup>
+<thead>
+<tr>
+<th>Module</th>
+<th>Restricted Feature</th>
+<th>Who Is Blocked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purchasing</td>
+<td>Place Order button</td>
+<td>Store Staff cannot place orders</td>
+</tr>
+<tr>
+<td>Receiving</td>
+<td>Force Close button</td>
+<td>Store Staff cannot force close</td>
+</tr>
+<tr>
+<td>Servicing</td>
+<td>Coupon area</td>
+<td>Mechanic cannot access the coupon area</td>
+</tr>
+<tr>
+<td>Sales and Returns</td>
+<td>Returns section</td>
+<td>Salesperson cannot access returns</td>
+</tr>
+</tbody>
+</table>
+<p>The restricted elements (buttons, text boxes, or entire sections) must be disabled or hidden — not just visually greyed out with no enforcement.</p>
+<h3 id="manager-full-access-1-mark">5. Manager Full Access (1 mark)</h3>
+<p><strong>Manager roles</strong> have <strong>full access</strong> to all features and pages within their module. No features are restricted for the manager. The Admin account (a code-level super-role, not a database role) also has full access to everything.</p>
+<hr>
+<h2 id="save-function-7-marks">Save Function (7 marks)</h2>
+<h3 id="business-rule-validations-2-marks">1. Business Rule Validations (2 marks)</h3>
+<p>All business rules are validated before saving, using the <strong>BYSResults pattern</strong> (methods return lists of success and error messages). Both front-end (UI) and back-end (BLL) validations must be in place. The UI must display all error messages returned by the business logic.</p>
+<p><strong>Examples per module:</strong> - <strong>Purchasing:</strong> QTO must be at least 1, Price must be at least 0, no duplicate parts - <strong>Receiving:</strong> Received quantity must not exceed Outstanding, reason required for returns, all three fields required for unordered items - <strong>Servicing:</strong> At least one service entry required, hours greater than zero, part quantity must not exceed QOH - <strong>Sales and Returns:</strong> Quantity must not exceed QOH (sales), return quantity must not exceed purchasable minus previously returned (returns), reason required for each return</p>
+<h3 id="entity-updates-parent-child-2-marks">2. Entity Updates — Parent-Child (2 marks)</h3>
+<p>The save function correctly creates and updates both parent and child entities in the proper order within a single transaction.</p>
+<p><strong>Parent-child relationships per module:</strong> - <strong>Purchasing:</strong> PurchaseOrder (parent) → PurchaseOrderDetail (children); on Place, also updates Part.QOO - <strong>Receiving:</strong> ReceiveOrder (parent) → ReceiveOrderDetail + ReturnedOrderDetail + UnorderedPurchaseItemCart (children); also updates Part.QOH and Part.QOO - <strong>Servicing:</strong> Job (parent) → JobDetail (services) + JobDetailPart (parts) (children); also updates Part.QOH - <strong>Sales and Returns:</strong> Sale (parent) → SaleDetail (children); also updates Part.QOH. Returns: SaleRefund (parent) → SaleRefundDetail (children); also updates Part.QOH</p>
+<h3 id="error-handling-1-mark">3. Error Handling (1 mark)</h3>
+<p>The application uses appropriate <strong>exception types</strong> and <strong>exception properties</strong> to handle errors during the save process. Errors are caught, logged or displayed to the user, and do not crash the application. The user receives clear feedback when something goes wrong.</p>
+<h3 id="data-persistence-2-marks">4. Data Persistence (2 marks)</h3>
+<p>Data is correctly saved to the database using <strong>OLTP (transactional) methods</strong> to maintain data integrity. All related changes happen within a single transaction (if any part fails, nothing is saved).</p>
+<p><strong>Key persistence actions:</strong> - Inventory adjustments: QOH increases (receiving, returns) or decreases (sales, servicing); QOO increases (placing PO) or decreases (receiving) - Post-save UI state: forms are locked or reset as appropriate (for example, a placed purchase order becomes read-only, a completed sale disables all buttons) - Generated IDs (PO number, Job ID, Sale ID) are displayed to the user after successful save</p>
+<hr>
+<h2 id="penalties-up-to--5-marks">Penalties (Up to -5 marks)</h2>
+<p>A penalty of up to <strong>5 marks</strong> can be deducted for the following:</p>
+<ol type="1">
+<li><strong>Missing validation for methods with parameters</strong> — for example, a BLL method that accepts an ID but does not check whether it is valid before proceeding</li>
+<li><strong>Weak or incorrect integer validation</strong> — not following programming standards for checking numeric input</li>
+<li><strong>Not using appropriate exception types or exception properties</strong> — for example, using generic <code>Exception</code> instead of <code>ArgumentException</code> or <code>ArgumentNullException</code> where appropriate</li>
+<li><strong>Other violations of general programming practices</strong> — such as not following the patterns taught in class, not using secrets for connection strings, or missing code comments</li>
+</ol>
+<hr>
+<h3 id="project-failure-to-run">Project Failure to Run</h3>
+<p>Due to the time that has been allocated to you for the project, any individual module that fails to run successfully will earn <strong>zero marks</strong> for that individual. Please work with both your group and your instructor to address any questions you may have.</p></body></html>

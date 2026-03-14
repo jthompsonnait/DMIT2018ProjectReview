@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html><head><link rel="stylesheet" href="https://s.brightspace.com/lib/fonts/0.6.1/fonts.css"><link rel="stylesheet" href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"><link rel="stylesheet" href="/d2l/le/contentstyler/6606/files/View" data-override="override"></head><body style="color: rgb(32, 33, 34); font-family: Lato, sans-serif; font-size: 19px;"><h3>How “Admin” Works in This System</h3>
+<p>In this system, <strong>Admin is not a separate role you assign in the database</strong>. Instead, Admin is treated as a <strong>super-role that automatically has access to everything</strong>.</p>
+<p>That means:</p>
+<ul>
+<li>
+<p>You will <strong>never see “Admin” listed</strong> in <code>[AspNetUserRoles]</code>.</p>
+</li>
+<li>
+<p>You do <strong>not</strong> need to add Admin as a row in the table.</p>
+</li>
+<li>
+<p>Admin users are granted <strong>all permissions in code</strong>, not by database entries.</p>
+</li>
+</ul>
+<h3>Why This Is Done</h3>
+<p>Rather than assigning Admin to every role manually, the system does this:</p>
+<blockquote>
+<p>If the user is an Admin → they automatically have access to every area and every feature.</p>
+</blockquote>
+<p>So Admin does <strong>not depend on role records</strong> like:</p>
+<ul>
+<li>
+<p>Salesperson</p>
+</li>
+<li>
+<p>Shop Manager</p>
+</li>
+<li>
+<p>Mechanic</p>
+</li>
+<li>
+<p>Store Staff</p>
+</li>
+</ul>
+<p>Admins <strong>bypass those checks entirely</strong>.</p>
+<h3>What This Means for You</h3>
+<p>When you are checking <code>[AspNetUserRoles]</code>:</p>
+<ul>
+<li>
+<p>✅ Only worry about <strong>non-admin roles</strong></p>
+</li>
+<li>
+<p>✅ Assign users to roles based on their job</p>
+</li>
+<li>
+<p>❌ Do NOT try to insert Admin as a role</p>
+</li>
+<li>
+<p>❌ Do NOT duplicate Admin into every permission</p>
+</li>
+</ul>
+<p>If someone is an Admin, the application logic already treats them as:</p>
+<blockquote>
+<p>“Has all roles”</p>
+</blockquote>
+<p>No extra database entries required.</p></body></html>

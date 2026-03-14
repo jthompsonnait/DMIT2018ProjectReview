@@ -1,0 +1,9 @@
+SaleRefundDetailID,SaleRefundID,PartID,Quantity,SellingPrice,Reason,RemoveFromViewFlag
+1,1,17,1,63.0000,Wrong size - too small,False
+2,2,26,1,27.9800,Purchased wrong part number,False
+3,3,40,2,12.9900,Changed mind - no longer needed,False
+4,4,17,1,63.0000,Customer not satisfied with fit,False
+5,5,93,1,51.9900,Incorrect part for vehicle,False
+6,6,10,1,140.0000,Defective - sidewall damage,False
+7,7,25,1,140.0000,Wrong size,False
+8,8,82,1,26.9900,Ordered wrong length,False

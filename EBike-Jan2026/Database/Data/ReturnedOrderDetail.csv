@@ -1,0 +1,6 @@
+ReturnedOrderDetailID,ReceiveOrderID,PurchaseOrderDetailID,ItemDescription,Quantity,Reason,VendorPartNumber
+1,1,7,Front tire,2,Damaged in shipping,WT-FTIRE-001
+2,3,10,Digital ignition,1,Wrong model sent,CW-IGNIT-DIG
+3,6,18,Plugs,5,Defective - failed quality check,MP-PLUG-001
+4,7,22,Rear View Mirror,3,Scratched/cosmetic damage,PBD-MIRROR-R
+5,12,38,Exhaust system,1,Wrong size - incompatible,MP-EXHAUST

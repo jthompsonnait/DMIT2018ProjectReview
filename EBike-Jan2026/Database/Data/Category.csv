@@ -1,0 +1,5 @@
+CategoryID,Description,RemoveFromViewFlag
+1,Accessories,False
+2,Parts,False
+3,Apparel,False
+4,Servicing,False

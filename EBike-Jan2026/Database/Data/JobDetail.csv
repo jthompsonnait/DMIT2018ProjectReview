@@ -1,0 +1,45 @@
+JobDetailID,JobID,Description,JobHours,Comments,CouponID,StatusCode,EmployeeID,RemoveFromViewFlag
+1,1,Oil Change,0.50,Standard oil change service,,C,1,False
+2,2,Tune up,2.50,Full tune-up including spark plugs,4,C,1,False
+3,3,Oil Change,0.50,,,C,1,False
+4,3,Brake Adjustment,0.75,Front and rear brake adjustment,,C,1,False
+5,4,Tire Replacement - Front,0.50,,4,C,1,False
+6,4,Tire Replacement - Rear,0.75,,4,C,1,False
+7,4,Brake Adjustment,0.75,Adjusted brakes after tire replacement,4,C,1,False
+8,5,Chain Replacement,1.00,Replaced chain and sprockets,,C,1,False
+9,6,Complete Safety Inspection,1.50,Annual safety inspection - passed,,C,1,False
+10,6,Oil Change,0.50,Performed during inspection,,C,1,False
+11,7,Fluid Flush,1.00,Brake and transmission fluid flush,4,C,1,False
+12,8,Tune up,2.50,Full service tune-up,,C,1,False
+13,9,Tune up,2.50,,,C,1,False
+14,9,Oil Change,0.50,,,C,1,False
+15,9,Brake Adjustment,0.75,Rear brake adjustment needed,,C,1,False
+16,10,Oil Change,0.50,Oil and filter change,4,C,1,False
+17,11,Chain Replacement,1.00,Chain replacement with lubrication,,C,1,False
+18,12,Tire Replacement - Front,0.50,,4,C,1,False
+19,12,Tire Replacement - Rear,0.75,,4,C,1,False
+20,13,Oil Change,0.50,Express oil change,,C,1,False
+21,14,Brake Adjustment,0.75,Front brake pads and adjustment,,C,1,False
+22,14,Custom brake line inspection,1.00,Inspected and tested brake lines,,C,1,False
+23,15,Tune up,2.50,Complete tune-up,4,C,1,False
+24,15,Oil Change,0.50,,4,C,1,False
+25,16,Complete Safety Inspection,1.50,Safety inspection completed,,C,1,False
+26,16,Oil Change,0.50,,,C,1,False
+27,17,Fluid Flush,1.00,All fluids flushed,4,C,1,False
+28,18,Chain Replacement,1.00,New chain installed,,C,1,False
+29,19,Brake Adjustment,0.75,,,C,1,False
+30,20,Tune up,2.50,,4,C,1,False
+31,21,Oil Change,0.50,In progress - waiting for filter,,I,1,False
+32,22,Tire Replacement - Front,0.50,,,I,1,False
+33,22,Tire Replacement - Rear,0.75,,,I,1,False
+34,23,Tune up,2.50,Tune-up in progress,4,I,1,False
+35,24,Brake Adjustment,0.75,,,I,1,False
+36,24,Custom suspension check,1.50,Checking suspension components,,I,1,False
+37,25,Complete Safety Inspection,1.50,Safety inspection underway,,I,1,False
+38,26,Fluid Flush,1.00,Scheduled for tomorrow,,I,1,False
+39,27,Oil Change,0.50,,,I,1,False
+40,27,Brake Adjustment,0.75,,,I,1,False
+41,28,Chain Replacement,1.00,Waiting for parts,4,I,1,False
+42,29,Tune up,2.50,Scheduled for this afternoon,,I,1,False
+43,30,Tire Replacement - Front,0.50,,,I,1,False
+44,30,Tire Replacement - Rear,0.75,,,I,1,False

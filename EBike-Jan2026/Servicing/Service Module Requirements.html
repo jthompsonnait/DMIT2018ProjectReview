@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicing Module Requirements</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head><body><h1 id="service-module-requirements-client-narrative">Service Module Requirements (Client Narrative)</h1>
+<p><em>Explained by Riley, an experienced Service Technician</em></p>
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>My name is <strong>Riley</strong>, and I have been working in the Service Department for years. I do not know how to program, but I know exactly what a service system must do to keep our shop working well. My work depends on having the right information at the right time — without searching through paperwork or depending on memory.</p>
+<p>The purpose of this document is to explain <strong>what the system must accomplish</strong>, not how to build it. I will describe what I expect as the end user — the client — across the two major parts of the process:</p>
+<ul>
+<li>The <strong>Job Registration</strong> step (customer, vehicle, and initial services/parts)</li>
+<li>The <strong>Service and Parts</strong> step (adding work entries and materials)</li>
+</ul>
+<p>This is the same information I would give to a software team building this system for me.</p>
+<p>Every repair starts the same way: <strong>understanding what needs to be done before any repair work begins.</strong> That is why we use <strong>job registration</strong> — the customer drops off their bike, and my role is to capture what needs fixing so the actual repair goes smoothly later.</p>
+<hr>
+<h2 id="starting-a-service-job-job-registration">1. Starting a Service Job (Job Registration)</h2>
+<p>Beginning a repair always follows the same sequence. The Service Module uses <strong>two screens</strong> to collect the information needed before any work can begin.</p>
+<h3 id="finding-the-customer-and-their-vehicle">1.1 Finding the Customer and Their Vehicle</h3>
+<p>Before I can start a job, I need to find the customer and identify which bike we are working on.</p>
+<p>When I look up a customer, I type part of their <strong>last name</strong> and press <strong>Search</strong>. The system shows me a list of matches with:</p>
+<ul>
+<li><strong>Name</strong></li>
+<li><strong>Phone</strong></li>
+<li><strong>Address</strong></li>
+<li><strong>Select</strong> button</li>
+</ul>
+<p>Partial matches are allowed — typing “Smi” should show me Smith, Smiley, and anyone else whose name starts with those letters.</p>
+<p>A <strong>Clear</strong> button resets the search field and clears the results, in case I need to start over.</p>
+<p>Once I select a customer, a <strong>vehicle dropdown</strong> appears showing their registered bikes. When I pick a vehicle, the <strong>VIN</strong> displays automatically so I can confirm I have the right one.</p>
+<p><strong>Important:</strong> If I select a different customer after I have already started building a service order, the system must <strong>warn me first</strong> — because switching customers clears everything: services, parts, the entire order. I do not want to lose my work without a warning.</p>
+<p>This screen is only for choosing who the work is for and which bike we are working on. Once I make those selections, I move on to registering the service job.</p>
+<h3 id="creating-the-service-job-entry">1.2 Creating the Service Job Entry</h3>
+<p>This is where the service job is officially created — the “appointment without a date.”</p>
+<p>The system must let me:</p>
+<ul>
+<li>Create a new service job</li>
+<li>Record the work the customer wants done</li>
+<li>Add services and parts as needed</li>
+</ul>
+<p>A new service job must show:</p>
+<ul>
+<li>Customer information</li>
+<li>Vehicle information</li>
+<li><strong>JobDateIn = today</strong></li>
+<li><strong>JobDateStarted = empty</strong></li>
+<li><strong>Status = Open</strong></li>
+</ul>
+<p>Everything I add — services and parts — exists <strong>only on screen</strong> until I press Register Service Order. Nothing is saved to the system until that moment. If I walk away or the screen closes, everything is lost.</p>
+<hr>
+<h2 id="viewing-the-service-job">2. Viewing the Service Job</h2>
+<p>Once the job is registered, the service ticket becomes the <strong>central workspace</strong> for the repair. This is the screen I look at all day — it tells me who the customer is, which bike I am working on, and what still needs to be done. I need everything in one place so I do not have to flip between screens or check a clipboard. Customers call and ask about their bike, and I need to answer without guessing.</p>
+<p>The system must display:</p>
+<ul>
+<li>Customer information</li>
+<li>Vehicle information</li>
+<li>Job number</li>
+<li>Job status</li>
+<li>A list of service entries (if any)</li>
+<li>A list of parts used (if any)</li>
+</ul>
+<p>All repair activity happens from this one place.</p>
+<hr>
+<h2 id="adding-services-when-the-repair-begins">3. Adding Services (When the Repair Begins)</h2>
+<p>Service work begins when I start working on the bike. The system needs to capture exactly what work is being done and how long it takes.</p>
+<p>There are two ways to describe the work:</p>
+<h3 id="choosing-standard-or-custom-services">3.1 Choosing Standard or Custom Services</h3>
+<p>Most of the work we do falls into the same routine jobs — oil changes, fluid flushes, brake adjustments. Standard services exist so every technician uses the same description and the same baseline hours. This keeps our pricing consistent and saves me from typing the same thing a dozen times a day.</p>
+<p><strong>Option 1 — Standard Service:</strong> I pick from a dropdown of common jobs (oil change, fluid flush, and similar). The system fills in the description and default hours automatically. The description becomes <strong>read-only</strong> because it is a predefined name, but I can adjust the hours if the actual work takes more or less time.</p>
+<p><strong>Option 2 — Custom Service:</strong> If the work does not match any standard job, I type my own description. A custom entry <strong>overrides</strong> any standard selection — the system uses one or the other, never both.</p>
+<h3 id="what-i-enter-for-each-service">3.2 What I Enter for Each Service</h3>
+<p>For each service entry, the system must capture:</p>
+<ul>
+<li><strong>Description</strong> — what the work is (from standard dropdown or custom text)</li>
+<li><strong>Hours</strong> — how long the work takes (must be greater than zero)</li>
+<li><strong>Shop Rate</strong> — always <strong>$65.50 per hour</strong>, fixed across the board. The system must not let anyone change it.</li>
+<li><strong>Comments</strong> (optional) — notes that are saved with the service entry, such as “make sure to check the chain tension” or “only use brand-name parts.”</li>
+</ul>
+<h3 id="adding-and-resetting-service-entries">3.3 Adding and Resetting Service Entries</h3>
+<p>Two buttons control the service entry area:</p>
+<ul>
+<li><strong>Add Service</strong> — takes what I have entered (description, hours, comments) and puts it into the service cart. The entry fields clear so I can add another.</li>
+<li><strong>Reset</strong> — clears only the current entry fields. If I picked the wrong standard service or entered the wrong hours, Reset lets me start that one entry over without affecting services I have already added to the cart.</li>
+</ul>
+<h3 id="preventing-service-entry-mistakes">3.4 Preventing Service Entry Mistakes</h3>
+<p>The system must prevent mistakes by ensuring:</p>
+<ul>
+<li>The description is required</li>
+<li>Hours must be <strong>greater than zero</strong></li>
+<li>No incomplete service entry can be added</li>
+</ul>
+<h3 id="my-running-list-of-services-service-cart">3.5 My Running List of Services (Service Cart)</h3>
+<p>Every service I add goes into the <strong>service cart</strong> — my running list of work for this job.</p>
+<p>The cart must show:</p>
+<ul>
+<li><strong>Service Name</strong> — what I am doing</li>
+<li><strong>Hours</strong> — how long the work takes</li>
+<li><strong>Rate</strong> — the shop rate ($65.50)</li>
+<li><strong>Extended Price</strong> — Hours x Shop Rate</li>
+<li><strong>Delete</strong> (x) — to remove a service I added by mistake</li>
+</ul>
+<p>Below the cart, the system shows the <strong>Labour Subtotal</strong> — the total cost of all services.</p>
+<p>If I remove a service from the cart, the subtotal must update immediately. I should not have to do math in my head.</p>
+<hr>
+<h2 id="adding-parts-during-the-repair">4. Adding Parts (During the Repair)</h2>
+<p>Many repairs require parts — chains, bolts, pads, tubes. The system must help track exactly what is used.</p>
+<h3 id="browsing-parts-by-category">4.1 Browsing Parts by Category</h3>
+<p>Before I can pick a part, I must select a <strong>category</strong> from the dropdown. Until I do, the parts area stays empty — no parts to browse yet.</p>
+<p>Once I pick a category, the system shows a grid of available parts:</p>
+<ul>
+<li><strong>Part Name</strong> — what the part is</li>
+<li><strong>Price</strong> — what we charge the customer</li>
+<li><strong>QOH</strong> — how many we have in stock right now</li>
+<li><strong>Quantity to Add</strong> — where I enter how many I need</li>
+<li><strong>+Add</strong> button — puts that part (and quantity) into my parts cart</li>
+</ul>
+<p>This layout lets me quickly see what is available without searching through the entire inventory.</p>
+<h3 id="what-i-need-before-adding-a-part">4.2 What I Need Before Adding a Part</h3>
+<p>Adding a part requires:</p>
+<ul>
+<li>A valid part</li>
+<li>A quantity <strong>greater than zero</strong></li>
+<li>Enough stock on hand (QOH) to cover the amount used</li>
+</ul>
+<h3 id="when-i-add-the-same-part-twice">4.3 When I Add the Same Part Twice</h3>
+<p>If I try to add the same part again, the system increases the quantity on the existing line — it does not create a duplicate. But the <strong>combined total</strong> (existing quantity plus the new amount) must still not exceed what we have in stock.</p>
+<h3 id="stock-limits-the-system-must-enforce">4.4 Stock Limits the System Must Enforce</h3>
+<p>Stock rules exist for a real reason: if I pull five bolts from the shelf and the system does not track that, the next technician thinks there are five more bolts than there really are. The customer’s bike stalls because the part we thought we had is gone.</p>
+<p>The system must enforce the following:</p>
+<ul>
+<li><strong>Never allow using more parts than we have</strong> — if QOH says 3, I cannot use 4. The system must stop me.</li>
+<li><strong>Never allow selecting parts with zero stock</strong> — if we are out of something, it should not be available to add.</li>
+<li><strong>Never allow negative quantities</strong> — there is no situation where a negative quantity makes sense.</li>
+<li><strong>Never allow parts marked as removed or inactive</strong> — if a part has been removed from view, it does not exist as far as this job is concerned.</li>
+</ul>
+<h3 id="my-list-of-parts-for-this-job-parts-cart">4.5 My List of Parts for This Job (Parts Cart)</h3>
+<p>Every part I add goes into the <strong>parts cart</strong> — my list of materials for this job.</p>
+<p>The cart must show:</p>
+<ul>
+<li><strong>Part Name</strong> — what I am using</li>
+<li><strong>Price</strong> — per-unit selling price</li>
+<li><strong>Quantity</strong> — how many I am using</li>
+<li><strong>Total</strong> — Price x Quantity</li>
+<li><strong>Delete</strong> (x) — to remove a part I do not need</li>
+</ul>
+<p>Below the cart, the system shows the <strong>Parts Subtotal</strong> — the total cost of all materials.</p>
+<p>If I remove a part, the subtotal must update immediately.</p>
+<hr>
+<h2 id="applying-coupons-optional">5. Applying Coupons (Optional)</h2>
+<p>Sometimes repairs qualify for a discount. We accept <strong>any valid coupon</strong> the customer has — I do not check whether it is specifically a service coupon or a sales coupon. If the code works, the discount applies.</p>
+<p>When a customer gives me a coupon, here is the workflow:</p>
+<ol type="1">
+<li>I type the <strong>coupon code</strong> into the coupon field</li>
+<li>I press <strong>Verify</strong> — the system checks if the coupon is valid</li>
+<li>If valid, a <strong>checkmark</strong> appears and the discount applies to the totals</li>
+<li>If invalid, an <strong>x</strong> appears and no discount is applied</li>
+</ol>
+<p>The discount must <strong>never</strong> apply until the coupon is successfully verified. This prevents accidental discounts from typos or expired codes.</p>
+<p>A coupon must:</p>
+<ul>
+<li>Use a <strong>percentage discount</strong></li>
+<li>Be valid today (StartDate to EndDate, inclusive)</li>
+<li>Not be removed from view</li>
+<li>Be applied <strong>before tax</strong></li>
+<li>Only allow <strong>one</strong> coupon per job</li>
+</ul>
+<hr>
+<h2 id="calculating-totals">6. Calculating Totals</h2>
+<p>When a customer asks “how much is this going to cost?”, I need an answer right away — not after I save or register. The system must calculate all totals automatically and keep them updated as I work.</p>
+<p>The totals area should show <strong>Labour Subtotal</strong> and <strong>Parts Subtotal</strong> as separate lines, so I can see how much is labour and how much is materials before any discount is applied. Customers always ask about this breakdown — they want to know how much of the bill is for my time and how much is for the parts themselves.</p>
+<h3 id="how-labour-costs-add-up">6.1 How Labour Costs Add Up</h3>
+<p>I need to see how much the service work alone will cost, separate from the parts. This helps me explain the bill to the customer — “here is what the labour costs, and here is what the parts cost.”</p>
+<p>Labour subtotal is the sum of:</p>
+<ul>
+<li>Each service entry’s Hours x Shop Rate ($65.50)</li>
+</ul>
+<h3 id="how-parts-costs-add-up">6.2 How Parts Costs Add Up</h3>
+<p>Parts costs are straightforward, but I still need to see the running total separately so I can manage the repair budget. If parts are getting expensive, I might talk to the customer before adding more.</p>
+<p>Parts subtotal is the sum of:</p>
+<ul>
+<li>Each part’s selling price x quantity used</li>
+</ul>
+<h3 id="applying-the-coupon-discount">6.3 Applying the Coupon Discount</h3>
+<p>If a coupon is applied:</p>
+<ul>
+<li>Apply the percentage discount to the combined subtotal (Labour Subtotal + Parts Subtotal)</li>
+<li>Store the discount amount</li>
+</ul>
+<h3 id="gst">6.4 GST</h3>
+<ul>
+<li>GST = 5%</li>
+<li>GST is calculated after discount</li>
+</ul>
+<h3 id="total">6.5 Total</h3>
+<p><strong>Total = Subtotal - Discount + GST</strong></p>
+<p>Every time I add a service, remove a part, or verify a coupon, the total must update immediately. I cannot do my job if I have to guess what the bill looks like — the numbers must always be current.</p>
+<hr>
+<h2 id="registering-the-service-order">7. Registering the Service Order</h2>
+<p>When everything is entered and confirmed, I press <strong>Register Service Order</strong>. This is the final step — it commits the entire job to the system.</p>
+<h3 id="what-happens-when-i-register">7.1 What Happens When I Register</h3>
+<p>Registering is the point of commitment — everything before this is just planning on screen. When I press that button, the job becomes official.</p>
+<p>When I register:</p>
+<ul>
+<li>The system saves the job record, all service entries, and all parts used</li>
+<li><strong>Inventory updates immediately</strong> — QOH goes down by exactly what I used</li>
+<li>The system assigns and displays a <strong>Job ID</strong> so I can reference it later</li>
+<li>The form <strong>locks</strong> — all inputs become disabled, and the Register and Cancel buttons are turned off</li>
+</ul>
+<p>Once registered, the job is <strong>write-once</strong>. I cannot go back and change it. That is by design — the record must be reliable.</p>
+<h3 id="what-must-be-ready-before-registration">7.2 What Must Be Ready Before Registration</h3>
+<p>Before the system allows registration, there must be <strong>at least one service entry</strong> in the service cart. I cannot register an empty job — there must be proof that work was planned. Parts are optional.</p>
+<h3 id="cancelling-before-registration">7.3 Cancelling Before Registration</h3>
+<p>If the customer changes their mind before I register, I press <strong>Cancel</strong>. This clears everything — the customer selection, all services, all parts — and resets the screen to the beginning.</p>
+<p>But the system must <strong>warn me first</strong> if I have entered any data. I do not want to lose 15 minutes of work because I pressed a button by mistake.</p>
+<hr>
+<h2 id="what-the-system-must-never-do">8. What the System Must Never Do</h2>
+<p>To be absolutely clear, there are certain things this system should <strong>never</strong> do:</p>
+<ul>
+<li>Never allow using parts when QOH is insufficient</li>
+<li>Never save incomplete services or parts</li>
+<li>Never register a job without at least one <strong>service entry</strong></li>
+<li>Never allow editing once the job is finalized (write-once only)</li>
+<li>Never delete job history — it must use <strong>RemoveFromViewFlag</strong></li>
+<li>Never skip required validation</li>
+<li>Never apply a coupon without successful verification</li>
+<li>Never allow the same part twice in the cart (duplicates must increase quantity instead)</li>
+<li>Never allow QOH to go negative</li>
+</ul>
+<hr>
+<h2 id="summary-of-expectations">9. Summary of Expectations</h2>
+<h3 id="customer-vehicle-selection">Customer &amp; Vehicle Selection</h3>
+<ul>
+<li>Search for customer by last name (partial match allowed)</li>
+<li>Customer results grid with Name, Phone, Address, Select</li>
+<li>Clear button to reset search</li>
+<li>Vehicle dropdown after customer selected</li>
+<li>VIN auto-displays when vehicle selected</li>
+<li>Warn before switching customers if data exists</li>
+</ul>
+<h3 id="service-entry">Service Entry</h3>
+<ul>
+<li>Standard service dropdown (auto-fills description + hours, read-only description)</li>
+<li>Custom service text entry (overrides standard)</li>
+<li>Shop Rate fixed at $65.50/hr, non-editable</li>
+<li>Optional comments per service entry</li>
+<li>Add Service and Reset buttons</li>
+<li>Service cart with Service Name, Hours, Rate, Extended Price, Delete</li>
+</ul>
+<h3 id="parts-entry">Parts Entry</h3>
+<ul>
+<li>Category dropdown required before browsing parts</li>
+<li>Parts grid with Part Name, Price, QOH, Quantity to Add, +Add</li>
+<li>Duplicate parts increase quantity (no duplicate lines)</li>
+<li>Combined quantity must not exceed QOH</li>
+<li>Parts cart with Part Name, Price, Quantity, Total, Delete</li>
+</ul>
+<h3 id="coupons">Coupons</h3>
+<ul>
+<li>Coupon code field with Verify button</li>
+<li>Verification status indicator (checkmark or x)</li>
+<li>Percentage discount, date-validated, one per job</li>
+<li>Applied before tax</li>
+</ul>
+<h3 id="totals">Totals</h3>
+<ul>
+<li>Labour Subtotal and Parts Subtotal displayed separately</li>
+<li>Discount applied to combined subtotal</li>
+<li>GST = 5%, calculated after discount</li>
+<li>Grand total updates in real time</li>
+</ul>
+<h3 id="registration">Registration</h3>
+<ul>
+<li>At least one service entry required to register</li>
+<li>Register saves job + services + parts, decrements QOH, assigns Job ID</li>
+<li>Form locks after registration (all inputs disabled)</li>
+<li>Services and parts are local-only until registration</li>
+</ul>
+<h3 id="cancel-behavior">Cancel Behavior</h3>
+<ul>
+<li>Cancel clears everything — customer selection, services, parts — and resets to the beginning</li>
+<li>Warn if any data has been entered before clearing</li>
+<li>Prevents accidental loss of work</li>
+</ul></body></html>

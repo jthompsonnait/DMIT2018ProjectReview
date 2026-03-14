@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deliverable 1 Rubric</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head><body><h1 id="deliverable-1-rubric-blazor-application-using-linq-retrieval-data">Deliverable 1 — Rubric (Blazor Application Using LINQ — Retrieval Data)</h1>
+<p><strong>NOTE: This is a high-level overview of the rubric. Please refer to the eBike project documentation and your instructor for any clarification.</strong></p>
+<hr>
+<h2 id="grading-criteria">Grading Criteria</h2>
+<h3 id="purchasing-15-marks">1. Purchasing (15 marks)</h3>
+<table><colgroup> <col style="width: 9%;"> <col style="width: 30%;"> <col style="width: 21%;"> <col style="width: 39%;"> </colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>Criteria</th>
+<th style="text-align: center;">Marks</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Vendor Selection and PO Loading</td>
+<td style="text-align: center;">3</td>
+<td>Users can select a vendor and either load an existing unplaced purchase order (exactly as last saved) or generate a new suggested order if none exists.</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Suggested Order Generation</td>
+<td style="text-align: center;">4</td>
+<td>The system correctly suggests parts based on stock levels using the formula: <code>ReorderLevel - (QOH + QOO) &gt; 0</code>. Suggestions are generated only for new orders, never applied to existing unplaced orders.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Parts Management (Two-Grid Interaction)</td>
+<td style="text-align: center;">3</td>
+<td>Users can add parts from the available parts grid, modify quantities and prices in the order grid, or remove parts (which return them to the available list). Newly added and re-added parts default to quantity zero. No duplicate parts allowed in one order.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Order Totals Calculation</td>
+<td style="text-align: center;">2</td>
+<td>The Subtotal, GST (5%), and Total dynamically update as parts are added, removed, or modified.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Business Rules and Validation</td>
+<td style="text-align: center;">3</td>
+<td>Quantity to Order must be at least 1, Price must be at least 0, no duplicate parts in one order, confirmation prompts for delete actions, and buttons are disabled when the form is not valid.</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td><strong>Total for Purchasing</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="receiving-15-marks">2. Receiving (15 marks)</h3>
+<table><colgroup> <col style="width: 9%;"> <col style="width: 30%;"> <col style="width: 21%;"> <col style="width: 39%;"> </colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>Criteria</th>
+<th style="text-align: center;">Marks</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Purchase Order Selection</td>
+<td style="text-align: center;">3</td>
+<td>Users can search for and select outstanding purchase orders (placed but not yet closed). The grid shows PO Number, Order Date, Vendor, and Contact Number.</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Receiving and Returns Handling</td>
+<td style="text-align: center;">4</td>
+<td>Users can enter received quantities and return quantities for each line item. The grid displays all 7 columns: Part ID, Description, Quantity Ordered, Outstanding (Ordered minus Total Previously Received), Received, Returned, and Reason. Received quantities cannot exceed the Outstanding amount.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Return Validation Rules</td>
+<td style="text-align: center;">3</td>
+<td>The system requires a reason for every returned item. Valid reasons are: Overship, Incorrect item (unordered only), and Damaged on arrival. Return quantities cannot exceed what was actually received in the current shipment. Validation must be handled in the UI.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Unordered Items</td>
+<td style="text-align: center;">3</td>
+<td>Users can add items not on the purchase order using a three-field form (Description, Vendor Part Number, Quantity). The UI provides Insert (add to grid), Delete (remove from grid), and Clear (reset input fields) actions. All three fields are required before inserting.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Order Closure Logic</td>
+<td style="text-align: center;">2</td>
+<td>The Force Close option requires a reason to be entered and a confirmation prompt before executing. Force Close is only available to the Shop Manager (appropriate for D1 — the actual closure does not save to the database in Deliverable 1).</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td><strong>Total for Receiving</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="servicing-15-marks">3. Servicing (15 marks)</h3>
+<table><colgroup> <col style="width: 9%;"> <col style="width: 30%;"> <col style="width: 21%;"> <col style="width: 39%;"> </colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>Criteria</th>
+<th style="text-align: center;">Marks</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Customer and Vehicle Selection</td>
+<td style="text-align: center;">3</td>
+<td>Users can search for customers by last name, select a vehicle from a dropdown, and confirm the VIN before proceeding. UI validation must ensure valid lookups. Changing the customer clears any existing service order data (with a warning).</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Service Entry and Service Cart</td>
+<td style="text-align: center;">4</td>
+<td>Users can add standard services (predefined description and hours from a dropdown) or custom services (user-entered description and hours). Hours must be greater than zero. The shop rate is always $65.50 per hour (non-editable). The service cart displays: Service Name, Hours, Rate, Extended Price (Hours multiplied by $65.50), and a Delete action.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Parts Selection and Parts Cart</td>
+<td style="text-align: center;">4</td>
+<td>Users select a category first, then browse available parts showing Part Name, Price, QOH, and Quantity to Add. Quantity must be at least 1 and must not exceed QOH. Duplicate parts increase the existing quantity (no duplicate rows). The parts cart displays: Part Name, Price, Quantity, Total, and a Delete action.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Totals and Coupon Calculation</td>
+<td style="text-align: center;">2</td>
+<td>The system dynamically calculates Labour Subtotal, Parts Subtotal, combined Subtotal, Discount (if a coupon is verified), GST (5% after discount), and Total. Coupon verification requires entering a code and clicking Verify — the discount is only applied after successful verification.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Validation and Registration Rules</td>
+<td style="text-align: center;">2</td>
+<td>Users cannot register a service order unless a customer, vehicle, and <strong>at least one service entry</strong> are present. Parts are optional. UI must validate all inputs before submission. Buttons are disabled when prerequisites are not met.</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td><strong>Total for Servicing</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sales-and-returns-15-marks">4. Sales and Returns (15 marks)</h3>
+<table><colgroup> <col style="width: 9%;"> <col style="width: 30%;"> <col style="width: 21%;"> <col style="width: 39%;"> </colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>Criteria</th>
+<th style="text-align: center;">Marks</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Customer Search and Navigation</td>
+<td style="text-align: center;">2</td>
+<td>Users can search for customers by <strong>partial phone number</strong> and select a customer. Navigation buttons (Customer Search, Product Selector, View Cart, Checkout, Cancel) are always visible. Switching customers clears the cart and coupon data (with a warning).</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Product Selection and Cart Management</td>
+<td style="text-align: center;">4</td>
+<td>Users select a category to view available products, enter a quantity (at least 1, must not exceed QOH), and add to the cart. Duplicate items increase the existing quantity (no duplicate rows). The cart displays: Part, Price, QOH (read-only), Quantity (adjustable), Extended Price, and Delete. Items with zero QOH, discontinued status, or no selling price cannot be added.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Checkout and Sale Completion</td>
+<td style="text-align: center;">2</td>
+<td>The checkout screen shows a final summary of all items, coupon discount (if verified), tax (5% after discount), and total. A payment type (Cash, Debit, or Credit) must be selected. The sale button is disabled until a customer is selected, at least one item is in the cart, and a payment type is chosen.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Returns Processing and Validation</td>
+<td style="text-align: center;">5</td>
+<td>Users enter a Sale Invoice number to load the original sale items. Each item shows: Part Name, Original Quantity, Previously Returned (from all past returns on that invoice), Price, Refundable status, and editable fields for Quantity to Return and Reason. Non-refundable items and fully returned items have the Quantity to Return field disabled. Maximum returnable quantity is Original Quantity minus Previously Returned. A reason is required for every returned item.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Order Totals and Discounts</td>
+<td style="text-align: center;">2</td>
+<td>For sales: Subtotal, coupon discount (percentage-based, applied before tax), GST (5%), and Total update dynamically. For returns: the refund calculation honours the original discount percentage (even if the coupon has since expired). Totals update in real time as quantities change.</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td><strong>Total for Sales and Returns</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="additional-notes">Additional Notes</h2>
+<h3 id="uiux-considerations">UI/UX Considerations</h3>
+<p>Ensure that buttons, forms, and grids are <strong>clearly labelled, responsive, and provide user feedback</strong>.</p>
+<h3 id="validation-and-error-handling">Validation and Error Handling</h3>
+<p>Proper warnings and confirmations should be implemented for <strong>invalid inputs and irreversible actions</strong> (such as deleting items or clearing unsaved data).</p>
+<h3 id="back-end-validation-not-required">Back-End Validation Not Required</h3>
+<p>Deliverable 1 focuses on retrieval and UI-based validation. Back-end data integrity is enforced only for data retrieval.</p>
+<h3 id="data-flow-and-live-updates">Data Flow and Live Updates</h3>
+<p>The system should dynamically <strong>update order totals and validation messages</strong> without requiring manual refreshes.</p>
+<h3 id="do-not-save-data">Do Not Save Data</h3>
+<p>The focus of Deliverable 1 is the retrieval of data and UI validation. A button that would save to the database <strong>should</strong> have validation done on the UI (for example, a reason is needed before Force Close in the Receiving module), but it <strong>does not</strong> save to the database.</p>
+<h3 id="group-project">Group Project</h3>
+<p>Although this project is mainly focused on individual modules within the project, you are expected to meet with your group and test each other’s work. Within large companies, one of your daily requirements is to do “smoke testing”.</p>
+<p><em>Smoke testing is a broad but shallow testing process that verifies the core functions of a software build after a significant change or addition has been made. It aims to quickly identify major problems and ensure the build is stable enough for further testing.</em></p>
+<hr>
+<h3 id="penalty">Penalty</h3>
+<p>A penalty of up to <strong>5 marks</strong> can be deducted for the following (this list is not exhaustive — when in doubt, ask your instructor):</p>
+<ol type="1">
+<li>Saving data in Deliverable 1</li>
+<li>No or incomplete comments</li>
+<li>Not following the project template</li>
+<li>Not using the best practices discussed in class</li>
+<li>Not using secrets</li>
+<li>Not meeting or working with your team</li>
+<li>Limited check-ins to GitHub — you are responsible for working on this project and checking in your code during the process. Checking in only during the last week will be penalized.</li>
+</ol>
+<h3 id="project-failure-to-run">Project Failure to Run</h3>
+<p>Due to the time that has been allocated to you for the project, any individual module that fails to run successfully will earn <strong>zero marks</strong> for that individual. Please work with both your group and your instructor to address any questions you may have.</p></body></html>

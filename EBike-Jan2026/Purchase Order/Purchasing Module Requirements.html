@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchasing Module Requirements</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head><body><h1 id="purchasing-module-requirements-client-narrative">Purchasing Module Requirements (Client Narrative)</h1>
+<p><em>Explained by Alex, an experienced Purchaser</em></p>
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>My name is <strong>Alex</strong>, and I have been a Purchaser for almost 20 years. I do not know how to program, but I know exactly what I need this purchasing system to do, because these are the decisions I make every day.</p>
+<p>The purpose of this document is to explain <strong>what the system must accomplish</strong>, not how to build it. I will describe what I expect as the end user — the client — across the two major parts of the process:</p>
+<ul>
+<li>The <strong>Vendor Selection</strong> step</li>
+<li>The <strong>Purchase Order</strong> step</li>
+</ul>
+<p>This is the same information I would give to a software team building this system for me.</p>
+<hr>
+<h2 id="vendor-selection-screen-requirements">1. Vendor Selection Screen Requirements</h2>
+<p>This is always the first step before creating or working on any order.</p>
+<h3 id="what-i-need-to-see">1.1 What I Need to See</h3>
+<p>I need a list of all <strong>active vendors</strong> with enough basic information so I can recognize them:</p>
+<ul>
+<li>Company name</li>
+<li>Their full address — street, city, province, and postal code</li>
+<li>Phone number</li>
+</ul>
+<p>A simple list is enough — I just need to know who I am selecting.</p>
+<h3 id="what-i-need-to-do">1.2 What I Need to Do</h3>
+<p>I need to:</p>
+<ul>
+<li>Select a vendor</li>
+<li>Confirm the selection</li>
+</ul>
+<p>Once I choose a vendor, the system must decide what to show me next.</p>
+<h3 id="what-should-happen-after-i-select-a-vendor">1.3 What Should Happen After I Select a Vendor</h3>
+<p>There are <strong>two</strong>, and only two, correct paths:</p>
+<h4 id="a.-if-an-unplaced-order-already-exists-for-that-vendor">A. If an unplaced order already exists for that vendor</h4>
+<p>The system must:</p>
+<ul>
+<li>Load that order <em>exactly</em> as I left it</li>
+<li>Not generate suggestions or rebuild anything</li>
+<li>Bring me back to the existing unplaced order with all its items</li>
+</ul>
+<p>This is because I have already made decisions for that vendor.</p>
+<h4 id="b.-if-no-unplaced-order-exists-for-that-vendor">B. If no unplaced order exists for that vendor</h4>
+<p>The system must:</p>
+<ul>
+<li>Create a <strong>brand-new suggested order</strong></li>
+<li>Use inventory levels to determine which items might be needed</li>
+</ul>
+<p>Suggestions must <strong>ONLY</strong> happen when starting a new order — never when one already exists.</p>
+<h3 id="one-order-per-vendor">1.4 One Order Per Vendor</h3>
+<p>We only work on one order per vendor at a time. We are a smaller company, and managing cash flow means I never need two draft orders for the same supplier. If an unplaced order already exists for a vendor, that is the order I work on — there is no reason to start a second.</p>
+<hr>
+<h2 id="purchase-order-screen-requirements">2. Purchase Order Screen Requirements</h2>
+<p>After I select a vendor, I arrive at the main working screen — where I do most of my purchasing work. I cannot tell you how it should look, but I can tell you what it must do.</p>
+<h3 id="purchase-order-information-i-must-see">2.1 Purchase Order Information I Must See</h3>
+<p>The system must clearly show:</p>
+<ul>
+<li>The vendor name</li>
+<li>Their address and phone number</li>
+<li>The PO number (or an indication that this is a new order)</li>
+<li>Order totals: subtotal, GST, and final total</li>
+</ul>
+<p>This helps me confirm I am building the order correctly.</p>
+<hr>
+<h2 id="suggested-orders-only-for-new-orders">3. Suggested Orders (Only for New Orders)</h2>
+<p>Suggested orders are only created when:</p>
+<ul>
+<li>I selected a vendor</li>
+<li>There is <em>no existing unplaced order</em></li>
+<li>I am starting a new order</li>
+</ul>
+<p>The system identifies items that might need restocking using this rule:</p>
+<p><strong>Reorder Level &gt; (Quantity On Hand + Quantity On Order)</strong></p>
+<p>Only items meeting that rule should appear in the suggested order.</p>
+<p>The system should suggest ordering enough to bring us back up to the level we try to maintain. The suggested quantity should equal the <strong>difference between the reorder level and what we already have or have on the way</strong>. In other words:</p>
+<p><strong>Suggested Quantity = Reorder Level − Quantity On Hand − Quantity On Order</strong></p>
+<h3 id="suggestions-are-not-decisions">Suggestions Are NOT Decisions</h3>
+<p>A suggested order is only an initial suggestion. I might:</p>
+<ul>
+<li>Change quantities</li>
+<li>Remove items</li>
+<li>Add new items the system did not suggest</li>
+</ul>
+<p>The system must never save a suggested order automatically.</p>
+<hr>
+<h2 id="working-with-items-in-the-order">4. Working With Items in the Order</h2>
+<p>This is where the majority of my decision-making happens.</p>
+<h3 id="what-i-need-to-know-for-each-item">4.1 What I Need to Know for Each Item</h3>
+<p>For each part included in the purchase order, I need to see:</p>
+<ul>
+<li>A way to identify exactly which part I am looking at</li>
+<li>What the item is</li>
+<li>How many we currently have</li>
+<li>The level we should keep in stock</li>
+<li>How many are already incoming</li>
+<li>The price</li>
+<li>The quantity I plan to order</li>
+</ul>
+<p>I need to be able to change both the price and the quantity.</p>
+<h3 id="totals-must-update-instantly">4.2 Totals Must Update Instantly</h3>
+<p>Any time I change:</p>
+<ul>
+<li>A price</li>
+<li>A quantity</li>
+<li>Add a part</li>
+<li>Remove a part</li>
+</ul>
+<p>The totals must update immediately. Purchasers manage budgets continuously — we cannot wait until saving to see the financial impact.</p>
+<h3 id="available-parts-what-else-can-i-add">4.3 Available Parts — What Else Can I Add?</h3>
+<p>Besides the items already in my order, I need to see <strong>what else this vendor sells that is not already in my order</strong> — a browsable list I can look through and pick from.</p>
+<p>For each available part, I need to see:</p>
+<ul>
+<li>The part identifier</li>
+<li>What the item is</li>
+<li>How many we currently have in stock</li>
+<li>The level we try to maintain</li>
+<li>How many are already on order</li>
+<li>How far below the reorder level we are — so I can quickly see which items need reorder most</li>
+<li>The price</li>
+</ul>
+<p>I need a way to add an item from this list to my order with a single action.</p>
+<h4 id="how-the-two-lists-work-together">How the Two Lists Work Together</h4>
+<p>A part should never appear in both lists at the same time. When I add something from the available list, the part moves into my order. When I remove something from my order, the part goes back to the available list. <strong>I should never see the same part listed twice in my order</strong> — the system should prevent that completely.</p>
+<h3 id="price-adjustments">4.4 Price Adjustments</h3>
+<p>Prices are not always fixed. In real purchasing, I often need to change the price of an item for valid business reasons:</p>
+<ul>
+<li><strong>Volume discounts</strong> — A vendor offers a reduced price when I order a large quantity. For example, a part normally costs $12.00 each, but the vendor offers $10.50 each if I order 50 or more.</li>
+<li><strong>Promotional or discounted products</strong> — A vendor runs a temporary promotion or offers a discounted price on certain items.</li>
+<li><strong>Zero-price items</strong> — Sometimes a vendor includes items at no cost. For example, the vendor sends free marketing materials (catalogs, display stands), or the vendor compensates for a previous mistake or delay by including extra items at zero dollars.</li>
+</ul>
+<p>The system must allow me to enter any price that is <strong>zero or greater</strong> (any non-negative value). A price of zero is valid when there is a business reason for it. The system should not block saving or placing an order because an item has a zero price.</p>
+<hr>
+<h2 id="quantity-rules-that-prevent-mistakes">5. Quantity Rules That Prevent Mistakes</h2>
+<p>These rules are extremely important in real purchasing work.</p>
+<h3 id="rule-1-new-items-must-start-at-quantity-zero">Rule 1: New Items Must Start at Quantity Zero</h3>
+<p>If I add an item from the general list of available parts, the default quantity must be <strong>zero</strong>.</p>
+<p>This prevents accidental ordering. A quantity of zero forces me to consciously decide the quantity.</p>
+<h3 id="rule-2-suggested-items-that-are-removed-and-re-added-must-also-start-at-zero">Rule 2: Suggested Items That Are Removed and Re-Added Must Also Start at Zero</h3>
+<p>If I remove a suggested item and later add it back, the quantity must <strong>not</strong> return to the original suggestion. The quantity must reset to <strong>zero</strong>.</p>
+<p>Because adding something back means I am re-evaluating. <strong>I must make the quantity decision myself again.</strong></p>
+<h3 id="rule-3-zero-quantity-blocks-saving">Rule 3: Zero Quantity Blocks Saving</h3>
+<p>I cannot save or place an order if any item still has a quantity of zero. Zero is only the starting point — the system should remind me to enter a quantity of at least one before I commit. Every line in my order must have a quantity of <strong>at least one</strong> before I can save or place the order.</p>
+<hr>
+<h2 id="saving-and-updating-an-order">6. Saving and Updating an Order</h2>
+<p>I need to be able to save progress without placing the order.</p>
+<ul>
+<li>If the order is <strong>new</strong> (no PO number yet) → I use <em>Save</em></li>
+<li>If the order is an <strong>existing unplaced</strong> order (already has a PO number) → I use <em>Update</em></li>
+</ul>
+<p>This allows me to return later and continue working where I left off.</p>
+<p>Every item must have a price entered. The price can be zero when there is a valid business reason — for example, marketing materials or vendor compensation. The system should not block saving or placing an order because of a zero price.</p>
+<hr>
+<h2 id="placing-the-order">7. Placing the Order</h2>
+<p>Placing the order is the point of commitment.</p>
+<p>When I place an order, the system must:</p>
+<ul>
+<li>Record the date the order was placed</li>
+<li>Update the inventory so items are considered “on order” (this increases Quantity On Order for each part)</li>
+<li>Lock the order so nothing can be edited</li>
+<li>Disable delete</li>
+<li>Disable update</li>
+</ul>
+<p>A placed order cannot be changed.</p>
+<hr>
+<h2 id="deleting-orders-updated-logic">8. Deleting Orders (Updated Logic)</h2>
+<p>Deleting an order depends on whether anything has been saved to the database yet.</p>
+<p>Whenever I delete anything — the whole order or just a single line — the system should <strong>confirm with me first</strong>. Deleting is serious, and I do not want to do it by accident.</p>
+<p>There are three important rules.</p>
+<h3 id="if-the-order-has-not-been-saved-no-po-number-yet">8.1 If the Order Has NOT Been Saved (No PO Number Yet)</h3>
+<p>If I am building a new order that has <strong>not</strong> been saved:</p>
+<ul>
+<li>Deleting the order should simply <strong>discard the order</strong></li>
+<li>Nothing should be stored</li>
+<li>No “hidden” flags should be used</li>
+</ul>
+<p>This is unsaved work being discarded — nothing was ever recorded.</p>
+<h3 id="if-a-line-item-has-not-been-saved-yet">8.2 If a Line Item Has NOT Been Saved Yet</h3>
+<p>If I added a line item but have not saved the order since adding that line:</p>
+<ul>
+<li>Deleting that line should simply <strong>remove it</strong></li>
+<li>Again, nothing should be saved or hidden</li>
+</ul>
+<p>The line never officially existed.</p>
+<h3 id="if-the-order-or-a-line-item-has-been-saved-before">8.3 If the Order OR a Line Item HAS Been Saved Before</h3>
+<p>If the order has a PO number, or a line has been saved in the past:</p>
+<ul>
+<li>Deleting the order should <strong>not erase it</strong> — instead, the system should mark the order as <strong>removed from view</strong> (soft delete using RemoveFromViewFlag)</li>
+<li>When I delete a whole order, I only need to mark the order itself as removed. The line items belong to that order, so the line items are included automatically</li>
+<li>Deleting an individual saved line item should mark just that line as <strong>removed from view</strong> (soft delete using RemoveFromViewFlag)</li>
+</ul>
+<p>This is the proper business process:</p>
+<ul>
+<li>Unsaved drafts are discarded completely</li>
+<li>Saved records use soft delete for auditing and history</li>
+</ul>
+<h3 id="placed-orders-cannot-be-deleted">8.4 Placed Orders Cannot Be Deleted</h3>
+<p>If an order has already been placed:</p>
+<ul>
+<li>The delete button must be disabled</li>
+</ul>
+<p>A placed order is an official communication with a vendor — it cannot be undone.</p>
+<hr>
+<h2 id="what-the-system-must-never-do">9. What the System Must Never Do</h2>
+<p>To be absolutely clear, there are certain things this system should <strong>never</strong> do:</p>
+<ul>
+<li><strong>Never auto-save a suggested order</strong> — suggestions are a starting point, not a commitment</li>
+<li><strong>Never apply suggestions to an existing order</strong> — if I already have a draft, leave it exactly as I left it</li>
+<li><strong>Never allow a placed order to be modified or deleted</strong> — once placed, it is locked</li>
+<li><strong>Never auto-fill quantities</strong> — new and re-added items always start at zero so I make conscious decisions</li>
+<li><strong>Never allow the same part to appear twice in one order</strong> — each part gets one line, period</li>
+</ul>
+<hr>
+<h2 id="clearing-my-work">10. Clearing My Work</h2>
+<p>If I want to reset and begin again or switch vendors:</p>
+<ul>
+<li>The Clear command should reset everything</li>
+<li>The Clear command should return me to the vendor selection</li>
+<li>If I have unsaved changes, the system must warn me</li>
+</ul>
+<p>This prevents lost work.</p>
+<hr>
+<h2 id="summary-of-expectations">11. Summary of Expectations</h2>
+<h3 id="vendor-selection">Vendor Selection</h3>
+<ul>
+<li>Show only active vendors with full address details</li>
+<li>Allow selecting a vendor</li>
+<li>Load existing unplaced order OR create a suggested order</li>
+<li>Only one open order per vendor at a time</li>
+</ul>
+<h3 id="suggested-orders">Suggested Orders</h3>
+<ul>
+<li>Only for new orders</li>
+<li>Based on inventory shortages</li>
+<li>Suggested quantity = reorder level minus what is on hand and on order</li>
+<li>Never applied to existing orders</li>
+</ul>
+<h3 id="purchase-order-work">Purchase Order Work</h3>
+<ul>
+<li>Show vendor info and PO info</li>
+<li>Show each item with its part identifier</li>
+<li>Show totals</li>
+<li>Let me adjust prices and quantities</li>
+<li>Totals must update instantly</li>
+<li>Show available parts I can add, with urgency indicator</li>
+<li>No duplicate parts in the same order</li>
+</ul>
+<h3 id="quantity-rules">Quantity Rules</h3>
+<ul>
+<li>New items start at <strong>zero</strong></li>
+<li>Re-added suggested items start at <strong>zero</strong></li>
+<li>Every item must have quantity <strong>at least one</strong> before saving or placing</li>
+<li>Every item must have a <strong>price entered</strong> (zero is allowed for valid business reasons such as marketing materials or vendor compensation)</li>
+</ul>
+<h3 id="saving-and-placing">Saving and Placing</h3>
+<ul>
+<li><strong>Save</strong> → if new (no PO number yet)</li>
+<li><strong>Update</strong> → if existing (already has a PO number)</li>
+<li><strong>Place</strong> → locks the order and updates inventory</li>
+</ul>
+<h3 id="deleting">Deleting</h3>
+<ul>
+<li>Always confirm before deleting</li>
+<li>Unsaved orders → discard completely</li>
+<li>Unsaved line items → discard completely</li>
+<li>Saved orders → soft delete the order (children follow the parent)</li>
+<li>Saved line items → soft delete that line</li>
+<li>Placed orders → cannot be deleted</li>
+</ul>
+<h3 id="clear-behavior">Clear Behavior</h3>
+<ul>
+<li>Reset screen</li>
+<li>Warn if unsaved changes exist</li>
+</ul></body></html>

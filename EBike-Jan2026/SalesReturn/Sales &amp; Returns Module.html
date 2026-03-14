@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales &amp; Returns Module Requirements</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head><body><h1 id="sales-returns-module-requirements-client-narrative">Sales &amp; Returns Module Requirements (Client Narrative)</h1>
+<p><em>Explained by Sam, Front Counter Sales</em></p>
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>Hi, I am <strong>Sam</strong>. I work at the front counter — I help customers find what they need, process their payments, and handle returns when something comes back. I do not design software, but I know exactly how a sales system needs to behave so I can do my job without errors.</p>
+<p>The purpose of this document is to explain <strong>what the system must accomplish</strong>, not how to build it. I will describe what I expect as the end user — the client — across the two major parts of the process:</p>
+<ul>
+<li>The <strong>Sales</strong> workflow (customer search, product selection, cart, and checkout)</li>
+<li>The <strong>Returns</strong> workflow (invoice lookup, return entry, and refund)</li>
+</ul>
+<p>This is the same information I would give to a software team building this system for me.</p>
+<hr>
+<h2 id="how-i-work-at-the-counter">1. How I Work at the Counter</h2>
+<p>I need to move freely between the steps of a sale — searching for a customer, picking products, reviewing the cart, and checking out. The system must let me jump between these steps without losing my work. If the customer wants to add another item after viewing the cart, or if I need to go back and change something, everything stays in memory until I explicitly cancel.</p>
+<p>If I decide to cancel entirely, the system clears everything — customer, cart, coupon — and takes me back to the beginning. But it must <strong>warn me first</strong> so I do not accidentally lose a sale I have been building.</p>
+<hr>
+<h2 id="customer-search">2. Customer Search</h2>
+<p>Every sale and every return starts the same way: we must identify the customer. The system cannot let me move forward without choosing the right person.</p>
+<p>I search for customers by <strong>partial phone number</strong>. I type in part of a phone number, and the system shows me anyone who matches. From there, I pick the person I am dealing with.</p>
+<p>I need to see:</p>
+<ul>
+<li>Customer name</li>
+<li>Address</li>
+<li>City</li>
+<li>Phone number</li>
+</ul>
+<p>A <strong>Clear</strong> button resets the search field so I can see all customers again or start a new search.</p>
+<p>Once a customer is selected, the sale can begin. If I try to continue without selecting someone, the system must stop me.</p>
+<p>If I have already started building a sale and then select a <strong>different customer</strong>, the system must warn me first — because switching customers will <strong>clear the entire cart and any coupon</strong> I have applied. That is a safeguard. I do not want to accidentally lose an order I have been building just because I selected the wrong name by mistake.</p>
+<hr>
+<h2 id="category-item-selection">3. Category &amp; Item Selection</h2>
+<p>Once I choose a customer, I move into the screen where I pick what they want to buy. The first thing I select is a category.</p>
+<h3 id="browsing-categories">3.1 Browsing Categories</h3>
+<p>The category list must start with a special category called <strong>All</strong>. This shows <strong>every part in the system</strong> and must appear as the <strong>first option</strong>. The count beside it shows the total number of parts available.</p>
+<p>Every category must show a count of the <strong>number of distinct parts</strong> in it — not QOH, just how many items belong there.</p>
+<p>Examples:</p>
+<ul>
+<li>All (112)</li>
+<li>Apparel (7)</li>
+<li>Lighting (3)</li>
+<li>Brakes (12)</li>
+</ul>
+<h3 id="selecting-a-part">3.2 Selecting a Part</h3>
+<p>The item list does not show anything until I have picked a category first. No category, no parts — this prevents me from scrolling through hundreds of items without context.</p>
+<p>I need to see:</p>
+<ul>
+<li>Description</li>
+<li>Selling Price</li>
+</ul>
+<p>I should <strong>not</strong> see the QOH here — but the system must still <strong>enforce it behind the scenes</strong>. If QOH is 0, the item must not be addable.</p>
+<p>When I find the item the customer wants, I enter the <strong>quantity</strong> they need. The system will not let me enter less than 1 or more than what is in stock. Then I click <strong>Add</strong> to put it in the cart. If I change my mind about the selection, a <strong>Clear</strong> button resets the category, part, and quantity fields so I can start fresh.</p>
+<p>There are a few rules the system must enforce when I am adding items:</p>
+<ul>
+<li>If I try to add an item that is already in the cart, the system must <strong>increase the quantity</strong> on the existing row instead of adding a duplicate line.</li>
+<li>If an item is discontinued, it must not be addable.</li>
+<li>“Add to Cart” must be disabled if selling price is missing.</li>
+</ul>
+<hr>
+<h2 id="cart-screen">4. Cart Screen</h2>
+<p>After I add items, I move to the cart. This is where the customer decides quantities and makes final choices. This is also where mistakes tend to happen if the system is not strict enough.</p>
+<h3 id="what-i-need-to-see-in-the-cart">4.1 What I Need to See in the Cart</h3>
+<ul>
+<li>Part description</li>
+<li>Quantity on Hand</li>
+<li>Price</li>
+<li>Quantity</li>
+<li>Line total (qty × price)</li>
+<li>Subtotal, tax, and total</li>
+</ul>
+<h3 id="how-i-work-with-the-cart">4.2 How I Work With the Cart</h3>
+<ul>
+<li>Quantities cannot be negative.</li>
+<li>Quantities cannot be zero. If a quantity is set to zero, the item should be removed from the cart.</li>
+<li>I cannot increase quantity beyond <strong>QOH</strong>. The system must prevent it every single time.</li>
+<li>If I add an item that is already in the cart, the system must increase the quantity on the existing row — no duplicate lines allowed.</li>
+</ul>
+<p>Totals update immediately when quantities change. When everything looks right, I go to Checkout.</p>
+<hr>
+<h2 id="checkout">5. Checkout</h2>
+<p>This is where the full summary is shown, and the sale is completed. Nothing should be left unclear at this point.</p>
+<h3 id="what-i-see-at-checkout">5.1 What I See at Checkout</h3>
+<ul>
+<li>Subtotal</li>
+<li>Discount (only shown if a coupon has been verified — otherwise it does not appear)</li>
+<li>GST (calculated after the discount)</li>
+<li>Total</li>
+<li><strong>Payment Type</strong> (required) — the customer picks how they are paying: <strong>Cash</strong>, <strong>Debit</strong>, or <strong>Credit</strong>. One of these must be selected before the sale can go through.</li>
+</ul>
+<h3 id="what-happens-when-a-customer-has-a-coupon">5.2 What Happens When a Customer Has a Coupon</h3>
+<p>A coupon always uses <strong>DiscountPercent</strong>. No dollar discounts. The system must apply the percentage discount <strong>before tax</strong>.</p>
+<p>If the customer has a coupon, I type the code into the coupon field and click <strong>Verify</strong>. The system checks whether the coupon is valid. A valid coupon means today falls within its start and end dates (inclusive), and the coupon has not been removed from the system. If the coupon is valid, a checkmark appears beside the code and the discount applies automatically to the subtotal. If I need to remove it, I click <strong>Clear Coupon</strong> and the discount goes away.</p>
+<p>If I try to complete a sale with a coupon code typed in but <strong>not verified</strong>, the system must warn me. I should not accidentally miss applying a customer’s discount, but I also cannot apply an unverified one.</p>
+<p>There are a few additional rules around coupons:</p>
+<ul>
+<li>Only one coupon may be applied per sale.</li>
+<li>Discount must be recorded on the invoice.</li>
+<li>Tax must be recalculated after the discount is applied.</li>
+</ul>
+<h3 id="what-must-be-ready-before-completing-a-sale">5.3 What Must Be Ready Before Completing a Sale</h3>
+<p>Before I can complete a sale, three things must be true: I have <strong>selected a customer</strong>, there is <strong>at least one item in the cart</strong>, and I have <strong>chosen a payment type</strong>. If any of those are missing, the system must block the sale — the Complete Sale button stays disabled until everything is ready.</p>
+<h3 id="what-the-system-must-do-when-i-complete-a-sale">5.4 What the System Must Do When I Complete a Sale</h3>
+<p>When the customer pays, the system must:</p>
+<ul>
+<li>Create an Invoice</li>
+<li>Create InvoiceLines for each item</li>
+<li>Store the payment type</li>
+<li>Store the coupon information (if any)</li>
+<li>Record the employee completing the sale</li>
+<li>Set InvoiceDate = today</li>
+</ul>
+<h3 id="what-happens-to-inventory-after-a-sale">5.5 What Happens to Inventory After a Sale</h3>
+<ul>
+<li>For each InvoiceLine, <strong>QOH decreases</strong> by the quantity sold.</li>
+<li>The system must prevent QOH from going negative.</li>
+</ul>
+<h3 id="after-saving-the-sale">5.6 After Saving the Sale</h3>
+<p>Once the sale goes through, I need clear confirmation that it worked — no ambiguity:</p>
+<p>The system must clearly tell me the sale is done and show me the Sale ID so I have a reference number. Once I acknowledge the confirmation:</p>
+<ul>
+<li>The cart must clear completely.</li>
+<li>The screen returns to the Customer Search page.</li>
+<li>I cannot continue editing a completed sale.</li>
+</ul>
+<h3 id="cancelling-a-sale">5.7 Cancelling a Sale</h3>
+<p>Sometimes a customer changes their mind entirely. If I click <strong>Cancel</strong>, the system clears everything — the customer, the cart, the coupon, all of it — and takes me back to the Customer Search screen. But before it does, it must <strong>warn me</strong> that I am about to lose everything I have entered. I do not want to accidentally cancel a sale I have spent time building.</p>
+<hr>
+<h2 id="returns">6. Returns</h2>
+<p>Returns need to be handled carefully. The system must protect inventory, protect customer trust, and make sure we never return more than we sold.</p>
+<h3 id="looking-up-the-sale">6.1 Looking Up the Sale</h3>
+<p>Every return begins with entering the <strong>Invoice ID</strong>. The system loads the exact sale.</p>
+<p>If I have already started entering return quantities and then search for a <strong>different invoice</strong>, the system must warn me first — because everything I have entered will be cleared. It is the same principle as switching customers during a sale: never lose my work without asking.</p>
+<p>For each item, I must see:</p>
+<ul>
+<li>Quantity purchased</li>
+<li>Quantity previously returned</li>
+<li>Original selling price</li>
+<li>Quantity to be returned</li>
+<li>Reason for the return</li>
+</ul>
+<p>The “previously returned” number is not just from one return — it is the <strong>total across every return</strong> ever processed against this invoice. If the customer returned 2 helmets last month and 1 last week, that column shows 3. The system has to look at all past return records for this invoice to calculate that correctly.</p>
+<p>And most importantly:</p>
+<ul>
+<li>If the part is <strong>non-refundable</strong>, it <strong>cannot</strong> be returned.</li>
+</ul>
+<p>The system makes this completely clear: if a part is <strong>non-refundable</strong>, or if the customer has <strong>already returned everything</strong> they bought of that item (original quantity minus previously returned equals zero), the return quantity field is <strong>grayed out and disabled</strong>. I cannot even type in it. There is no room for error.</p>
+<h3 id="entering-the-return">6.2 Entering the Return</h3>
+<p>The system must prevent:</p>
+<ul>
+<li>Returning more than purchased</li>
+<li>Returning more than (purchased – previously returned)</li>
+<li>Returning non-refundable items</li>
+<li>Returns without a reason</li>
+</ul>
+<h3 id="how-the-refund-works">6.3 How the Refund Works</h3>
+<p>The refund must honor the original pricing and discount. Here is exactly how the refund math works:</p>
+<ul>
+<li><strong>Subtotal</strong> = sum of (return qty × original price) for each returned item</li>
+<li><strong>Discount</strong> = Subtotal × the original sale’s discount percentage — because we honor the discount the customer originally received, even if the coupon has since expired</li>
+<li><strong>Tax</strong> = 5% of (Subtotal − Discount)</li>
+<li><strong>Total Refund</strong> = Subtotal − Discount + Tax</li>
+</ul>
+<p>The system must calculate all of this automatically and update in real time as I change return quantities.</p>
+<h3 id="what-the-system-must-do-when-i-complete-a-return">6.4 What the System Must Do When I Complete a Return</h3>
+<p>Before the system actually processes anything, it asks me to <strong>confirm</strong> — because a completed return cannot be reversed. I need that moment to double-check the quantities and reasons one last time.</p>
+<p>When I complete the return, the system must:</p>
+<ul>
+<li>Create a Return record</li>
+<li>Create ReturnedLine records</li>
+<li>Record reason for return</li>
+<li>Record EmployeeID</li>
+</ul>
+<p>Inventory must be adjusted:</p>
+<ul>
+<li><strong>QOH increases</strong> for all returned items — non-refundable items cannot be returned in the first place, so anything that makes it through goes back into stock.</li>
+</ul>
+<p>The refund goes back the same way it came in — if the customer paid cash, the refund is cash. The system knows the original payment method from the sale record.</p>
+<h3 id="after-the-return-is-completed">6.5 After the Return Is Completed</h3>
+<p>The system must clearly tell me the return is done and show me the Return ID so I have a reference number. Once I acknowledge the confirmation:</p>
+<ul>
+<li>The return screen resets</li>
+<li>I return to Customer Search</li>
+<li>I cannot edit a completed return</li>
+</ul>
+<h3 id="cancelling-a-return">6.6 Cancelling a Return</h3>
+<p>If I decide not to process a return at all, a <strong>Cancel</strong> button clears everything — the invoice search, the return quantities, the reasons — and resets the screen completely. The system must warn me before clearing if I have already started entering return data.</p>
+<hr>
+<h2 id="what-the-system-must-never-do">7. What the System Must Never Do</h2>
+<p>To be absolutely clear, there are certain things this system should <strong>never</strong> do:</p>
+<ul>
+<li>Never assume the customer wants to return everything.</li>
+<li>Never assume tax or discount is the same for all items.</li>
+<li>Never allow returning non-refundable items.</li>
+<li>Never allow QOH to go negative.</li>
+<li>Never apply multiple coupons.</li>
+<li>Never continue editing after a sale or return is completed.</li>
+<li>Never switch customers or invoices without warning me first.</li>
+<li>Never let me complete a sale without a customer, a cart item, and a payment type.</li>
+</ul>
+<hr>
+<h2 id="summary-of-expectations">8. Summary of Expectations</h2>
+<h3 id="customer-search-1">Customer Search</h3>
+<ul>
+<li>Search by <strong>partial phone number</strong></li>
+<li>Selecting a customer is required</li>
+<li>Switching customers clears the cart and coupon — must warn first</li>
+</ul>
+<h3 id="navigation">Navigation</h3>
+<ul>
+<li>Buttons always visible: Customer Search, Product Selector, View Cart, Checkout, Cancel</li>
+<li>Cancel resets everything and returns to Customer Search — must warn first</li>
+</ul>
+<h3 id="product-selection">Product Selection</h3>
+<ul>
+<li>Category list must begin with <strong>All</strong></li>
+<li>Each category shows a part count</li>
+<li>Parts list is empty until a category is selected</li>
+<li>Cannot add discontinued or zero-QOH items</li>
+<li>Must enter quantity before adding (≥ 1, ≤ QOH)</li>
+<li>Duplicates increase existing row quantity</li>
+</ul>
+<h3 id="shopping-cart">Shopping Cart</h3>
+<ul>
+<li>QOH must always be enforced</li>
+<li>No negative or zero quantities</li>
+<li>Totals update instantly</li>
+</ul>
+<h3 id="checkout-1">Checkout</h3>
+<ul>
+<li>Payment type required (Cash, Debit, or Credit)</li>
+<li>Coupon uses <strong>DiscountPercent</strong></li>
+<li>Coupon must be verified before applying — warn if unverified at checkout</li>
+<li>Discount applies before tax</li>
+<li>One coupon per sale</li>
+<li>Sale requires: customer selected, item in cart, payment type chosen</li>
+<li>Invoice created with proper records</li>
+<li>Sale ID shown on completion</li>
+</ul>
+<h3 id="returns-1">Returns</h3>
+<ul>
+<li>Non-refundable items cannot be returned (field disabled)</li>
+<li>Fully returned items cannot be returned again (field disabled)</li>
+<li>Must show previously returned quantities (total across all prior returns)</li>
+<li>Cannot exceed purchased quantity</li>
+<li>Refund must match original pricing &amp; discount (even if coupon expired)</li>
+<li>QOH increases for all returned items</li>
+<li>Confirmation required before processing</li>
+<li>Searching for a new invoice clears entered data — must warn first</li>
+<li>Refund method matches original payment method</li>
+</ul></body></html>

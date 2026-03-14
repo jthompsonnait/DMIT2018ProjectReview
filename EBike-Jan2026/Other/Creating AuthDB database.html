@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html><head><link rel="stylesheet" href="https://s.brightspace.com/lib/fonts/0.6.1/fonts.css"><link rel="stylesheet" href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"><link rel="stylesheet" href="/d2l/le/contentstyler/6606/files/View" data-override="override"></head><body style="color: rgb(32, 33, 34); font-family: Lato, sans-serif; font-size: 19px;"><h1>🔐 Setting Up the Authentication Database with Entity Framework Core</h1>
+<p>Follow these steps to build your authentication database using Entity Framework Core and your configured <code>ApplicationDbContext</code>.</p>
+<hr>
+<h2>✅ Step 1: Open the Developer PowerShell</h2>
+<ol>
+<li>In <strong>Visual Studio</strong>, go to:<br><strong><code>View</code> → <code>Terminal</code></strong></li>
+<li>In the dropdown (top-right of the terminal panel), choose:<br><strong>"Developer PowerShell"</strong></li>
+</ol>
+<hr>
+<h2>✅ Step 2: Check if Entity Framework Tools Are Installed</h2>
+<p>In the terminal, run:</p>
+<pre><code>dotnet ef --version</code></pre>
+<p>If the tools are installed, you’ll see something like:</p>
+<blockquote>Entity Framework Core .NET Command-line Tools 9.0.3</blockquote>
+<p>Copy</p>
+<hr>
+<h2>✅ Step 3: Install Entity Framework CLI Tools (If Not Already Installed)</h2>
+<p>If <code>dotnet ef</code> is not recognized, install it using:</p>
+<pre><code>dotnet tool install --global dotnet-ef</code></pre>
+<p>You should see:</p>
+<blockquote>Tool 'dotnet-ef' (version '9.0.3') was successfully installed.</blockquote>
+<p>📝 This step is only required once per machine.</p>
+<hr>
+<h2>✅ Step 4: Navigate to the Project Folder</h2>
+<p>From the root of your solution, change into the <code>ProjectWebApp</code> directory:</p>
+<pre><code>cd .\\ProjectWebApp\\</code></pre>
+<p><span style="font-size: 16px;">Note: You can start typing ProjectWebApp and hit tab to auto-complete it.</span></p>
+<p>This folder contains your Blazor or ASP.NET Core project that includes the&nbsp;<code>ApplicationDbContext</code>.</p>
+<hr>
+<h2>✅ Step 5: Create the Authentication Database</h2>
+<p>Run the following command to apply migrations and create the database:</p>
+<pre><code>dotnet ef database update --context ApplicationDbContext</code></pre>
+<p>This uses the <code>ApplicationDbContext</code> class to generate all the necessary Identity tables (like <code>AspNetUsers</code>, <code>AspNetRoles</code>, etc.) to your new Authentication Database, which is "eBike_Auth" in this project. The database the Auth tables are created in is based on the database name you specify in the connection string for authentication.</p>
+<p><span style="font-size: 16px;"><strong>Note: The initial connection string was in appsettings.json and named AuthDB</strong></span></p>
+<p><span style="font-size: 16px;"><strong>"AuthDB": "Server=xxxx;Database=eBike-Auth;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true"</strong></span></p>
+<p>You can verify this in your database management tool by seeing the newly created tables.</p>
+<p><img src="/content/enforced/37596-017650.21648.1242/Project/EBike-Jan2025/Other/image_20250330174426021.png" data-d2l-editor-default-img-style="true" style="max-width: 100%;"></p>
+<hr>
+<h2>🎉 You’re Done!</h2>
+<p>Your authentication database is now created and ready for use. You can start registering users, assigning roles, and implementing authorization in your application.</p>
+<hr>
+<h2>Users, Roles and Passwords</h2>
+<p>The setup for the project has the following default users with roles and passwords created in the database.</p>
+<table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse; width: 431pt;"><colgroup><col style="width: 135pt;"> <col style="width: 76pt;"> <col style="width: 86pt;"> <col style="width: 134pt;"></colgroup>
+<tbody>
+<tr style="height: 15.0pt;">
+<td style="width: 135pt; font-size: 11pt; color: white; font-weight: bold; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); background: #5b9bd5; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">UserName/Email</td>
+<td style="width: 76pt; font-size: 11pt; color: white; font-weight: bold; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #5b9bd5; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Password</td>
+<td style="width: 86pt; font-size: 11pt; color: white; font-weight: bold; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #5b9bd5; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Role</td>
+<td style="width: 134pt; font-size: 11pt; color: white; font-weight: bold; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #5b9bd5; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Full Name</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">admin@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Admin@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Admin - All Roles</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Admin User</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">mechanic@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Mechanic@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Mechanic</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Nole Body</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">sales@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Sales@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Salesperson</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Max Smart</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">sales2@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Sales@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Salesperson</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Sheila Seller</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">staff@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Staff@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Store Staff</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Sadie Star</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">staff2@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Staff@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Store Staff</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Fred Flash</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">salesmanager@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Sales@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Sales Manager</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Shirly Awesome</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">shop@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Shop@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Shop Manager</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Brendon Brown</td>
+</tr>
+<tr style="height: 15.0pt;">
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: 0.5pt solid rgb(155, 194, 230); background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">parts@ebikes.com</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Parts@123</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: none; border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Parts Manager</td>
+<td style="font-size: 11pt; color: black; font-weight: 400; font-family: Calibri, sans-serif; border-top: 0.5pt solid rgb(155, 194, 230); border-right: 0.5pt solid rgb(155, 194, 230); border-bottom: 0.5pt solid rgb(155, 194, 230); border-left: none; background: #ddebf7; padding-top: 1px; padding-right: 1px; padding-left: 1px; font-style: normal; vertical-align: bottom; border-image: initial; white-space: nowrap;">Willie Work</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<h2>Example Code for Getting Name/EmployeeID</h2>
+<pre class="line-numbers d2l-code"><code class="language-csharp">using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+
+namespace ProjectWebApp.Components.Pages
+{
+    public partial class Home
+    {
+        private string fullName = string.Empty;
+        private string userID = string.Empty;
+
+        [Inject]
+        private AuthenticationStateProvider AuthenticationStateProvider { get; set; } = default!;
+
+        protected override async Task OnInitializedAsync()
+        {
+            await base.OnInitializedAsync();
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (user.Identity is { IsAuthenticated: true })
+            {
+                fullName = user.FindFirst("FullName")?.Value ?? "Unknown User";
+                userID = user.FindFirst("EmployeeID")?.Value ?? "";
+            }
+        }
+    }
+}</code></pre>
+<p></p></body></html>

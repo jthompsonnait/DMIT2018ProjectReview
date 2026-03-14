@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receiving Module Requirements</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head><body><h1 id="receiving-module-requirements-client-narrative">Receiving Module Requirements (Client Narrative)</h1>
+<p><em>Explained by Emily, Receiving Clerk</em></p>
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>My name is <strong>Emily</strong>. I started here as a shelf stocker, moved into operating the forklift, and for the last eight years I have been working in Receiving. I do not know anything about programming, but I use this system every day. I deal with deliveries, packing slips, shortages, overshipments, damaged goods, and keeping our inventory accurate.</p>
+<p>The purpose of this document is to explain <strong>what the system must accomplish</strong>, not how to build it. I will describe what I expect as the end user — the client — across the two major parts of the process:</p>
+<ul>
+<li>The <strong>Purchase Order Lookup</strong> step</li>
+<li>The <strong>Receiving and Processing</strong> step</li>
+</ul>
+<p>This is the same information I would give to a software team building this system for me.</p>
+<hr>
+<h2 id="starting-my-day-in-receiving">1. Starting My Day in Receiving</h2>
+<p>My day really starts when a truck arrives at our loading dock and a shipment comes in. Before I start entering data, I look at the paperwork and match the shipment to the right <strong>Purchase Order (PO)</strong>.</p>
+<p>Because we are a smaller company and we are careful with cash flow, we follow one simple rule that prevents mistakes:</p>
+<p><strong>We allow only ONE open (placed but unclosed) Purchase Order per vendor.</strong></p>
+<p>In practice, that means:</p>
+<ul>
+<li>A vendor never has two open POs at the same time</li>
+<li>If a vendor has no open PO, that vendor should not appear in the receiving list</li>
+<li>If a vendor does appear, I know exactly which PO matches the shipment I am looking at</li>
+</ul>
+<p>That rule prevents me from having to figure out which PO matches a shipment — if a vendor appears, I know exactly which order it is.</p>
+<p>Whenever I start a receiving session, the system has to record that I am the one doing the work (my <strong>Employee ID</strong>) and that it is happening <strong>today</strong> (Receive Date). If someone asks later, the system should have the answer.</p>
+<h3 id="the-first-thing-the-system-must-allow">1.1 The First Thing the System Must Allow</h3>
+<h4 id="a.-look-up-an-existing-purchase-order">A. Look up an existing Purchase Order</h4>
+<p>When I go into the receiving screen, I do not want a list of every order that was ever created. I only care about the orders that are ready to be received.</p>
+<p>The system should show <strong>only</strong>:</p>
+<ul>
+<li>POs that have been <strong>placed</strong> (an Order Date has been set), and</li>
+<li>POs that <strong>have not been closed yet</strong> (Closed = false)</li>
+</ul>
+<p>No drafts. No closed orders. Just the active order waiting to be received. This way, I am never accidentally working on the wrong order.</p>
+<p>The list should show me the following information to identify the right order:</p>
+<ul>
+<li><strong>PO Number</strong> — so I can match it to the paperwork</li>
+<li><strong>Order Date</strong> — so I know how old the order is</li>
+<li><strong>Vendor</strong> — the company name</li>
+<li><strong>Contact Number</strong> — in case I need to call the vendor about the shipment</li>
+<li>A <strong>View Order</strong> button — so I can open that PO and start receiving</li>
+</ul>
+<p>That is all I need. The list should be clear, simple, and focused on what matters.</p>
+<h4 id="b.-select-the-po-i-am-about-to-receive">B. Select the PO I am about to receive</h4>
+<p>Once I choose a PO, that becomes my <strong>workspace</strong> for this receiving session. From my point of view, I am now working with that order, and everything I enter will affect that PO.</p>
+<hr>
+<h2 id="what-i-need-to-see-when-i-select-an-order">2. What I Need to See When I Select an Order</h2>
+<p>When I open a PO, I need to be able to understand it quickly. That means I need a combination of header information (about the vendor and the order itself) and line details (what was actually ordered).</p>
+<p>For the PO header, I need:</p>
+<h3 id="order-information">Order Information</h3>
+<ul>
+<li>Vendor name</li>
+<li>PO number</li>
+<li>Date the order was placed</li>
+<li>Vendor phone number — in case I need to call the vendor right away about this shipment</li>
+</ul>
+<h3 id="for-each-item-on-the-order">For Each Item on the Order</h3>
+<p>For each item on the order, I need to see all of this in one row so I can work through the line quickly:</p>
+<ul>
+<li><strong>Part ID</strong> — so I can match it to labels on the shelf and the packing slip</li>
+<li><strong>Description</strong> — the item name, so I know what I am looking at</li>
+<li><strong>Quantity Ordered</strong> — how many we originally asked the vendor to send</li>
+<li><strong>Outstanding</strong> — how many are still left to receive. The formula is: Ordered minus everything we have already accepted in past sessions</li>
+<li><strong>Received</strong> — this is where I type in how many good items I am accepting today</li>
+<li><strong>Returned</strong> — this is where I type in how many I am sending back (damaged, overshipped, and similar situations)</li>
+<li><strong>Reason</strong> — if I am returning anything on that line, I have to say why</li>
+</ul>
+<p>That combination tells me the complete picture in one view: what we expected, what is still waiting, and what is happening today.</p>
+<p>The <strong>Outstanding</strong> number is important because it tells me what is left. The formula is: what we ordered, minus everything that has been accepted in all previous receiving sessions for this order. If we ordered 50 and past sessions accepted 35, then today I know I am expecting up to 15 more.</p>
+<hr>
+<h2 id="how-i-actually-receive-items">3. How I Actually Receive Items</h2>
+<p>Here is the reality: the shipment almost never matches the paperwork perfectly. That is why my role exists. I <strong>never</strong> assume the boxes match the PO or the packing slip. I count and inspect everything myself.</p>
+<p>The system must allow me to enter:</p>
+<p><strong>The quantity received today — for each item on the PO.</strong></p>
+<p>Real-world receiving is not predictable. On any day I might deal with:</p>
+<ul>
+<li>Partial shipments (we got some items, not all)</li>
+<li>Short shipments (we got less than the vendor said they sent)</li>
+<li>Damaged goods</li>
+<li>Overshipments (the vendor sent more than we ordered)</li>
+<li>Items we did not order at all</li>
+<li>Backorders (nothing arrived for that line today)</li>
+</ul>
+<p>The Receiving Module has to let me record what <strong>actually</strong> arrived in the building, not what the paperwork says should have arrived. The system should follow my reality, not the other way around.</p>
+<hr>
+<h2 id="receiving-rules-the-system-must-follow">4. Receiving Rules the System Must Follow</h2>
+<p>To keep our inventory trustworthy, there are some rules the system has to follow every time I receive items. These rules are non-negotiable from an operations point of view.</p>
+<h3 id="rule-1-i-can-never-receive-more-than-the-outstanding-quantity">Rule 1: I can never receive more than the outstanding quantity</h3>
+<p>If we ordered 10 and already received 7:</p>
+<ul>
+<li>Outstanding = 3</li>
+<li>Maximum receivable today = <strong>3</strong></li>
+</ul>
+<p>If the vendor sends more than 3, I handle it this way: I enter what I can accept in the <strong>Received</strong> column — the system will not let me set this higher than the outstanding amount — and then I enter the extras in the <strong>Returned</strong> column with “Overship” as the reason. The system does not split anything for me automatically; it just makes sure I cannot accidentally receive more than we are owed.</p>
+<p>Overshipped items are common. If the system let me receive all of them, our inventory numbers would become incorrect. That is why this rule is so important.</p>
+<h3 id="rule-1a-a-return-reason-is-required-for-all-returned-quantities">Rule 1A: A Return Reason is required for all returned quantities</h3>
+<p>Any time I send items back — even a single unit — I need to say <strong>why</strong>. The system must force me to choose a <strong>Return Reason</strong>.</p>
+<p>Valid reasons include:</p>
+<ul>
+<li><strong>Overship</strong> — the vendor sent more than what was outstanding</li>
+<li><strong>Incorrect item</strong> — this reason only applies to unordered items</li>
+<li><strong>Damaged on arrival</strong> — the product is not acceptable as received</li>
+</ul>
+<p>We do not use vague reasons like “refused by receiver.” Returns happen because of the vendor’s mistake or the product’s condition, not for unspecified reasons.</p>
+<p>Returned quantities must <strong>never</strong> go into inventory. The system should track returned items for history and follow-up, but returned items do not increase Quantity On Hand.</p>
+<h3 id="rule-2-i-must-always-be-allowed-to-receive-less-than-the-outstanding-amount">Rule 2: I must always be allowed to receive less than the outstanding amount</h3>
+<p>It is very normal that I do not receive everything on the PO in one delivery. Maybe the vendor only shipped half, or maybe the vendor marked the rest as backordered.</p>
+<p>The system must let me enter any amount from <strong>0 up to the outstanding quantity</strong> for each item. If I receive zero today on a line, that item stays outstanding and the PO stays open.</p>
+<p>For the returned column, the same rule applies — I enter the actual count of items I am sending back on that line. The system should make sure I am not returning items that do not exist in the shipment.</p>
+<h3 id="rule-3-after-receiving-the-system-must-update-qoh-and-qoo-correctly">Rule 3: After receiving, the system must update QOH and QOO correctly</h3>
+<p>Once I confirm what I actually received, the system must update the inventory numbers:</p>
+<ul>
+<li><strong>QOH (Quantity On Hand) increases</strong> by the quantities I accepted</li>
+<li><strong>QOO (Quantity On Order) decreases</strong> by the same amount for <strong>this vendor’s PO only</strong></li>
+<li>Returned or damaged items <strong>do not</strong> affect QOH</li>
+</ul>
+<p>This way, the shelf counts line up over time, and our reports do not show that we are still expecting stock that is already here or never coming.</p>
+<h3 id="rule-4-the-po-closes-automatically-when-everything-is-fully-received">Rule 4: The PO closes automatically when everything is fully received</h3>
+<p>If I have received everything on that PO and nothing is outstanding anymore, then my job on that order is done.</p>
+<p>In that case:</p>
+<ul>
+<li>The PO must <strong>automatically close</strong> (Closed = true)</li>
+<li>The PO should <strong>no longer appear</strong> in the list of open POs for receiving</li>
+</ul>
+<p>This is normal auto-close behavior and is different from forcing an order to close early.</p>
+<hr>
+<h2 id="force-closing-a-purchase-order">5. Force Closing a Purchase Order</h2>
+<p>Sometimes the vendor tells us they cannot supply the rest of an order — maybe the vendor discontinued a part, or maybe the vendor is simply not going to ship it. In those cases, continuing to wait is not useful. That is when we use <strong>Force Close</strong>.</p>
+<h3 id="force-close-rules">Force Close Rules</h3>
+<ul>
+<li>Only users with the right role (for example, a <strong>Shop Manager</strong>) should be able to use Force Close. (Store Staff are blocked from this action.)</li>
+<li>The system must require a <strong>Force Close Reason</strong> before it allows the order to be closed this way. No reason means no force close.</li>
+<li>Before the system actually force closes the order, the system must ask me one more time — “Are you sure you want to force close this PO?” — because once it is done, it cannot be undone. You cannot reopen a force-closed order, and we do not want anyone closing an order by accident.</li>
+<li>When we force close a PO, the outstanding QOO must be removed for <strong>this vendor’s PO only</strong>. Other vendors’ POs for the same part must not be touched.</li>
+<li>The PO must remain visible in history. The order is closed, not erased. We should still be able to see what happened.</li>
+</ul>
+<p>Here is what the QOO cleanup looks like in practice: say we ordered 75 units of a part from Vendor A and over time we have received 42. If we force close, the system needs to reduce QOO by 33 for that part — that is the 75 we ordered minus the 42 we actually received. But if we also have an order for the same part from Vendor B, Vendor B’s QOO stays exactly where it was. We are only cleaning up this vendor’s numbers.</p>
+<p><strong>QOO decrease formula:</strong> Ordered - Total Previously Received (for each part on this PO)</p>
+<p>If I have been working through the shipment and already entered some received and returned quantities when the decision comes to force close, the system should process all of that work first — the same as pressing Receive — and then close the order on top of it. I should not lose the receiving I have already done just because we are closing early.</p>
+<p>This makes sure our reports stop showing that more stock is coming from this vendor, while still keeping a proper record of what was ordered and what actually arrived.</p>
+<hr>
+<h2 id="real-world-exceptions-the-system-must-support">6. Real-World Exceptions the System Must Support</h2>
+<p>Not every item that shows up at the dock ends up on our shelves. The system has to handle that reality.</p>
+<h3 id="damaged-items">Damaged Items</h3>
+<ul>
+<li>I must be able to record the damaged quantity.</li>
+<li>Damaged items must <strong>not</strong> go into inventory (QOH does not increase for damaged items).</li>
+<li>Damaged items require a return reason, just like other returns.</li>
+<li>Damaged items must appear in receiving history so we know what happened over time.</li>
+</ul>
+<h3 id="backordered-items">Backordered Items</h3>
+<ul>
+<li>Sometimes I receive nothing for a line because the item was backordered.</li>
+<li>In that case, the <strong>outstanding quantity stays the same</strong>.</li>
+<li>The PO stays open until we either receive the rest or force close the order.</li>
+</ul>
+<h3 id="unordered-items-incorrect-items">Unordered Items (Incorrect Items)</h3>
+<p>Vendors will sometimes ship things we never ordered. When that happens, the system has to help me record these items properly, but those items must never enter inventory.</p>
+<ul>
+<li>I must be able to record the incorrect (unordered) item.</li>
+<li>I must be able to return the entire quantity and give the reason (“Incorrect item”).</li>
+<li>These items must not affect the PO or QOH.</li>
+</ul>
+<p>Since these unordered items are not in our Part table, the system must store them in a separate place (the <strong>UnorderedPurchaseItemCart</strong> table) with:</p>
+<ul>
+<li>Description</li>
+<li>Quantity</li>
+<li><strong>VendorPartNumber</strong> — the vendor’s part number, not ours</li>
+</ul>
+<p>This way, we still have a record of what the vendor actually sent, but we do not count it as stock we carry.</p>
+<p>When I come across an unordered item, I type in the three pieces of information — description, vendor part number, and quantity — and press <strong>Insert</strong> to add it to my unordered items list. I can see everything I have added so far in a grid, and if I made a mistake, I can press <strong>Delete</strong> on that row to remove it before I finalize.</p>
+<p>These items only exist on my screen until I press <strong>Receive</strong> or <strong>Force Close</strong>. The items are not saved anywhere until that moment. If I realize I typed something wrong in the input fields before inserting, I can press <strong>Clear</strong> to reset the input fields and start that entry over.</p>
+<p>All three fields — description, vendor part number, and quantity — must be filled in before the system lets me insert. I cannot leave any of them blank.</p>
+<p>Since unordered items are always going back for the same reason — “Incorrect item” — the system can fill that reason in automatically. It is not a judgment call; it is a fact. The vendor sent something we never ordered, so it goes back.</p>
+<hr>
+<h2 id="actions-i-take-when-i-am-done">7. Actions I Take When I Am Done</h2>
+<p>Once I have finished entering everything — received quantities, returned quantities, unordered items — I use a few key actions to commit my work or start over. These actions control when data is saved to the database and when data is discarded.</p>
+<h3 id="receiving-the-shipment">Receiving the Shipment</h3>
+<ul>
+<li>Processes the <strong>received quantities</strong>, <strong>returned quantities</strong>, and <strong>unordered items</strong> I have entered.</li>
+<li>If all outstanding items are received (all Outstanding values become zero), the order is <strong>automatically closed</strong>.</li>
+<li>Clears all entered data and updates the <strong>Order Details</strong> to reflect what was just received.</li>
+<li>The system should not let me press Receive if I have not actually entered anything — no received quantities, no returned quantities, no unordered items. If everything is blank, there is nothing to process, and the system should tell me that instead of processing an empty session.</li>
+</ul>
+<h3 id="forcing-an-order-closed">Forcing an Order Closed</h3>
+<ul>
+<li>Forces an order to close, even if there are still outstanding parts.</li>
+<li>Requires a <strong>Reason for Closing</strong> before the order can be force closed.</li>
+<li>Also processes any received quantities, returned quantities, and unordered items I have entered in this session — the same as Receive — before closing the order.</li>
+</ul>
+<h4 id="reason-for-closing">Reason for Closing</h4>
+<ul>
+<li>This field is <strong>required</strong> when using the <strong>Force Close</strong> button. Without a reason, the order cannot be force closed.</li>
+</ul>
+<h3 id="starting-over-reset">Starting Over (Reset)</h3>
+<ul>
+<li>Clears all changes I have made in this receiving session to the <strong>Order Details</strong>, including: received quantities, returned quantities, and any reason I have entered.</li>
+<li>Also clears all changes in the <strong>unordered items</strong> section.</li>
+</ul>
+<p>Before the Reset button actually clears anything, the system should warn me — “You have unsaved changes. Are you sure you want to reset?” — because I do not want to accidentally erase my data entry just because I pressed the wrong button.</p>
+<p>In other words, <strong>Reset</strong> lets me clear all entries for this session if I realize I have made a mistake, before I commit anything by using the Receive or Force Close buttons.</p>
+<hr>
+<h2 id="what-happens-after-i-finish-receiving">8. What Happens After I Finish Receiving</h2>
+<p>When I am satisfied with what I have entered and I press the Receive button, the system’s job is to finalize everything properly and then clear the screen so I can move on to the next shipment.</p>
+<h3 id="after-saving-receiving">After Saving (Receiving)</h3>
+<ul>
+<li>Inventory is updated based on the items I actually accepted.</li>
+<li>A new Receive Order ID is created to represent this session (each session gets its own record).</li>
+<li>The system never goes back and changes a previous receiving record. Every time I process a shipment, that becomes its own entry — a snapshot of what I received that day. If I receive more of the same items next week, that is a new entry on top of the old one. The history keeps growing, and nothing gets rewritten. This way, I can always trace back exactly what happened and when.</li>
+<li>QOH and QOO are updated correctly based on what I accept. (QOH increases, QOO decreases — for this vendor’s PO only.)</li>
+<li>The PO’s status is updated: still open if there is outstanding quantity, or closed if everything is received.</li>
+<li>The screen is cleared so I do not accidentally keep editing the same receiving session again.</li>
+</ul>
+<hr>
+<h2 id="what-the-system-must-never-do">9. What the System Must Never Do</h2>
+<p>To be absolutely clear, there are certain things this system should <strong>never</strong> do:</p>
+<ul>
+<li>Never assume the shipment matches the PO or packing slip.</li>
+<li>Never auto-fill receiving quantities for me.</li>
+<li>Never close a PO unless all quantities are received (except with an explicit force close and a reason).</li>
+<li>Never allow me to receive more than the outstanding quantity.</li>
+<li>Never add returned or damaged items into inventory.</li>
+<li>Never adjust another vendor’s QOO when force closing this vendor’s PO.</li>
+<li>Never hide real history using <strong>RemoveFromViewFlag</strong>.</li>
+</ul>
+<hr>
+<h2 id="summary-of-expectations">10. Summary of Expectations</h2>
+<p>If the receiving module follows all of these rules correctly, then it works the way I work. The system helps me keep our inventory clean and our records honest, instead of adding more confusion.</p>
+<h3 id="before-receiving">Before Receiving</h3>
+<ul>
+<li>Show only vendors that have one open PO.</li>
+<li>Show only POs that are placed (Order Date is set) and have not been closed yet (Closed = false).</li>
+<li>Let me pick the active PO and record my Employee ID and the Receive Date.</li>
+</ul>
+<h3 id="during-receiving">During Receiving</h3>
+<ul>
+<li>Show full PO details: what was ordered, what was already received, and what is outstanding.</li>
+<li>Let me enter the actual quantities received today.</li>
+<li>Prevent over-receiving (Received cannot exceed Outstanding) and require clear reasons for any returned items.</li>
+<li>Support damages, overshipments, unordered items, and backorders.</li>
+<li>Update QOH (increases) and QOO (decreases, this vendor’s PO only) correctly based on what I accept.</li>
+<li>Allow multiple receiving sessions for the same PO over time.</li>
+</ul>
+<h3 id="after-receiving">After Receiving</h3>
+<ul>
+<li>Update inventory and PO status based on what I received.</li>
+<li>Auto-close the PO when everything is fully received (all Outstanding values become zero).</li>
+<li>Allow force close only when there is a valid reason, a confirmation prompt, and the right role is using it.</li>
+<li>Adjust only that vendor’s QOO when force closing — other vendors’ QOO values are not touched.</li>
+<li>Clear the screen and let me move on to the next shipment.</li>
+</ul></body></html>

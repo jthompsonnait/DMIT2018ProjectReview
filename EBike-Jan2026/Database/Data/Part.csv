@@ -1,0 +1,111 @@
+PartID,Description,PurchasePrice,SellingPrice,QuantityOnHand,ReorderLevel,QuantityOnOrder,CategoryID,Refundable,Discontinued,VendorID,RemoveFromViewFlag
+1,Forged pistons,25.0000,35.0000,13,50,20,2,Y,False,5,False
+2,O-ring gaskets,30.0000,42.0000,166,100,0,2,Y,False,2,False
+3,Exhaust system,250.0000,325.0000,40,25,0,2,Y,False,2,False
+4,Rear brakes,40.0000,56.0000,254,80,0,2,Y,False,2,False
+5,Front brakes,40.0000,56.0000,211,80,0,2,Y,False,2,False
+6,Manifold,150.0000,210.0000,15,30,0,2,Y,False,2,False
+7,Plugs,10.0000,15.0000,322,150,0,2,Y,False,2,False
+8,Digital ignition,270.0000,351.0000,23,20,5,2,Y,False,5,False
+9,Air filter,10.0000,15.0000,299,120,0,2,Y,False,2,False
+10,Front tire,100.0000,140.0000,110,50,20,2,Y,False,3,False
+11,Rear tire,120.0000,168.0000,22,50,0,2,Y,False,3,False
+12,Windshield,100.0000,140.0000,48,30,0,2,Y,False,4,False
+13,Street Cuff Lock,25.0000,35.0000,8,40,0,1,Y,False,1,False
+14,Chrome Dip Stick,25.0000,35.0000,38,50,0,1,Y,False,5,False
+15,Full Cover,50.0000,70.0000,183,60,0,1,Y,False,5,False
+16,Half Cover,25.0000,35.0000,124,60,0,1,Y,False,5,False
+17,Helmet,45.0000,63.0000,59,80,0,3,Y,False,1,False
+18,Aviator goggle,45.0000,63.0000,140,70,0,3,Y,False,1,False
+19,Outer glove,25.0000,35.0000,29,80,0,3,Y,False,1,False
+20,Inner glove,25.0000,35.0000,86,80,0,3,Y,False,1,False
+21,Saddle bag,55.0000,77.0000,125,60,0,1,Y,False,5,False
+22,Tank bag,60.0000,84.0000,248,70,0,1,Y,False,5,False
+23,Suit,325.0000,422.5000,77,40,0,3,Y,False,1,False
+24,Jacket,200.0000,260.0000,99,40,0,3,Y,False,1,False
+25,Pants,100.0000,140.0000,7,40,0,3,Y,False,1,False
+26,Fuel Filter,18.6500,27.9800,469,120,0,2,Y,False,2,False
+27,"Brake Oil, pint",3.6500,5.4800,108,150,0,4,N,False,2,False
+28,"Shocks, front air",235.0000,305.5000,48,25,5,2,Y,False,5,False
+29,"Shocks, rear air",35.0000,49.0000,55,60,0,2,Y,False,5,False
+30,"bulbs, signal",2.9500,4.4300,111,200,0,2,N,False,2,False
+31,"bulbs, running",1.9500,2.9300,415,200,0,2,N,False,2,False
+32,"bulbs, front",2.9500,4.4300,349,200,0,2,N,False,2,False
+33,"Transmission fuild, quart",3.6500,5.4800,80,150,0,4,N,False,5,False
+34,Oil Filter,11.6500,17.4800,157,120,0,2,N,False,5,False
+35,"Engine Oil, quart",3.6500,5.4800,109,150,0,4,N,False,2,False
+36,PO Item 1,7.3500,9.9900,380,100,0,1,Y,False,1,False
+37,PO Item 2,7.3500,9.9900,610,100,0,1,Y,False,1,False
+38,PO Item 3,8.5500,11.9900,500,100,0,1,Y,False,1,False
+39,Sale Item A,10.0000,14.9500,20,15,0,1,Y,False,1,False
+40,Sale Item B,9.0000,12.9900,20,15,0,1,Y,False,1,False
+41,Sale Item C,9.5000,13.5500,20,15,0,1,Y,False,1,False
+42,Sale Item D,200.0000,347.0000,10,5,0,1,Y,False,1,False
+43,Sale Item E,25.0000,37.9900,10,5,0,1,Y,False,1,False
+44,Sale Item F,120.0000,199.0000,10,5,0,1,Y,False,1,False
+45,Chain Guard,22.0000,32.9900,45,30,0,2,Y,False,6,False
+46,Handlebar Grips,12.0000,18.9900,120,60,0,1,Y,False,6,False
+47,Kickstand,18.5000,27.9900,35,25,0,2,Y,False,6,False
+48,Rear View Mirror,15.0000,22.9900,88,40,0,1,Y,False,6,False
+49,Speedometer,65.0000,94.9900,12,15,0,2,Y,False,6,False
+50,Throttle Cable,14.0000,20.9900,55,35,0,2,Y,False,6,False
+51,Battery - 12V,85.0000,124.9900,28,20,0,2,Y,False,7,False
+52,Spark Plug Wires,35.0000,49.9900,67,40,0,2,Y,False,7,False
+53,Voltage Regulator,95.0000,139.9900,15,12,0,2,Y,False,7,False
+54,Starter Motor,220.0000,319.9900,8,8,0,2,Y,False,7,False
+55,Alternator,185.0000,269.9900,11,10,0,2,Y,False,7,False
+56,Ignition Coil,55.0000,79.9900,42,25,0,2,Y,False,7,False
+57,Brake Pads - Front,28.0000,41.9900,95,50,15,2,Y,False,8,False
+58,Brake Pads - Rear,26.0000,38.9900,102,50,10,2,Y,False,8,False
+59,Brake Disc - Front,75.0000,109.9900,22,18,5,2,Y,False,8,False
+60,Brake Disc - Rear,70.0000,102.9900,25,18,0,2,Y,False,8,False
+61,Master Cylinder,125.0000,184.9900,14,12,0,2,Y,False,8,False
+62,Brake Line Kit,45.0000,66.9900,38,25,0,2,Y,False,8,False
+63,Chain - 520,45.0000,66.9900,78,40,10,2,Y,False,9,False
+64,Chain - 530,52.0000,76.9900,55,35,0,2,Y,False,9,False
+65,Sprocket - Front,32.0000,47.9900,44,30,10,2,Y,False,9,False
+66,Sprocket - Rear,48.0000,70.9900,38,25,10,2,Y,False,9,False
+67,Chain Tensioner,28.0000,41.9900,25,20,0,2,Y,False,9,False
+68,Chain Lubricant,8.5000,12.9900,145,80,0,4,N,False,9,False
+69,Radiator,165.0000,239.9900,18,12,0,2,Y,False,10,False
+70,"Coolant, gallon",12.0000,17.9900,88,60,0,4,N,False,10,False
+71,Water Pump,95.0000,139.9900,22,15,0,2,Y,False,10,False
+72,Thermostat,18.0000,26.9900,56,35,0,2,Y,False,10,False
+73,Radiator Hose Kit,35.0000,51.9900,42,28,0,2,Y,False,10,False
+74,Radiator Cap,12.0000,17.9900,95,50,0,2,Y,False,10,False
+75,LED Headlight,110.0000,159.9900,32,20,0,2,Y,False,11,False
+76,Tail Light Assembly,55.0000,79.9900,48,30,0,2,Y,False,11,False
+77,Turn Signal - Front,22.0000,32.9900,72,45,0,2,Y,False,11,False
+78,Turn Signal - Rear,20.0000,29.9900,68,45,0,2,Y,False,11,False
+79,Horn,18.0000,26.9900,55,35,0,2,Y,False,11,False
+80,Wiring Harness,85.0000,124.9900,15,12,0,2,Y,False,11,False
+81,Clutch Kit,155.0000,224.9900,12,10,0,2,Y,False,12,False
+82,Clutch Cable,24.0000,35.9900,48,30,0,2,Y,False,12,False
+83,Clutch Lever,18.0000,26.9900,65,40,0,2,Y,False,12,False
+84,Drive Belt,125.0000,184.9900,8,8,0,2,Y,False,12,False
+85,Transmission Seal Kit,45.0000,66.9900,22,18,0,2,Y,False,12,False
+86,Gearshift Lever,32.0000,47.9900,38,25,0,2,Y,False,12,False
+87,Foot Pegs,45.0000,66.9900,55,35,0,1,Y,False,13,False
+88,Passenger Footrest,38.0000,55.9900,42,28,0,1,Y,False,13,False
+89,Brake Pedal,28.0000,41.9900,35,25,0,2,Y,False,13,False
+90,Shift Pedal,26.0000,38.9900,38,25,0,2,Y,False,13,False
+91,Floor Mat,18.0000,26.9900,88,50,0,1,Y,False,13,False
+92,Rubber Grip Covers,12.0000,17.9900,125,70,0,1,Y,False,13,False
+93,Wheel Bearings - Front,35.0000,51.9900,62,40,0,2,Y,False,14,False
+94,Wheel Bearings - Rear,38.0000,55.9900,58,40,0,2,Y,False,14,False
+95,Wheel Rim - Front,185.0000,269.9900,8,8,0,2,Y,False,14,False
+96,Wheel Rim - Rear,195.0000,284.9900,6,8,0,2,Y,False,14,False
+97,Tire Valve Stems,3.5000,5.4900,245,120,0,2,N,False,14,False
+98,Wheel Weights,1.5000,2.4900,485,200,0,2,N,False,14,False
+99,Suspension Spring - Front,75.0000,109.9900,24,18,0,2,Y,False,15,False
+100,Suspension Spring - Rear,85.0000,124.9900,22,18,0,2,Y,False,15,False
+101,Fork Seals,22.0000,32.9900,78,45,0,2,Y,False,15,False
+102,"Fork Oil, quart",9.5000,14.4900,142,80,0,4,N,False,15,False
+103,Swing Arm Bearings,45.0000,66.9900,32,22,0,2,Y,False,15,False
+104,Suspension Linkage Kit,95.0000,139.9900,15,12,0,2,Y,False,15,False
+105,Touring Seat,180.0000,259.9900,12,10,0,1,Y,False,6,False
+106,Sport Seat,165.0000,239.9900,15,10,0,1,Y,False,6,False
+107,Backrest Pad,45.0000,66.9900,28,20,0,1,Y,False,1,False
+108,Rain Suit,95.0000,139.9900,35,25,0,3,Y,False,1,False
+109,Bike Polish,8.5000,12.9900,188,90,0,1,N,False,5,False
+110,Touch-up Paint,12.0000,17.9900,95,55,0,1,N,False,5,False

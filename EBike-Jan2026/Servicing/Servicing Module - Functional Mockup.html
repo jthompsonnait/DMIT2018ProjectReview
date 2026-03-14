@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicing Module - Functional Mockup</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+<link rel="stylesheet" href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"><link rel="stylesheet" href="/d2l/le/contentstyler/6606/files/View" data-override="override"></head><body><h1 id="servicing-module-annotated-screen-mockup">Servicing Module — Annotated Screen Mockup</h1>
+<blockquote>
+<p><strong>Reference wireframe — not a design to copy.</strong> This shows the required data elements, actions, and behaviors. You choose the layout, components, and styling. Your screen will look different from this — that’s expected.</p>
+</blockquote>
+<hr>
+<h2 id="screen-1-customer-vehicle-selection">Screen 1: Customer &amp; Vehicle Selection</h2>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                   │
+│  CUSTOMER SEARCH                                                                  │
+│                                                                                   │
+│  Last Name: [ Smi           ] ✎   [ Search ]   [ Clear ]                         │
+│                                ↑                  ↑                               │
+│                           Partial match       Resets field                        │
+│                           allowed             and clears results                  │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  CUSTOMER RESULTS                                                                 │
+│  ┌──────────────────┬───────────────┬──────────────────────────────┬────────────┐ │
+│  │ Name             │ Phone         │ Address                      │ Action     │ │
+│  ├──────────────────┼───────────────┼──────────────────────────────┼────────────┤ │
+│  │ Sam Smith        │ 780.444.4444  │ 12345 – 67 St, Edmonton, AB │ [Select]   │ │
+│  │ John Jones       │ 780.432.2222  │ 23456 – 78 St, Edmonton, AB │ [Select]   │ │
+│  │ Dave Davids      │ 780.433.4344  │ 22222 – 22 St, Edmonton, AB │ [Select]   │ │
+│  └──────────────────┴───────────────┴──────────────────────────────┴────────────┘ │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  VEHICLE SELECTION  ← Appears only after a customer is selected                  │
+│                                                                                   │
+│  Vehicle: [ Honda Ruckus          ▾ ]   VIN: 123FT678Y9801                        │
+│             ↑ Dropdown of customer's         ↑ Auto-displays when                │
+│               registered vehicles              vehicle selected                  │
+│                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="customer-selection-decision-flow">Customer Selection — Decision Flow</h3>
+<pre><code>  User selects a customer
+       │
+       ├── Any service data already on screen?
+       │         │
+       │        NO  ──→ Load vehicles, populate dropdown
+       │
+       └── YES ──→ Warn: switching clears services, parts, coupon
+                    │
+                    ├── Confirmed ──→ Clear all, load new customer's vehicles
+                    └── Cancelled ──→ Keep current customer, no change</code></pre>
+<blockquote>
+<p>Screen 1 is only for choosing the customer and vehicle. Once both are selected, the user moves on to Screen 2 for service entry.</p>
+</blockquote>
+<hr>
+<h2 id="screen-2-service-entry-job-registration">Screen 2: Service Entry (Job Registration)</h2>
+<p>This is the main working screen. The wireframe below shows one possible arrangement — yours will differ.</p>
+<pre><code>┌───────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                   │
+│  JOB INFO (read-only)                                                             │
+│  ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│  │ Customer:  Sam Smith                Phone:  780.444.4444                    │  │
+│  │ Address:   12345 – 67 St, Edmonton, AB                                     │  │
+│  │ Vehicle:   Honda Ruckus             VIN:    123FT678Y9801                   │  │
+│  │ JobDateIn: Feb 21, 2026             Status: Open                            │  │
+│  │                                                                              │  │
+│  │ Employee: Riley Torres  ◄── D2: logged-in employee name                     │  │
+│  └──────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  ADD SERVICE                                                                      │
+│  ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│  │ Standard Service: [ Oil Change              ▾ ]   ← auto-fills below       │  │
+│  │ OR                                                                          │  │
+│  │ Custom Service:   [                           ] ✎  ← overrides standard    │  │
+│  │                                                                              │  │
+│  │ Description: Oil Change            ◄── read-only if standard,              │  │
+│  │                                        editable if custom                   │  │
+│  │ Hours:       [ 0.50  ] ✎               ◄── must be &gt; 0                     │  │
+│  │ Shop Rate:   $65.50                    ◄── fixed, non-editable             │  │
+│  │ Comments:    [                           ] ✎  ← optional                   │  │
+│  │                                                                              │  │
+│  │ [ Add Service ]   [ Reset ]                                                 │  │
+│  │   ↑ Adds to cart,    ↑ Clears current entry                                │  │
+│  │     clears fields      fields only — cart                                   │  │
+│  │                        stays unchanged                                      │  │
+│  └──────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  SERVICE CART                                                                     │
+│  ┌──────────────────────────┬───────┬─────────┬────────────┬─────┐               │
+│  │ Service Name             │ Hours │ Rate    │ Ext Price  │     │               │
+│  ├──────────────────────────┼───────┼─────────┼────────────┼─────┤               │
+│  │ Oil Change               │  0.50 │  $65.50 │     $32.75 │ ❌  │               │
+│  │ Fluid Flush              │  1.00 │  $65.50 │     $65.50 │ ❌  │               │
+│  │ Detail Vehicle           │  2.00 │  $65.50 │    $131.00 │ ❌  │               │
+│  └──────────────────────────┴───────┴─────────┴────────────┴─────┘               │
+│                                               ↑ Ext Price = Hours × $65.50       │
+│                                                                                   │
+│  Labour Subtotal: $229.25                                                         │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  ADD PARTS                                                                        │
+│  Category: [ Parts                     ▾ ]   ← required before browsing parts   │
+│                                                                                   │
+│  ┌──────────────────────┬──────────┬─────┬──────────────┬──────────┐             │
+│  │ Part Name            │ Price    │ QOH │ Qty to Add ✎ │ Action   │             │
+│  ├──────────────────────┼──────────┼─────┼──────────────┼──────────┤             │
+│  │ Front Tire           │ $125.00  │   8 │ [  1       ] │ [+Add]   │             │
+│  │ Rear Tire            │ $220.00  │   8 │ [  0       ] │ [+Add]   │             │
+│  │ Windshield           │ $200.00  │  14 │ [  0       ] │ [+Add]   │             │
+│  └──────────────────────┴──────────┴─────┴──────────────┴──────────┘             │
+│                                             ↑ Must be &gt; 0 and ≤ QOH              │
+│                                               to enable +Add                     │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  PARTS CART                                                                       │
+│  ┌──────────────────────┬──────────┬─────┬──────────┬─────┐                      │
+│  │ Part Name            │ Price    │ Qty │ Total    │     │                      │
+│  ├──────────────────────┼──────────┼─────┼──────────┼─────┤                      │
+│  │ Front Tire           │ $125.00  │   1 │  $125.00 │ ❌  │                      │
+│  └──────────────────────┴──────────┴─────┴──────────┴─────┘                      │
+│                                            ↑ Total = Price × Qty                 │
+│                                                                                   │
+│  Parts Subtotal: $125.00                                                          │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  COUPON                                                                           │
+│  Code: [ SAVE10    ] ✎   [ Verify ]   ✓                                          │
+│                            ↑            ↑                                         │
+│                       Checks code   Shows ✓ if valid,                            │
+│                       validity      ✗ if invalid                                 │
+│                                                                                   │
+│  ◄── D2: Coupon area restricted to Parts Manager (Mechanic blocked)              │
+│  ← Only ONE coupon per job                                                       │
+│  ← Discount never applies until coupon is verified                               │
+│                                                                                   │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │
+│                                                                                   │
+│  TOTALS  ← Auto-update on every service, part, or coupon change                 │
+│  ┌──────────────────────────┐                                                    │
+│  │ Labour Subtotal: $229.25 │                                                    │
+│  │ Parts Subtotal:  $125.00 │                                                    │
+│  │ Subtotal:        $354.25 │                                                    │
+│  │ Discount (10%):  −$35.43 │  ← Only shown when coupon verified                │
+│  │ GST (5%):         $15.94 │  ← 5% of (Subtotal − Discount)                    │
+│  │ Total:           $334.76 │                                                    │
+│  └──────────────────────────┘                                                    │
+│                                                                                   │
+│  [ Register Service Order ]   [ Cancel ]                                          │
+│    ↑ See Button State Matrix below                                                │
+│                                                                                   │
+│  Job ID: 5001  ← Shown ONLY after registration                                  │
+│                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+<h2 id="standard-vs-custom-service-decision-flow">Standard vs Custom Service — Decision Flow</h2>
+<pre><code>  User is adding a service entry
+       │
+       ├── Standard service selected from dropdown?
+       │         │
+       │        YES ──→ Description auto-fills (read-only)
+       │                Hours auto-fills (editable — user can override)
+       │
+       ├── Custom text entered?
+       │         │
+       │        YES ──→ Description = custom text (editable)
+       │                Hours = empty (user must enter)
+       │                Overrides any standard selection
+       │
+       └── Neither selected?
+                 │
+                 └──→ Add Service button stays disabled</code></pre>
+<blockquote>
+<p>Custom always wins. If both a standard service is selected and custom text is entered, the custom text overrides.</p>
+</blockquote>
+<hr>
+<h2 id="button-state-matrix">Button State Matrix</h2>
+<p>What each button does depends on the current state of the service order:</p>
+<table><colgroup> <col style="width: 28%;"> <col style="width: 17%;"> <col style="width: 17%;"> <col style="width: 17%;"> <col style="width: 17%;"> </colgroup>
+<thead>
+<tr>
+<th>Button</th>
+<th style="text-align: center;">No Customer</th>
+<th style="text-align: center;">Customer Selected</th>
+<th style="text-align: center;">Services Added</th>
+<th style="text-align: center;">Registered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Search</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Warns first</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Clear</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Warns first</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Select</strong></td>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;">Warns if data</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Add Service</strong></td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Enabled (if valid)</td>
+<td style="text-align: center;">Enabled (if valid)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Reset</strong></td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>+Add</strong> (part)</td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Enabled (if valid)</td>
+<td style="text-align: center;">Enabled (if valid)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Verify</strong> (coupon)</td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Register</strong></td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;"><strong>Enabled</strong> (≥ 1 service)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Cancel</strong></td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Warns if data</td>
+<td style="text-align: center;">Warns if data</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>❌</strong> Delete (service/part)</td>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;">Enabled</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="register-requirements">Register Requirements</h3>
+<p>Register is enabled when ALL of these are true: - A customer and vehicle are selected - At least <strong>one service entry</strong> in the service cart - Parts are optional — a job can have services only</p>
+<p><strong>What Register does:</strong> Saves job record + all service entries + all parts, decrements QOH by quantity used for each part, assigns and displays a Job ID, locks the entire form (all inputs disabled, Register and Cancel buttons disabled).</p>
+<p><strong>D2 Security:</strong> Coupon area is restricted to <strong>Parts Manager</strong> role only (Mechanic blocked).</p>
+<hr>
+<h2 id="how-services-move">How Services Move</h2>
+<pre><code>  ┌───────────────────┐              ┌──────────────────┐
+  │  ADD SERVICE FORM │ ──Add──────&gt; │  SERVICE CART     │
+  │  (entry fields)   │              │  (running list)   │
+  └───────────────────┘              └──────────────────┘
+                                            │
+                                       ❌ Delete
+                                            │
+                                            ▼
+                                        Removed
+
+  Add:    Entry moves from form → cart. Fields clear for next entry.
+  Delete: Entry removed from cart. No confirmation needed (local data).
+
+  Every add or delete recalculates Labour Subtotal immediately.</code></pre>
+<hr>
+<h2 id="how-parts-move">How Parts Move</h2>
+<pre><code>  ┌───────────────────┐              ┌──────────────────┐
+  │  AVAILABLE PARTS  │ ──+Add────&gt; │  PARTS CART       │
+  │  (by category)    │              │  (selected parts) │
+  └───────────────────┘              └──────────────────┘
+                                            │
+                                       ❌ Delete
+                                            │
+                                            ▼
+                                        Removed
+
+  +Add:   Part enters the cart with entered quantity.
+          If part already in cart → increase quantity (no duplicate lines).
+          Combined quantity must still ≤ QOH.
+  Delete: Part removed from cart entirely.
+
+  Parts appear in BOTH grids simultaneously — the available list always
+  shows stock, and the cart shows what's been selected for this job.
+
+  Every add or delete recalculates Parts Subtotal immediately.</code></pre>
+<hr>
+<h2 id="default-values">Default Values</h2>
+<table><colgroup> <col style="width: 31%;"> <col style="width: 22%;"> <col style="width: 22%;"> <col style="width: 22%;"> </colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align: center;">Standard Service</th>
+<th style="text-align: center;">Custom Service</th>
+<th style="text-align: center;">No Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td style="text-align: center;">Auto-filled (read-only)</td>
+<td style="text-align: center;">User-typed (editable)</td>
+<td style="text-align: center;">Empty</td>
+</tr>
+<tr>
+<td>Hours</td>
+<td style="text-align: center;">Standard hours (editable)</td>
+<td style="text-align: center;">Empty (must enter)</td>
+<td style="text-align: center;">Empty</td>
+</tr>
+<tr>
+<td>Shop Rate</td>
+<td style="text-align: center;">$65.50 (always)</td>
+<td style="text-align: center;">$65.50 (always)</td>
+<td style="text-align: center;">$65.50</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td style="text-align: center;">Empty</td>
+<td style="text-align: center;">Empty</td>
+<td style="text-align: center;">Empty</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="coupon-verification-flow">Coupon Verification Flow</h2>
+<pre><code>  User enters coupon code and clicks Verify
+       │
+       ├── Code exists in system?
+       │         │
+       │        NO  ──→ ✗ displayed, no discount applied
+       │
+       └── YES ──→ Check date range (StartDate ≤ today ≤ EndDate)?
+                    │
+                    ├── NO  ──→ ✗ displayed, no discount applied
+                    │
+                    └── YES ──→ Not RemoveFromView?
+                                 │
+                                 ├── Removed ──→ ✗ displayed, no discount applied
+                                 │
+                                 └── Active ──→ ✓ displayed
+                                               Discount % applied to Subtotal
+                                               Totals recalculate immediately</code></pre>
+<blockquote>
+<p>Coupon must be <strong>percentage-based</strong>, date-validated, not removed from view, and applied <strong>before tax</strong>. Only <strong>one coupon per job</strong>. Accepts any valid coupon (not restricted to service-specific).</p>
+</blockquote>
+<hr>
+<h2 id="calculation-formulas">Calculation Formulas</h2>
+<pre><code>Extended Price  = Hours × $65.50                       (per service entry)
+Labour Subtotal = SUM(Extended Price)                  (all service entries)
+
+Part Total      = Selling Price × Quantity             (per part in cart)
+Parts Subtotal  = SUM(Part Total)                      (all parts in cart)
+
+Subtotal        = Labour Subtotal + Parts Subtotal
+Discount        = Subtotal × CouponPercent             (only if coupon verified)
+GST             = (Subtotal − Discount) × 0.05
+Total           = Subtotal − Discount + GST</code></pre>
+<h3 id="worked-example">Worked Example</h3>
+<pre><code>Services:
+  Oil Change:      0.50 hrs × $65.50 =  $32.75
+  Fluid Flush:     1.00 hrs × $65.50 =  $65.50
+  Detail Vehicle:  2.00 hrs × $65.50 = $131.00
+                                       ────────
+Labour Subtotal:                        $229.25
+
+Parts:
+  Front Tire:      1 × $125.00       = $125.00
+                                       ────────
+Parts Subtotal:                        $125.00
+
+Subtotal  = $229.25 + $125.00         = $354.25
+Discount  = $354.25 × 0.10            =  $35.43
+GST       = ($354.25 − $35.43) × 0.05 = $318.82 × 0.05 = $15.94
+Total     = $354.25 − $35.43 + $15.94 = $334.76</code></pre>
+<hr>
+<h2 id="what-the-system-must-never-do">What the System Must Never Do</h2>
+<ul>
+<li>Never allow using parts when QOH is insufficient</li>
+<li>Never save incomplete services or parts (missing description, zero hours, zero qty)</li>
+<li>Never register a job without at least <strong>one service entry</strong> in the service cart</li>
+<li>Never allow editing once the job is registered (write-once only)</li>
+<li>Never hard-delete job history — use <strong>RemoveFromViewFlag</strong> only</li>
+<li>Never skip required validation</li>
+<li>Never apply a coupon without successful verification</li>
+<li>Never allow the same part twice in the cart (duplicates must increase quantity instead)</li>
+<li>Never allow QOH to go negative</li>
+</ul></body></html>

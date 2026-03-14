@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchasing Module - Functional Mockup</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+  }
+  h1 {
+    color: #1a202c;
+    border-bottom: 3px solid #3182ce;
+    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+  h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  h3 {
+    color: #2c5282;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+  }
+  h4 {
+    color: #2a4365;
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+  }
+  p { margin: 0.8rem 0; }
+  ul, ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.3rem 0; }
+  strong { color: #1a202c; }
+  em { color: #4a5568; }
+  code {
+    background: #edf2f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #e53e3e;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: #2b6cb0;
+    color: #fff;
+  }
+  th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #2c5282;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #e2e8f0;
+  }
+  tbody tr:nth-child(even) {
+    background: #f7fafc;
+  }
+  tbody tr:hover {
+    background: #ebf8ff;
+  }
+  blockquote {
+    border-left: 4px solid #3182ce;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #ebf8ff;
+    color: #2a4365;
+  }
+  blockquote p { margin: 0.3rem 0; }
+  hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .alert-danger {
+    background: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-warning {
+    background: #fffff0;
+    border-left: 4px solid #d69e2e;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .alert-info {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+<link rel="stylesheet" href="https://templates.lcs.brightspace.com/lib/assets/css/styles.min.css"><link rel="stylesheet" href="/d2l/le/contentstyler/6606/files/View" data-override="override"></head><body><h1 id="purchasing-module-annotated-screen-mockup">Purchasing Module — Annotated Screen Mockup</h1>
+<blockquote>
+<p><strong>Reference wireframe — not a design to copy.</strong> This shows the required data elements, actions, and behaviors. You choose the layout, components, and styling. Your screen will look different from this — that’s expected.</p>
+</blockquote>
+<hr>
+<h2 id="screen-1-vendor-selection">Screen 1: Vendor Selection</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                     │
+│  ← Active vendors only (RemoveFromViewFlag = false)                                 │
+│                                                                                     │
+│  ┌──────────────────────────┬──────────────────┬──────────────┬──────┬─────────┬─────────────┐
+│  │ Company                  │ Street Address   │ City         │ Prov │ Postal  │ Phone       │
+│  ├──────────────────────────┼──────────────────┼──────────────┼──────┼─────────┼─────────────┤
+│  │ HighRoad Cycle Clothing  │ 1234 Colony Rd   │ Red Deer     │ AB   │ R5T6Y7  │ 780.450.1345│
+│  │ MotorParts Ltd.          │ 15678 118 Ave    │ Edmonton     │ AB   │ T5T6Y7  │ 780.473.5664│
+│  │ Williams Tires           │ 78 Flatston Land │ Spruce Grove │ AB   │ T3Y5Y7  │ 780.696.2356│
+│  │ Cycle Glass              │ 567 Goodie Ave   │ Edmonton     │ AB   │ T5T4R3  │ 780.966.5896│
+│  │ Cycle WhareHouse         │ 11 Bradely Road  │ Belleville   │ ON   │ K5T3Y7  │ 613.968.1345│
+│  └──────────────────────────┴──────────────────┴──────────────┴──────┴─────────┴─────────────┘
+│                                                                                     │
+│                                                          [ Select Vendor ]          │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="after-selection-two-paths">After Selection — Two Paths</h3>
+<pre><code>  Vendor selected
+       │
+       ├── Unplaced PO exists (OrderDate is null)?
+       │         │
+       │        YES ──→ Load that PO exactly as last saved
+       │                (no re-suggestions, no recalculations)
+       │
+       └── NO ──→ Generate new suggested order (unsaved)
+                  Suggested QTO = ReorderLevel - QOH - QOO
+                  (only for parts where ROL &gt; QOH + QOO)</code></pre>
+<blockquote>
+<p>Only <strong>one</strong> unplaced PO may exist per vendor at any time.</p>
+</blockquote>
+<hr>
+<h2 id="screen-2-purchase-order-workspace">Screen 2: Purchase Order Workspace</h2>
+<p>This is the main working screen. The wireframe below shows one possible arrangement — yours will differ.</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                     │
+│  VENDOR INFO (read-only)                                        ORDER TOTALS        │
+│  ┌─────────────────────────────────────────────────┐   ┌──────────────────────────┐ │
+│  │ Vendor:  HighRoad Cycle Clothing                │   │ Subtotal:    $1,125.00   │ │
+│  │ Phone:   780.450.1345                           │   │ GST (5%):       $56.25   │ │
+│  │ Address: 1234 Colony Rd                         │   │ Total:       $1,181.25   │ │
+│  │          Red Deer, AB  R5T6Y7                   │   └──────────────────────────┘ │
+│  │ PO#:     132          ◄── or "New Order"        │    ↑                           │
+│  │                                                 │    │ Auto-updates on every     │
+│  │ Employee: Alex Thompson  ◄── D2: logged-in name │    │ QTO, Price, Add, Remove   │
+│  └─────────────────────────────────────────────────┘    │ change                    │
+│                                                                                     │
+│  ACTION BUTTONS                                                                     │
+│  ┌──────────────────────────────────────────────────────────────────────────────────┐│
+│  │  [ Save/Update ]    [ Place ]    [ Delete ]    [ Clear ]                        ││
+│  └──────────────────────────────────────────────────────────────────────────────────┘│
+│      ↑ See Button State Matrix below                                                │
+│                                                                                     │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│
+│                                                                                     │
+│  PARTS IN ORDER (editable)                                                          │
+│  ┌─────┬──────────────────┬─────┬─────┬─────┬───────────┬───────────┬─────────────┐ │
+│  │ ID  │ Description      │ QOH │ ROL │ QOO │ QTO    ✎  │ Price  ✎  │ Actions     │ │
+│  ├─────┼──────────────────┼─────┼─────┼─────┼───────────┼───────────┼─────────────┤ │
+│  │ 113 │ Street Cuff Lock │   9 │  30 │   4 │ [ 17    ] │ [ $25.00] │ [Remove]    │ │
+│  │ 120 │ Inner glove      │  14 │  15 │   0 │ [  1    ] │ [ $25.00] │ [Remove]    │ │
+│  │ 119 │ Outer glove      │   5 │  17 │   0 │ [ 12    ] │ [ $25.00] │ [Remove]    │ │
+│  └─────┴──────────────────┴─────┴─────┴─────┴───────────┴───────────┴─────────────┘ │
+│    ✎ = editable field                   ↑ Must be &gt;= 1    ↑ Must be &gt; 0             │
+│                                           before Save/Place                         │
+│                                                                                     │
+│  ↕ Parts move between these two grids — a part appears in one OR the other, never   │
+│    both. Adding moves down→up. Removing moves up→down.                              │
+│                                                                                     │
+│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│
+│                                                                                     │
+│  AVAILABLE PARTS (read-only — vendor's other parts not yet in order)                │
+│  ┌─────┬──────────────────┬─────┬─────┬─────┬────────┬──────────┬────────────────┐  │
+│  │ ID  │ Description      │ QOH │ ROL │ QOO │ Buffer │ Price    │ Actions        │  │
+│  ├─────┼──────────────────┼─────┼─────┼─────┼────────┼──────────┼────────────────┤  │
+│  │ 117 │ Helmet           │  25 │  15 │   0 │    -10 │   $45.00 │ [Add to Order] │  │
+│  │ 118 │ Aviator goggle   │  15 │  10 │   0 │     -5 │   $45.00 │ [Add to Order] │  │
+│  │ 123 │ Suit             │  22 │   5 │   0 │    -17 │  $325.00 │ [Add to Order] │  │
+│  │ 124 │ Jacket           │  15 │  12 │   0 │     -3 │  $200.00 │ [Add to Order] │  │
+│  └─────┴──────────────────┴─────┴─────┴─────┴────────┴──────────┴────────────────┘  │
+│                                             ↑                                       │
+│                                       Buffer = ROL - (QOH + QOO)                    │
+│                                       Positive = needs reorder                      │
+│                                       Negative = well stocked                       │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+<h2 id="button-state-matrix">Button State Matrix</h2>
+<p>What each button does depends on the order’s current state:</p>
+<table style="width: 100%;"><colgroup> <col style="width: 34%;"> <col style="width: 21%;"> <col style="width: 21%;"> <col style="width: 21%;"> </colgroup>
+<thead>
+<tr>
+<th>Button</th>
+<th style="text-align: center;">New (unsaved)</th>
+<th style="text-align: center;">Saved (unplaced)</th>
+<th style="text-align: center;">Placed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Save / Update</strong></td>
+<td style="text-align: center;"><strong>Save</strong> — creates PO, assigns PO#, does NOT set OrderDate</td>
+<td style="text-align: center;"><strong>Update</strong> — persists changes</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Place</strong></td>
+<td style="text-align: center;">Disabled</td>
+<td style="text-align: center;">Enabled (if all lines valid)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td style="text-align: center;">Discard from memory (confirm first)</td>
+<td style="text-align: center;">Soft delete via RemoveFromViewFlag (confirm first)</td>
+<td style="text-align: center;">Disabled</td>
+</tr>
+<tr>
+<td><strong>Clear</strong></td>
+<td style="text-align: center;">Return to Vendor Selection (warn if unsaved)</td>
+<td style="text-align: center;">Return to Vendor Selection (warn if unsaved)</td>
+<td style="text-align: center;">Return to Vendor Selection</td>
+</tr>
+</tbody>
+</table>
+<h3 id="place-requirements">Place Requirements</h3>
+<p>Place is only enabled when ALL of these are true: - Order has been saved (has a PO#) - Order is not already placed - Every line has <strong>QTO &gt;= 1</strong> - Every line has <strong>Price &gt;= 0</strong> (zero allowed for valid business reasons such as marketing materials or vendor compensation) - At least one line item exists</p>
+<p><strong>What Place does:</strong> Sets OrderDate = today, updates QOO for each part, locks the entire order.</p>
+<p><strong>D2 Security:</strong> Place is restricted to <strong>Shop Manager</strong> role only.</p>
+<hr>
+<h2 id="how-parts-move-between-grids">How Parts Move Between Grids</h2>
+<pre><code>  ┌──────────────────┐           ┌───────────────────┐
+  │  PARTS IN ORDER  │ ──Remove──&gt;  AVAILABLE PARTS  │
+  │  (editable)      │ &lt;──Add──── │  (read-only)      │
+  └──────────────────┘           └───────────────────┘
+
+  Add:    Part moves from Available → Order, QTO set to 0, Price pre-filled
+  Remove: Part moves from Order → Available (confirm first if saved)
+
+  A part appears in ONE grid only — never both.
+  Every move recalculates Subtotal / GST / Total.</code></pre>
+<hr>
+<h2 id="default-qto-values">Default QTO Values</h2>
+<table>
+<thead>
+<tr>
+<th>How the part got into the order</th>
+<th style="text-align: center;">Starting QTO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suggested by system (new order)</td>
+<td style="text-align: center;"><code>ROL - QOH - QOO</code> (calculated)</td>
+</tr>
+<tr>
+<td>Manually added from Available Parts</td>
+<td style="text-align: center;"><strong>0</strong></td>
+</tr>
+<tr>
+<td>Previously removed, then re-added</td>
+<td style="text-align: center;"><strong>0</strong></td>
+</tr>
+<tr>
+<td>Loaded from existing saved order</td>
+<td style="text-align: center;">Previously saved value</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Items added at QTO = 0 are intentional — the user must set a quantity before saving.</p>
+</blockquote>
+<hr>
+<h2 id="delete-behavior">Delete Behavior</h2>
+<table style="width: 100%;"><colgroup> <col style="width: 62%;"> <col style="width: 14%;"> <col style="width: 22%;"> </colgroup>
+<thead>
+<tr>
+<th>What’s Being Deleted</th>
+<th style="text-align: center;">In Database?</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entire order</td>
+<td style="text-align: center;">Not saved</td>
+<td>Discard from memory, return to Vendor Selection</td>
+</tr>
+<tr>
+<td>Entire order</td>
+<td style="text-align: center;">Saved, unplaced</td>
+<td>Soft delete (RemoveFromViewFlag on parent — children follow)</td>
+</tr>
+<tr>
+<td>Entire order</td>
+<td style="text-align: center;">Placed</td>
+<td><strong>BLOCKED</strong></td>
+</tr>
+<tr>
+<td>Single line item</td>
+<td style="text-align: center;">Not yet saved</td>
+<td>Remove from in-memory list</td>
+</tr>
+<tr>
+<td>Single line item</td>
+<td style="text-align: center;">Previously saved</td>
+<td>Soft delete the detail record</td>
+</tr>
+</tbody>
+</table>
+<p><strong>All delete actions require user confirmation.</strong></p>
+<hr>
+<h2 id="what-the-system-must-never-do">What the System Must Never Do</h2>
+<ul>
+<li>Never auto-save a suggested order — user must explicitly press Save</li>
+<li>Never apply suggestions to an existing unplaced order</li>
+<li>Never allow a placed order to be modified or deleted</li>
+<li>Never auto-fill QTO for manually added or re-added items (always 0)</li>
+<li>Never allow the same part to appear twice in one order</li>
+<li>Never allow QOH to go negative</li>
+<li>Never save an order where any line has QTO = 0</li>
+</ul></body></html>
