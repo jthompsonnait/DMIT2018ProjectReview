@@ -2,8 +2,8 @@
 
 **Purpose:** Track progress, next steps, and open questions across work sessions
 
-**Last Updated:** March 14, 2026 (Session 1 — Project setup)
-**Current Phase:** Setup & Student Support Document Creation
+**Last Updated:** March 14, 2026 (Session 2 — Receiving process diagrams)
+**Current Phase:** Student Support Document Creation
 
 ---
 
@@ -12,7 +12,7 @@
 | Component | Status | Progress |
 |-----------|--------|----------|
 | **Project Management Files** | Complete | CLAUDE.md, SESSION-NOTES, BACKLOG, REFERENCE-INDEX, RESOURCES |
-| **Student Support Documents** | Not Started | To be created based on common student questions |
+| **Student Support Documents** | In Progress | Receiving: 4 diagrams (view model + data flow, instructor + student versions) |
 | **Marking Tools/Guides** | Not Started | Rubrics exist; marking workflow TBD |
 | **Deliverable 1 Marking** | Not Started | Rubric at `EBike-Jan2026/Marking/Deliverable 1 Rubric.html` |
 | **Deliverable 2 Marking** | Not Started | Rubric at `EBike-Jan2026/Marking/Deliverable 2 Rubric.html` |
@@ -22,24 +22,34 @@
 | Subsystem | Requirements | Mockup | ERD | Presentations | Support Docs |
 |-----------|-------------|--------|-----|---------------|--------------|
 | **Purchasing** | Yes | Yes | Yes | PDF + PPTX | TBD |
-| **Receiving** | Yes | Yes | Yes (2) | PDF + PPTX | TBD |
+| **Receiving** | Yes | Yes | Yes (2) | PDF + PPTX | 4 diagrams (view model workflow + data flow) |
 | **Sales & Returns** | Yes | Yes | Yes | PDF + PPTX (x2) | TBD |
 | **Servicing** | Yes | Yes | Yes | PDF + PPTX | TBD |
 
 ---
 
-## Current Focus (updated Mar 14, 2026 — Session 1)
+## Current Focus (updated Mar 14, 2026 — Session 2)
 
-**Completed:** Project management structure set up (CLAUDE.md, SESSION-NOTES, BACKLOG, REFERENCE-INDEX, RESOURCES, memory system)
+**Completed:** Receiving process diagrams — view model workflow + data flow, both instructor and student versions
 
 **Next Steps:**
-- Review existing requirements and mockup documents for each subsystem
-- Identify common student questions and create supporting documents
+- Create similar diagrams for other subsystems (Purchasing, Sales & Returns, Servicing)
+- Create additional student support documents based on common questions
 - Prepare marking workflow for Deliverable 1 and Deliverable 2
 
 ---
 
 ## Session Log
+
+### Session 2 — March 14, 2026
+- Installed Excalidraw diagram skill (`.claude/skills/excalidraw-diagram/`) with Playwright rendering
+- Connected to SQL Server from WSL2 (TCP/IP + firewall + SQL Auth) and exported all 21 table data dumps to CSV
+- Created Receiving view model workflow diagram (instructor version with exact properties/types)
+- Created Receiving view model workflow diagram (student version with guiding questions, no implementation details)
+- Created Receiving data flow diagram (instructor version with table names, queries, transaction steps)
+- Created Receiving data flow diagram (student version with conceptual flow + guiding questions)
+- Moved all diagrams to `EBike-Jan2026/Receiving/Process-Diagrams/`
+- Decision: maintain two versions of each diagram (instructor = full detail, student = conceptual with questions)
 
 ### Session 1 — March 14, 2026
 - Set up project management structure modeled after SDEV2351-CDD

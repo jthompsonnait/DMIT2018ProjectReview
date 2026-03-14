@@ -2,7 +2,7 @@
 
 **Purpose:** Quick reference index to minimize token usage when accessing documentation
 
-**Last Updated:** March 14, 2026 (v1.0)
+**Last Updated:** March 14, 2026 (v1.1)
 
 ---
 
@@ -47,6 +47,16 @@
 | **receiving_erd.png** | Image | Primary ERD for receiving tables |
 | **ReceivingAlternate_ERD.png** | Image | Alternate ERD design |
 
+### Receiving Process Diagrams (`EBike-Jan2026/Receiving/Process-Diagrams/`)
+
+| Document | Format | Purpose |
+|----------|--------|---------|
+| **receiving-viewmodel-workflow.png** | PNG | Instructor ref — view model structure with exact properties and types |
+| **receiving-viewmodel-workflow-student.png** | PNG | Student version — conceptual view model layout with guiding questions |
+| **receiving-dataflow.png** | PNG | Instructor ref — full 3-phase data flow with table names and transaction steps |
+| **receiving-dataflow-student.png** | PNG | Student version — data flow with questions instead of answers |
+| **ReceivingAlternate_ERD.png** | Image | Alternate ERD design |
+
 ### Sales & Returns (`EBike-Jan2026/SalesReturn/`)
 
 | Document | Format | Purpose |
@@ -83,7 +93,10 @@
 
 | Document | Format | Purpose |
 |----------|--------|---------|
-| **TableCreation.sql** | SQL | Full database schema creation script |
+| **TableCreation.sql** | SQL | Full database schema creation script (UTF-16; UTF-8 version also available) |
+| **TableCreation-UTF8.sql** | SQL | UTF-8 converted version of the schema script |
+| **Tables/*.sql** | SQL | Individual table DDL files (21 tables, each with FKs) |
+| **Data/*.csv** | CSV | Data dumps of all 21 tables (exported from live database) |
 | **eBike_2026-Clean.bacpac** | BACPAC | Clean database backup for student setup |
 | **eBike-Auth.bacpac** | BACPAC | Authentication database backup |
 | **Creating AuthDB database.html** | HTML | Instructions for setting up the auth database |

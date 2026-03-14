@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-**Version:** 1.0
+**Version:** 1.1
 **Last Updated:** 2026-03-14
 **Course:** DMIT 2018 - Intermediate Application Development
 **Institution:** NAIT
@@ -24,8 +24,11 @@ When compacting, preserve: current task focus, marking progress, recently modifi
 
 - **All resources:** `RESOURCES.md` or `REFERENCE-INDEX.md`
 - **Marking rubrics:** `EBike-Jan2026/Marking/`
-- **Database schema:** `EBike-Jan2026/Database/TableCreation.sql`
+- **Database schema:** `EBike-Jan2026/Database/Tables/` (individual) or `TableCreation-UTF8.sql` (full)
+- **Table data:** `EBike-Jan2026/Database/Data/*.csv` (21 tables exported)
 - **Project template:** `EBike-Jan2026/ProjectTemplate.zip`
+- **Process diagrams:** `EBike-Jan2026/*/Process-Diagrams/` (instructor + student versions)
+- **Diagram tool:** `.claude/skills/excalidraw-diagram/` — generates Excalidraw diagrams, renders to PNG
 
 ### Project Overview
 

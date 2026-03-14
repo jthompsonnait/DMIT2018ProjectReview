@@ -20,6 +20,14 @@
 
 **Base path:** `EBike-Jan2026/`
 
+## Process Diagrams
+
+### Receiving (`EBike-Jan2026/Receiving/Process-Diagrams/`)
+- **View Model Workflow (instructor)** — `receiving-viewmodel-workflow.png`
+- **View Model Workflow (student)** — `receiving-viewmodel-workflow-student.png`
+- **Data Flow (instructor)** — `receiving-dataflow.png`
+- **Data Flow (student)** — `receiving-dataflow-student.png`
+
 ## Marking
 
 - **Deliverable 1 Rubric** — `EBike-Jan2026/Marking/Deliverable 1 Rubric.html`
@@ -27,7 +35,9 @@
 
 ## Database & Setup
 
-- **Schema script** — `EBike-Jan2026/Database/TableCreation.sql`
+- **Schema script** — `EBike-Jan2026/Database/TableCreation.sql` (UTF-8: `TableCreation-UTF8.sql`)
+- **Individual tables** — `EBike-Jan2026/Database/Tables/*.sql` (21 files)
+- **Table data dumps** — `EBike-Jan2026/Database/Data/*.csv` (21 files)
 - **Clean DB backup** — `EBike-Jan2026/Database/eBike_2026-Clean.bacpac`
 - **Auth DB backup** — `EBike-Jan2026/Database/eBike-Auth.bacpac`
 - **Project template** — `EBike-Jan2026/ProjectTemplate.zip`
