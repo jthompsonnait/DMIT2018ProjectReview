@@ -2,7 +2,7 @@
 
 **Purpose:** Track progress, next steps, and open questions across work sessions
 
-**Last Updated:** March 14, 2026 (Session 3 — All subsystem process diagrams)
+**Last Updated:** March 17, 2026 (Session 4 — Cleanup and checkpoint)
 **Current Phase:** Student Support Document Creation
 
 ---
@@ -28,9 +28,9 @@
 
 ---
 
-## Current Focus (updated Mar 14, 2026 — Session 3)
+## Current Focus (updated Mar 17, 2026 — Session 4)
 
-**Completed:** Process diagrams for all 4 subsystems — 16 diagrams total (4 per subsystem: view model + data flow, instructor + student versions)
+**Completed:** Removed tracked Excalidraw skill files (now managed via global toolkit sync)
 
 **Next Steps:**
 - Review all diagrams for accuracy and completeness
@@ -40,6 +40,11 @@
 ---
 
 ## Session Log
+
+### Session 4 — March 17, 2026
+- Removed Excalidraw skill files from repo tracking (now managed via global toolkit `/sync`)
+- Updated SESSION-NOTES.md for checkpoint
+- Checkpoint commit and push
 
 ### Session 3 — March 14, 2026
 - Created process diagrams for remaining 3 subsystems (Purchasing, Sales & Returns, Servicing)
