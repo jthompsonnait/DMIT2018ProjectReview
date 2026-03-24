@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entities vs View Models: Understanding the Difference | DMIT 2018</title>
+  <!-- Brightspace shared CSS (NAIT template library) -->
+  <link rel="stylesheet" href="/shared/HTML-Template-Library/HTML-Templates-V3/pages/../_assets/thirdpartylib/bootstrap-4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/shared/HTML-Template-Library/HTML-Templates-V3/pages/../_assets/thirdpartylib/fontawesome-free-5.9.0-web/css/all.min.css">
+  <link rel="stylesheet" href="/shared/HTML-Template-Library/HTML-Templates-V3/pages/../_assets/css/styles.min.css">
+  <link rel="stylesheet" href="/shared/HTML-Template-Library/HTML-Templates-V3/pages/../_assets/css/custom.css">
+  <!--
+    BRIGHTSPACE CONTENT PAGE — STUDENT REFERENCE
+    =============================================
+    Course: DMIT 2018 — Intermediate Application Development
+    Topic:  Entities vs View Models
+
+    IMAGE FILES TO UPLOAD:
+      Upload these PNGs to the same Brightspace folder as this HTML file:
+        - entity-vs-viewmodel.png
+        - invoice-data-flow.png
+        - invoice-composition.png
+        - invoice-save-flow.png
+
+      Then update the image src paths below to match your Brightspace content path, e.g.:
+        src="/content/enforced/COURSEID/student/entity-vs-viewmodel.png?isCourseFile=true"
+  -->
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background: #fff;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    code {
+      background: #F0F4F8;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    /* ── Page Header Banner ──────────────────────────── */
+    .day-header {
+      background: linear-gradient(135deg, #003366 0%, #004080 100%);
+      color: #fff;
+      padding: 28px 32px;
+      border-radius: 8px 8px 0 0;
+      border-bottom: 4px solid #D4A843;
+    }
+    .day-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .day-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .day-meta span {
+      background: rgba(255,255,255,0.15);
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    /* ── Content Card ─────────────────────────────────── */
+    .content-card {
+      background: #fff;
+      border: 1px solid #DEE2E6;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    /* ── Section ──────────────────────────────────────── */
+    .section {
+      padding: 24px 32px;
+      border-bottom: 1px solid #EEE;
+    }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #003366;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .section ul, .section ol {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    .section li {
+      padding: 4px 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Highlight Boxes ─────────────────────────────── */
+    .key-concept {
+      background: #E3F2FD;
+      border-left: 4px solid #003366;
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    .key-concept strong { color: #003366; }
+
+    .warning-box {
+      background: #FFF3E0;
+      border-left: 4px solid #E65100;
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    .warning-box strong { color: #E65100; }
+
+    .success-box {
+      background: #E8F5E9;
+      border-left: 4px solid #2E7D32;
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    .success-box strong { color: #2E7D32; }
+
+    .info-box {
+      background: #F3E5F5;
+      border-left: 4px solid #6A1B9A;
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    .info-box strong { color: #6A1B9A; }
+
+    /* ── Comparison Table ─────────────────────────────── */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    .comparison-table th {
+      background: #003366;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .comparison-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #EEE;
+    }
+    .comparison-table tr:nth-child(even) td {
+      background: #F5F7FA;
+    }
+    .comparison-table .saved { color: #003366; font-weight: 600; }
+    .comparison-table .not-saved { color: #999; }
+
+    /* ── Diagram Images ──────────────────────────────── */
+    .diagram-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #DEE2E6;
+      border-radius: 6px;
+    }
+    .diagram-caption {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* ── Checklist ────────────────────────────────────── */
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+    .checklist li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .checklist li::before {
+      content: "\f0c8";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 400;
+      position: absolute;
+      left: 0;
+      color: #003366;
+    }
+
+    /* ── Tree diagram ────────────────────────────────── */
+    .tree-diagram {
+      background: #F5F7FA;
+      border: 1px solid #DEE2E6;
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    /* ── Footer ───────────────────────────────────────── */
+    .day-footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #595959;
+      padding: 16px;
+      border-top: 1px solid #EEE;
+    }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .day-header { padding: 20px 16px; }
+      .section { padding: 16px; }
+      .day-meta { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <div class="day-header">
+    <h1>Entities vs View Models: Understanding the Difference</h1>
+    <div class="day-meta">
+      <span>DMIT 2018</span>
+      <span>eBike Team Project</span>
+      <span>Reference Guide</span>
+    </div>
+  </div>
+
+  <div class="content-card">
+
+    <!-- ── The Core Problem ───────────────────────────── -->
+    <div class="section">
+      <div class="section-title">The Core Problem</div>
+      <p>Many students look at the ERD (Entity Relationship Diagram) and try to build their view models to match it exactly. This is a fundamental misunderstanding of what each one is for.</p>
+      <div class="key-concept">
+        <strong>An entity represents how data is <em>stored</em>. A view model represents how data is <em>used</em>.</strong><br>
+        These are two very different things.
+      </div>
+    </div>
+
+    <!-- ── What Is an Entity? ─────────────────────────── -->
+    <div class="section">
+      <div class="section-title">What Is an Entity?</div>
+      <p>An entity is a C# class that maps directly to a <strong>database table</strong>. It is auto-generated by EF Core Power Tools from your database schema.</p>
+      <ul>
+        <li>Have one class per table</li>
+        <li>Include every column from that table as a property</li>
+        <li>Contain EF Core attributes (<code>[Table]</code>, <code>[Key]</code>, <code>[ForeignKey]</code>, etc.)</li>
+        <li>Include navigation properties to related entities (<code>ICollection&lt;T&gt;</code> for one-to-many, object references for many-to-one)</li>
+        <li>Are marked <code>internal</code> so the UI layer cannot access them directly</li>
+        <li>Are <strong>normalized</strong> &mdash; data is not duplicated across tables</li>
+      </ul>
+      <p>Think of entities as a mirror of your ERD in code. Each entity = one table. Each navigation property = one relationship line on the ERD.</p>
+    </div>
+
+    <!-- ── What Is a View Model? ──────────────────────── -->
+    <div class="section">
+      <div class="section-title">What Is a View Model?</div>
+      <p>A view model is a C# class that represents <strong>what the user sees on screen</strong> or <strong>what a form collects from the user</strong>. You design it yourself based on the needs of your page.</p>
+      <ul>
+        <li>Are <code>public</code> &mdash; they are what the UI layer works with</li>
+        <li>Have no EF Core attributes &mdash; they are plain C# classes (POCOs)</li>
+        <li>Can pull in values from <strong>multiple entities</strong> into a single class</li>
+        <li>Can include <strong>computed properties</strong> that don't exist in the database</li>
+        <li>Can <strong>omit properties</strong> that the UI doesn't need</li>
+        <li>Can contain <strong>lists of other view models</strong> for master/detail screens</li>
+      </ul>
+      <p>Think of a view model as what you would sketch on a whiteboard if someone asked &ldquo;what data does this page need?&rdquo;</p>
+
+      <div class="info-box">
+        <strong>Already taken DMIT 2028 (System Analysis and Design 2)?</strong> If so, you may recognize that a view model is essentially what a <strong>class diagram</strong> represents &mdash; an object designed for your application, not your database. Your entities come from the ERD. Your view models come from a class diagram based on what your UI needs. If you haven't taken that course yet, don't worry &mdash; everything below will make this clear without that background.
+      </div>
+
+      <div class="diagram-container">
+        <img src="entity-vs-viewmodel.png" alt="Entity vs View Model: Two Different Starting Points">
+        <div class="diagram-caption">Entity = Your Database (ERD) &nbsp;|&nbsp; View Model = Your Screen (UI)</div>
+      </div>
+    </div>
+
+    <!-- ── The Invoice Example ────────────────────────── -->
+    <div class="section">
+      <div class="section-title">The Invoice Example</div>
+      <p>This is the clearest way to see the difference. Let's look at how invoices work in the HogWild system.</p>
+
+      <h3 style="color:#003366; font-size:1rem; margin: 16px 0 10px;">The Entity Side (Database)</h3>
+      <p>The database has two tables &mdash; <code>Invoice</code> and <code>InvoiceLine</code> &mdash; connected by a foreign key.</p>
+
+      <table class="comparison-table">
+        <tr><th colspan="3">Invoice Entity</th></tr>
+        <tr><td>InvoiceID</td><td>int</td><td>Primary key</td></tr>
+        <tr><td>InvoiceDate</td><td>DateTime</td><td></td></tr>
+        <tr><td>CustomerID</td><td>int</td><td>Foreign key</td></tr>
+        <tr><td>EmployeeID</td><td>int</td><td>Foreign key</td></tr>
+        <tr><td>SubTotal</td><td>decimal</td><td></td></tr>
+        <tr><td>Tax</td><td>decimal</td><td></td></tr>
+        <tr><td>Customer</td><td>Customer</td><td>Navigation property (object)</td></tr>
+        <tr><td>Employee</td><td>Employee</td><td>Navigation property (object)</td></tr>
+        <tr><td>InvoiceLines</td><td>ICollection&lt;InvoiceLine&gt;</td><td>Navigation property (collection)</td></tr>
+      </table>
+
+      <table class="comparison-table">
+        <tr><th colspan="3">InvoiceLine Entity</th></tr>
+        <tr><td>InvoiceLineID</td><td>int</td><td>Primary key</td></tr>
+        <tr><td>InvoiceID</td><td>int</td><td>Foreign key</td></tr>
+        <tr><td>PartID</td><td>int</td><td>Foreign key</td></tr>
+        <tr><td>Quantity</td><td>int</td><td></td></tr>
+        <tr><td>Price</td><td>decimal</td><td></td></tr>
+        <tr><td>Invoice</td><td>Invoice</td><td>Navigation property (object)</td></tr>
+        <tr><td>Part</td><td>Part</td><td>Navigation property (object)</td></tr>
+      </table>
+
+      <p>Notice the entity stores <code>CustomerID</code> and <code>EmployeeID</code> as integers. It has navigation properties that are full objects pointing to other entities. This is all about <strong>how the database stores and connects data</strong>.</p>
+
+      <h3 style="color:#003366; font-size:1rem; margin: 16px 0 10px;">The View Model Side (What the User Sees)</h3>
+      <p>Now think about what an invoice screen actually needs to display:</p>
+
+      <table class="comparison-table">
+        <tr><th colspan="3">InvoiceView</th></tr>
+        <tr><td>InvoiceID</td><td>int</td><td>Identifier</td></tr>
+        <tr><td>InvoiceDate</td><td>DateTime</td><td></td></tr>
+        <tr><td>CustomerID</td><td>int</td><td>For lookups</td></tr>
+        <tr><td>EmployeeID</td><td>int</td><td>For lookups</td></tr>
+        <tr><td><strong>CustomerName</strong></td><td><strong>string</strong></td><td><strong>Pulled from Customer entity</strong></td></tr>
+        <tr><td><strong>EmployeeName</strong></td><td><strong>string</strong></td><td><strong>Pulled from Employee entity</strong></td></tr>
+        <tr><td>SubTotal</td><td>decimal</td><td></td></tr>
+        <tr><td>Tax</td><td>decimal</td><td></td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>decimal</strong></td><td><strong>Computed: SubTotal + Tax</strong></td></tr>
+      </table>
+
+      <table class="comparison-table">
+        <tr><th colspan="3">InvoiceLineView</th></tr>
+        <tr><td>InvoiceLineID</td><td>int</td><td>Identifier</td></tr>
+        <tr><td>InvoiceID</td><td>int</td><td></td></tr>
+        <tr><td>PartID</td><td>int</td><td></td></tr>
+        <tr><td><strong>Description</strong></td><td><strong>string</strong></td><td><strong>Pulled from Part entity</strong></td></tr>
+        <tr><td>Quantity</td><td>int</td><td></td></tr>
+        <tr><td>Price</td><td>decimal</td><td></td></tr>
+        <tr><td><strong>Taxable</strong></td><td><strong>bool</strong></td><td><strong>Pulled from Part entity</strong></td></tr>
+        <tr><td><strong>ExtentPrice</strong></td><td><strong>decimal</strong></td><td><strong>Computed: Price &times; Quantity</strong></td></tr>
+      </table>
+
+      <p>Look at the differences:</p>
+      <ol>
+        <li><strong><code>CustomerName</code> and <code>EmployeeName</code></strong> &mdash; The entity stores <code>CustomerID</code> (an integer) and has a navigation property to the full <code>Customer</code> object. The view model just needs the name as a string. The user doesn't need to see the Customer object &mdash; they need to see &ldquo;John Smith.&rdquo;</li>
+        <li><strong><code>Total</code></strong> &mdash; This field does not exist in the database. It's calculated as <code>SubTotal + Tax</code>. The view model computes it on the fly using an expression body: <code>public decimal Total =&gt; SubTotal + Tax;</code></li>
+        <li><strong><code>Description</code> and <code>Taxable</code></strong> &mdash; These come from the <code>Part</code> entity, not the <code>InvoiceLine</code> entity. The view model pulls in values from multiple tables into one class because that's what the screen needs to show.</li>
+        <li><strong><code>ExtentPrice</code></strong> &mdash; Also computed: <code>public decimal ExtentPrice =&gt; Price * Quantity;</code> This value is never stored in the database.</li>
+        <li><strong>No navigation properties</strong> &mdash; The view model doesn't have <code>Customer</code>, <code>Employee</code>, or <code>Part</code> objects. It has the specific pieces of information it needs from those objects.</li>
+      </ol>
+
+      <div class="diagram-container">
+        <img src="invoice-data-flow.png" alt="Invoice Example: Where Does Each View Model Property Come From?">
+        <div class="diagram-caption">Four source entities &rarr; two view models, each property traced to its source</div>
+      </div>
+    </div>
+
+    <!-- ── The Three Key Patterns ─────────────────────── -->
+    <div class="section">
+      <div class="section-title">The Three Key Patterns</div>
+
+      <h3 style="color:#003366; font-size:1rem; margin: 16px 0 10px;">Pattern 1: Replace Objects with the Values You Need</h3>
+      <p>Your entity stores a <code>CustomerID</code> because the database only needs a number to find the right row. It also has a navigation property &mdash; a full <code>Customer</code> object &mdash; so Entity Framework can follow that relationship.</p>
+      <p>But your user doesn't want to see <code>47</code> on their invoice. They want to see <strong>&ldquo;John Smith.&rdquo;</strong></p>
+      <p>So in your view model, you skip the object and just hold the value you actually need to display:</p>
+
+      <table class="comparison-table">
+        <tr><th>Entity has...</th><th>View Model has...</th></tr>
+        <tr><td><code>CustomerID</code> (int) + <code>Customer</code> (object)</td><td><code>CustomerID</code> (int) + <code>CustomerName</code> (string)</td></tr>
+        <tr><td><code>PartID</code> (int) + <code>Part</code> (object)</td><td><code>PartID</code> (int) + <code>Description</code> (string) + <code>Taxable</code> (bool)</td></tr>
+        <tr><td><code>ProvStateID</code> (int) + <code>ProvState</code> (object)</td><td><code>ProvStateID</code> (int) or a display string</td></tr>
+      </table>
+
+      <p><strong>Ask yourself:</strong> &ldquo;What value from this related table does my page actually display?&rdquo; Put <em>that</em> in your view model &mdash; not the whole object.</p>
+
+      <div class="warning-box">
+        <strong>Important: Always include the primary key &mdash; even if the user never sees it.</strong><br><br>
+        Notice that <code>CustomerID</code> and <code>PartID</code> are still in the view model even though the user sees &ldquo;John Smith&rdquo; and a part description &mdash; not ID numbers.<br><br>
+        Why? Because you need those keys to <strong>save data back to the database</strong>.<br><br>
+        Think about an invoice line. The screen might show the part's description, quantity, and price &mdash; the user never sees a <code>PartID</code>. But when you save that invoice line, the database needs to know <em>which part</em> this line is for. Without the <code>PartID</code> in your view model, you have no way to link it back.<br><br>
+        <strong>Your view model includes what's needed to <em>display</em> the data AND what's needed to <em>work with</em> the data.</strong> A key that isn't shown on screen is still required if it's used for lookups, saves, or linking records together.
+      </div>
+
+      <h3 style="color:#003366; font-size:1rem; margin: 20px 0 10px;">Pattern 2: Computed Properties</h3>
+      <p>Add fields the database doesn't store but the UI needs to display.</p>
+
+      <table class="comparison-table">
+        <tr><th>Computed Property</th><th>Formula</th></tr>
+        <tr><td><code>Total</code></td><td><code>SubTotal + Tax</code></td></tr>
+        <tr><td><code>ExtentPrice</code></td><td><code>Price * Quantity</code></td></tr>
+        <tr><td><code>Outstanding</code></td><td><code>OrderQuantity - QuantityReceived - QuantityReturned</code></td></tr>
+        <tr><td><code>GST</code></td><td><code>SubTotal * 0.05m</code></td></tr>
+      </table>
+      <p>These use expression bodies (<code>=&gt;</code>) so they always recalculate automatically.</p>
+
+      <h3 style="color:#003366; font-size:1rem; margin: 20px 0 10px;">Pattern 3: Composition (Master/Detail)</h3>
+      <p>A view model can contain a list of other view models to represent a parent-child screen.</p>
+
+      <div class="tree-diagram">
+PurchaseOrderView<br>
+&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; PurchaseOrderID<br>
+&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; OrderDate<br>
+&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; VendorName &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; pulled from Vendor<br>
+&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; SubTotal<br>
+&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; TaxAmount<br>
+&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; computed<br>
+&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; Details: List&lt;PurchaseOrderDetailView&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; PartID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; Description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; pulled from Part<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; Quantity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; PurchasePrice<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; ExtPrice &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; computed
+      </div>
+
+      <p>This is <strong>not</strong> an ERD. There is no foreign key relationship between <code>PurchaseOrderView</code> and <code>PurchaseOrderDetailView</code>. It's a container that holds everything the page needs in one place.</p>
+
+      <div class="success-box">
+        <strong>The key insight: one call, one object.</strong> When your Blazor page calls the BLL to get an invoice, it makes a single call &mdash; <code>GetInvoice(invoiceID)</code> &mdash; and gets back one <code>InvoiceView</code> that already contains the invoice lines inside it as a <code>List&lt;InvoiceLineView&gt;</code>. You don't make a separate call to get the lines. When you save, you pass the same <code>InvoiceView</code> back to the BLL &mdash; it contains the header properties and the line items, and the BLL saves everything at once.
+      </div>
+
+      <div class="diagram-container">
+        <img src="invoice-composition.png" alt="One Call, One Object: The Invoice View Model">
+        <div class="diagram-caption">The InvoiceView is a single container &mdash; you get it once and save it once</div>
+      </div>
+    </div>
+
+    <!-- ── What Gets Saved? ───────────────────────────── -->
+    <div class="section">
+      <div class="section-title">What Gets Saved?</div>
+      <p>Not everything in the view model gets written back to the database. The view model carries everything the page needs to <em>display</em>, but only the actual database columns get <em>saved</em>. Display values like <code>CustomerName</code> and computed fields like <code>Total</code> and <code>ExtentPrice</code> are ignored by the BLL on save &mdash; the database already has those values in the Customer and Part tables, and computed values are recalculated every time.</p>
+
+      <div class="diagram-container">
+        <img src="invoice-save-flow.png" alt="What Gets Saved? Real Data, Real Answers">
+        <div class="diagram-caption">Blue/orange rows = saved to database &nbsp;|&nbsp; Grey rows = display only, ignored on save</div>
+      </div>
+    </div>
+
+    <!-- ── Side-by-Side Comparison ────────────────────── -->
+    <div class="section">
+      <div class="section-title">Side-by-Side Comparison</div>
+      <table class="comparison-table">
+        <tr><th></th><th>Entity</th><th>View Model</th></tr>
+        <tr><td><strong>Represents</strong></td><td>A database table</td><td>A screen or form</td></tr>
+        <tr><td><strong>Created by</strong></td><td>EF Core Power Tools (auto-generated)</td><td>You (hand-written)</td></tr>
+        <tr><td><strong>Access</strong></td><td><code>internal</code></td><td><code>public</code></td></tr>
+        <tr><td><strong>Attributes</strong></td><td><code>[Table]</code>, <code>[Key]</code>, <code>[ForeignKey]</code>, etc.</td><td>None</td></tr>
+        <tr><td><strong>Relationships</strong></td><td>Navigation properties (<code>ICollection&lt;T&gt;</code>)</td><td>Lists of child view models or none</td></tr>
+        <tr><td><strong>Computed fields</strong></td><td>Rarely</td><td>Frequently (<code>=&gt;</code> expressions)</td></tr>
+        <tr><td><strong>Data source</strong></td><td>One table</td><td>One or more tables</td></tr>
+        <tr><td><strong>Used by</strong></td><td>Entity Framework / BLL</td><td>Blazor pages / UI components</td></tr>
+      </table>
+    </div>
+
+    <!-- ── The Common Mistake ─────────────────────────── -->
+    <div class="section">
+      <div class="section-title">The Common Mistake</div>
+      <p>Students who treat view models like entities will:</p>
+      <ul>
+        <li>Create a view model that looks exactly like the entity (same properties, same structure)</li>
+        <li>Use navigation properties in view models (<code>public Customer Customer { get; set; }</code>)</li>
+        <li>Forget to add computed fields that the UI needs</li>
+        <li>Create separate view models where one composite view model would serve the page better</li>
+        <li>Try to add EF Core attributes to view models</li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>The question to ask yourself is not</strong> &ldquo;What does my database table look like?&rdquo;<br><br>
+        <strong>The question to ask yourself is</strong> &ldquo;What does my page need to display, and what does the user need to enter?&rdquo;<br><br>
+        Start from the UI mockup. List out every piece of data shown on screen. That's your view model.
+      </div>
+    </div>
+
+    <!-- ── How They Connect ───────────────────────────── -->
+    <div class="section">
+      <div class="section-title">How They Connect</div>
+      <p>Entities and view models are connected through the <strong>Business Logic Layer (BLL)</strong>. Your service methods:</p>
+      <ol>
+        <li><strong>Query</strong> entities from the database using Entity Framework</li>
+        <li><strong>Map</strong> entity data into view model properties (pulling in display values and computing totals)</li>
+        <li><strong>Return</strong> view models to the UI layer</li>
+      </ol>
+      <p>When saving data, the reverse happens:</p>
+      <ol>
+        <li><strong>Receive</strong> a view model from the UI</li>
+        <li><strong>Map</strong> view model properties back to entity properties</li>
+        <li><strong>Save</strong> the entity to the database</li>
+      </ol>
+      <p>The BLL is the translator between the two worlds.</p>
+    </div>
+
+    <!-- ── Quick Checklist ────────────────────────────── -->
+    <div class="section">
+      <div class="section-title">Quick Checklist</div>
+      <p>Before you finalize a view model, ask yourself:</p>
+      <ul class="checklist">
+        <li>Does this view model contain everything my page needs to display?</li>
+        <li>Have I replaced navigation properties with the actual display values I need (e.g., <code>CustomerName</code> instead of <code>Customer</code> object)?</li>
+        <li>Have I included primary keys (even if they're not displayed) so I can save, look up, and link records?</li>
+        <li>Have I added computed properties for calculated fields (totals, extended prices)?</li>
+        <li>If this is a master/detail page, does my view model contain a <code>List&lt;T&gt;</code> of the detail view model?</li>
+        <li>Have I removed properties that my page doesn't actually use?</li>
+        <li>Is my view model <code>public</code> with no EF Core attributes?</li>
+        <li>Is this designed around my <strong>UI needs</strong>, not my <strong>database structure</strong>?</li>
+      </ul>
+      <div class="success-box">
+        <strong>If you can check all of these, your view model is on the right track.</strong>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="day-footer">
+      DMIT 2018 &mdash; Intermediate Application Development &mdash; NAIT
+    </div>
+
+  </div>
+
+</body>
+</html>
